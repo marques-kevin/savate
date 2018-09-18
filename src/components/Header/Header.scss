@@ -11,6 +11,10 @@
   box-shadow: $BOX_SHADOW;
 }
 
+:local(.noBoxShadow){
+  box-shadow: none;
+}
+
 :local(.title) {
   color: $COLORS_BLACK;
   font-weight: 600;
