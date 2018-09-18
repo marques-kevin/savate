@@ -1,0 +1,15 @@
+import "./../src/styles.scss";
+
+import { storiesOf } from "@storybook/react";
+import { action } from "@storybook/addon-actions";
+import { linkTo } from "@storybook/addon-links";
+
+import Welcome from "./Welcome";
+import NavBar from "./NavBar";
+import Header from "./Header";
+import Switch from "./Switch";
+
+Welcome(storiesOf, { linkTo, action });
+Header(storiesOf, { linkTo, action });
+NavBar(storiesOf, { linkTo, action });
+Switch(storiesOf, { linkTo, action });
