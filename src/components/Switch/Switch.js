@@ -1,6 +1,12 @@
 import React, { PureComponent } from "react";
 import PropTypes from "prop-types";
-import { Container, Switcher, Value, Indicator } from "./Switch.style";
+import Style from "./Switch.scss";
+
+const Value = ({ children, current, onClick }) => (
+  <div className={current ? Style.valueActive : Style.value} onClick={onClick}>
+    {children}
+  </div>
+);
 
 export default class Switch extends PureComponent {
   state = { current: 0 };
@@ -16,18 +22,30 @@ export default class Switch extends PureComponent {
   }
 
   render() {
+    const isCurrent = this.isCurrent(0);
     return (
-      <Container>
-        <Switcher>
-          <Value onClick={() => this.onSwitch(0)} current={this.isCurrent(0)}>
+      <div className={Style.container}>
+        <div className={Style.switcher}>
+          <Value onClick={() => this.onSwitch(0)} current={isCurrent}>
             En cours
           </Value>
-          <Value onClick={() => this.onSwitch(1)} current={this.isCurrent(1)}>
+          <Value onClick={() => this.onSwitch(1)} current={!isCurrent}>
             Historique
           </Value>
-          <Indicator left={this.state.current === 0} />
-        </Switcher>
-      </Container>
+          <div className={isCurrent ? Style.indicator : Style.indicatorRight} />
+        </div>
+      </div>
+      // <Container>
+      //   <Switcher>
+      //     <Value onClick={() => this.onSwitch(0)} current={this.isCurrent(0)}>
+      //       En cours
+      //     </Value>
+      //     <Value onClick={() => this.onSwitch(1)} current={this.isCurrent(1)}>
+      //       Historique
+      //     </Value>
+      //     <Indicator left={this.state.current === 0} />
+      //   </Switcher>
+      // </Container>
     );
   }
 }

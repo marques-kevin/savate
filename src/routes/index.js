@@ -1,5 +1,5 @@
 import React from "react";
-import Home from "./Home/Home";
+import Challenge from "./Challenge/Challenge";
 import { Provider } from "react-redux";
 import createStore from "./../stores";
 
@@ -7,6 +7,6 @@ const store = createStore();
 
 export default (
   <Provider store={store}>
-    <Home />
+    <Challenge />
   </Provider>
 );

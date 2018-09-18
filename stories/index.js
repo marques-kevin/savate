@@ -8,8 +8,10 @@ import Welcome from "./Welcome";
 import NavBar from "./NavBar";
 import Header from "./Header";
 import Switch from "./Switch";
+import ChallengeResultItem from "./ChallengeResultItem";
 
 Welcome(storiesOf, { linkTo, action });
 Header(storiesOf, { linkTo, action });
 NavBar(storiesOf, { linkTo, action });
+ChallengeResultItem(storiesOf, { linkTo, action });
 Switch(storiesOf, { linkTo, action });

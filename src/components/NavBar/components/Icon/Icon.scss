@@ -1,0 +1,21 @@
+@import "./../../../../styles/themes/default";
+
+:local(.container) {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  color: $COLORS_GRAY;
+}
+
+:local(.containerActive) {
+  composes: container;
+  color: $COLORS_BLUE;
+}
+
+:local(.name) {
+  text-transform: uppercase;
+  font-size: 8px;
+  font-weight: bold;
+  margin-top: 5px;
+}

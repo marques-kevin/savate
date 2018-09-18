@@ -5,7 +5,7 @@ import Notifications from "@material-ui/icons/Notifications";
 import Whatshot from "@material-ui/icons/Whatshot";
 import Person from "@material-ui/icons/Person";
 import ImportContacts from "@material-ui/icons/ImportContacts";
-import { Container, Name } from "./Icon.style";
+import Style from "./Icon.scss";
 
 const DisplayIcon = name => {
   if (name === "classement") return <Public />;
@@ -18,10 +18,13 @@ const DisplayIcon = name => {
 export default class Icon extends PureComponent {
   render() {
     return (
-      <Container active={this.props.active} onClick={this.props.onClick}>
+      <div
+        className={!this.props.active ? Style.container : Style.containerActive}
+        onClick={this.props.onClick}
+      >
         {DisplayIcon(this.props.name.toLowerCase())}
-        <Name>{this.props.name}</Name>
-      </Container>
+        <div className={Style.name}>{this.props.name}</div>
+      </div>
     );
   }
 }
@@ -34,4 +37,4 @@ Icon.propTypes = {
 
 Icon.defaultProps = {
   name: "!"
-}
+};

@@ -1,17 +1,17 @@
 import React, { PureComponent } from "react";
-import { Container } from "./NavBar.style";
+import Style from "./NavBar.scss";
 import Icon from "./components/Icon/Icon";
 
 export default class NavBar extends PureComponent {
   render() {
     return (
-      <Container>
-        <Icon name="Classement" active />
+      <div className={Style.container}>
+        <Icon name="Classement" />
         <Icon name="Framedata" />
-        <Icon name="Defi" />
+        <Icon name="Defi" active />
         <Icon name="Notifications" />
         <Icon name="Profil" />
-      </Container>
+      </div>
     );
   }
 }

@@ -1,0 +1,61 @@
+@import "./../../styles/themes/default";
+
+$height: 34px;
+$padding: 4px;
+
+:local(.container) {
+  width: 100%;
+  padding: 0 0 16px 0;
+  display: flex;
+  justify-content: center;
+  background-color: white;
+  position: relative;
+  z-index: 2;
+  box-shadow: $BOX_SHADOW;
+}
+
+:local(.switcher) {
+  height: 34px;
+  background-color: #f9f9f9;
+  display: flex;
+  align-items: center;
+  border-radius: 34px;
+  position: relative;
+}
+
+:local(.value) {
+  width: 120px;
+  padding: 0 10px;
+  transition: all 0.3s ease;
+  color: $COLORS_GRAY;
+  position: relative;
+  text-align: center;
+  z-index: 2;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 14px;
+}
+
+:local(.valueActive) {
+  composes: value;
+  color: $COLORS_BLACK;
+}
+
+:local(.indicator) {
+  position: absolute;
+  z-index: 1;
+  width: calc(50% - #{$padding});
+  top: 0;
+  bottom: 0;
+  background-color: white;
+  border-radius: $height - $padding * 2;
+  height: $height - $padding * 2;
+  margin: auto;
+  transition: all 0.3s ease;
+  transform: translateX($padding);
+}
+
+:local(.indicatorRight) {
+  composes: indicator;
+  transform: translateX(calc(100% + #{$padding}));
+}

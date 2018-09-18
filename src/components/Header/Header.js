@@ -1,19 +1,20 @@
 import React, { PureComponent } from "react";
 import PropTypes from "prop-types";
 import ArrowBack from "@material-ui/icons/ArrowBack";
-import { Container, Title, Back } from "./Header.style";
+import Style from "./Header.scss";
 
 export default class Header extends PureComponent {
   render() {
     return (
-      <Container>
+      <div className={Style.container}>
         {this.props.back && (
-          <Back>
+          <div className={Style.back}>
             <ArrowBack />
-          </Back>
+          </div>
         )}
-        <Title>{this.props.title}</Title>
-      </Container>
+
+        <div className={Style.title}>{this.props.title}</div>
+      </div>
     );
   }
 }
