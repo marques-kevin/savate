@@ -14,18 +14,24 @@ const User = ({ reversed, ranking, character, username }) => (
   </div>
 );
 
+const extractInfo = ({ username, ranking, character }) => ({
+  username,
+  ranking,
+  character
+});
+
 export default class ChallengeResultItem extends PureComponent {
   render() {
     return (
       <div className={Style.container}>
         <div className={Style.left}>
-          <User username="Kayane" ranking="2104" character="Kilik" />
+          <User {...extractInfo(this.props.user)} />
         </div>
         <div className={Style.result}>
-          0 <span>vs</span> 0
+          {this.props.user.score} <span>vs</span> {this.props.challenger.score}
         </div>
         <div className={Style.right}>
-          <User reversed username="Keev" ranking="1876" character="Nightmare" />
+          <User reversed {...extractInfo(this.props.challenger)} />
         </div>
       </div>
     );
