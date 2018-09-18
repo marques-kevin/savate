@@ -1,5 +1,6 @@
 import React, { PureComponent } from "react";
 // import PropTypes from "prop-types";
+import classNames from "classnames";
 import Style from "./ChallengeResultItem.scss";
 import Thumb from "./../Thumb/Thumb";
 
@@ -23,7 +24,11 @@ const extractInfo = ({ username, ranking, character }) => ({
 export default class ChallengeResultItem extends PureComponent {
   render() {
     return (
-      <div className={Style.container}>
+      <div
+        className={classNames(Style.container, {
+          [Style.noBorder]: !!this.props.noBorder
+        })}
+      >
         <div className={Style.left}>
           <User {...extractInfo(this.props.user)} />
         </div>

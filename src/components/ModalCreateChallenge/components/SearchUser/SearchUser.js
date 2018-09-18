@@ -1,6 +1,8 @@
 import React, { PureComponent } from "react";
 import Style from "./SearchUser.scss";
 import Header from "./../../../Header/Header";
+import Footer from "./../Footer/Footer";
+import Input from "./../Input/Input";
 import Thumb from "./../../../Thumb/Thumb";
 
 const User = ({ ranking, character, username }) => (
@@ -18,15 +20,14 @@ export default class SearchUser extends PureComponent {
     return (
       <div className={Style.container}>
         <Header title="Qui voulez-vous défier ?" noBoxShadow />
-        <div className={Style.inputWrapper}>
-          <input placeholder="Rechercher" className={Style.input} />
-        </div>
+        <Input placeholder="Rechercher" />
         <div className={Style.usersWrapper}>
-          <User character="kilik" username="Kayane" ranking="2564"/>
-          <User character="kilik" username="Kayane" ranking="2564"/>
-          <User character="kilik" username="Kayane" ranking="2564"/>
-          <User character="kilik" username="Kayane" ranking="2564"/>
+          <User character="kilik" username="Kayane" ranking="2564" />
+          <User character="kilik" username="Kayane" ranking="2564" />
+          <User character="kilik" username="Kayane" ranking="2564" />
+          <User character="kilik" username="Kayane" ranking="2564" />
         </div>
+        <Footer />
       </div>
     );
   }

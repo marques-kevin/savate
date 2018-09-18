@@ -1,0 +1,60 @@
+@import "./../../styles/themes/default";
+
+:local(.container) {
+  padding: 0 15px;
+}
+
+:local(.background) {
+  position: relative;
+  height: 38px;
+  width: 100%;
+  border-radius: 38px;
+  background-color: #ececec;
+  box-shadow: 0 2px 5px inset rgba(black, 0.2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &::before {
+    content: "";
+    position: absolute;
+    left: 20px;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    height: 20px;
+    width: 56px;
+    background-image: url("./../../assets/decoration/arrow.png");
+    background-repeat: no-repeat;
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    right: 20px;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    height: 20px;
+    width: 56px;
+    background-image: url("./../../assets/decoration/arrow.png");
+    background-repeat: no-repeat;
+    transform: rotate(180deg);
+  }
+}
+
+:local(.indicator) {
+  position: relative;
+  z-index: 3;
+  display: inline-flex;
+  align-items: center;
+  height: 34px;
+  padding: 0 20px;
+  border-radius: 34px;
+  background-color: #fff;
+  text-transform: uppercase;
+  color: $COLORS_BLACK;
+  font-size: 12px;
+  font-weight: 600;
+  box-shadow: 0 2px 4px rgba(black, 0.1);
+}

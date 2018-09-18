@@ -1,0 +1,16 @@
+@import "./../../../../styles/themes/default";
+
+:local(.container) {
+  display: flex;
+  justify-content: space-around;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+:local(.button){
+  cursor: pointer;
+  color: $COLORS_BLACK;
+  padding: 15px 20px;
+}

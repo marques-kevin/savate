@@ -1,0 +1,23 @@
+@import "./../../../../styles/themes/default";
+
+:local(.container) {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  z-index: 2;
+}
+
+:local(.input) {
+  border: none;
+  box-shadow: 0 10px 30px rgba(black, 0.1);
+  height: 42px;
+  width: 250px;
+  border-radius: 4px;
+  text-align: center;
+  font-size: 14px;
+  color: $COLORS_BLACK;
+}
+
+:local(.input::placeholder) {
+  color: #dcdcdc;
+}

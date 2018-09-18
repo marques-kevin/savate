@@ -11,6 +11,10 @@
   border-bottom: 1px #EDEDED solid;
 }
 
+:local(.noBorder){
+  border: none;
+}
+
 :local(.left) {
   position: relative;
   z-index: 2;

@@ -12,6 +12,8 @@ body {
   margin: 0;
   background-color: #fff;
   font-family: $ff;
+  letter-spacing: 0.5px;
+  -webkit-font-smoothing: antialiased;
 }
 
 a {
