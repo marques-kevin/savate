@@ -1,4 +1,4 @@
-import * as types from "../constants/books";
+import * as types from "../constants/auth";
 import Api from "./../utils/api";
 
 /**
@@ -14,19 +14,19 @@ export const changeSearchValue = value => ({
  * Permet de changer la valeur de la recherche
  * @param {string} value
  */
-export const storeBooks = ({ search, books }) => ({
-  type: types.storeBooks,
+export const storeauth = ({ search, auth }) => ({
+  type: types.storeauth,
   search,
-  books
+  auth
 });
 
 /**
  * Permet d'ajouter de nouveaux livre aux livre actuel
- * @param {Array<*>} books - Les livre à ajouter
+ * @param {Array<*>} auth - Les livre à ajouter
  */
-export const addBooks = ({ books, search }) => ({
-  type: types.addBooks,
-  books,
+export const addauth = ({ auth, search }) => ({
+  type: types.addauth,
+  auth,
   search
 });
 
@@ -57,9 +57,9 @@ export const changeSearchAndFetch = value => (dispatcher, getState) => {
   dispatcher(changeSearchValue(value));
   dispatcher(fetching(value));
 
-  return Api.searchBooks({ query: value, page: 1 }).then(books => {
+  return Api.searchauth({ query: value, page: 1 }).then(auth => {
     dispatcher(fetchEnd(value));
-    return dispatcher(storeBooks({ search: value, books }));
+    return dispatcher(storeauth({ search: value, auth }));
   });
 };
 
@@ -67,11 +67,11 @@ export const changeSearchAndFetch = value => (dispatcher, getState) => {
  * Permet de récupérer des nouveaux livres
  */
 export const fetchMore = () => (dispatcher, getState) => {
-  const { books: { search, page } } = getState();
+  const { auth: { search, page } } = getState();
   dispatcher(fetching(search));
 
-  return Api.searchBooks({ query: search, page: page + 1 }).then(books => {
+  return Api.searchauth({ query: search, page: page + 1 }).then(auth => {
     dispatcher(fetchEnd(search));
-    return dispatcher(addBooks({ books, search }));
+    return dispatcher(addauth({ auth, search }));
   });
 };

@@ -11,6 +11,7 @@ import Header from "./Header";
 import Switch from "./Switch";
 import ModalCreateChallenge from "./ModalCreateChallenge";
 import ChallengeResultItem from "./ChallengeResultItem";
+import Login from "./Login";
 
 Welcome(storiesOf, { linkTo, action });
 Header(storiesOf, { linkTo, action });
@@ -18,3 +19,4 @@ NavBar(storiesOf, { linkTo, action });
 ChallengeResultItem(storiesOf, { linkTo, action });
 ModalCreateChallenge(storiesOf, { linkTo, action });
 Switch(storiesOf, { linkTo, action });
+Login(storiesOf, { linkTo, action });

@@ -1,6 +1,6 @@
-import * as books from "./books";
+import * as auth from "./auth";
 
 /* istanbul ignore next */
 export default {
-  books
+  auth
 };

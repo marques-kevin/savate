@@ -1,0 +1,26 @@
+@import "./../../styles/themes/default";
+
+:local(.container) {
+  width: 100%;
+  margin: auto;
+  padding: 0 15px;
+}
+
+:local(.content){
+  margin: auto;
+  max-width: 400px;
+}
+
+:local(.message){
+  font-size: 12px;
+  color: $COLORS_GRAY;
+  font-weight: 600;
+}
+
+:local(.forget){
+  font-size: 12px;
+  color: $COLORS_BLUE;
+  text-align: right;
+  padding: 10px 0;
+  cursor: pointer;
+}

@@ -1,9 +1,13 @@
 import "./../../src/styles/global.scss";
+import theme from "./../../src/styles/mui";
+import { MuiThemeProvider } from "@material-ui/core/styles";
 
 import React from "react";
 
 export default ({ children }) => (
-  <body style={{ height: "100vh", width: "100%", display: "flex" }}>
-    {children}
-  </body>
+  <MuiThemeProvider theme={theme}>
+    <body style={{ height: "100vh", width: "100%", display: "flex" }}>
+      {children}
+    </body>
+  </MuiThemeProvider>
 );
