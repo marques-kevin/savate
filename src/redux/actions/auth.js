@@ -6,6 +6,13 @@ export const authenticate = user => ({
   payload: { user }
 });
 
+export const changePage = page => ({
+  type: types.changePage,
+  payload: { page }
+});
+
+export const changePageToRegister = () => changePage("register");
+
 export const logout = () => ({
   type: types.logout
 });

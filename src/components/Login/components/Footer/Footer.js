@@ -6,7 +6,9 @@ export default class Footer extends PureComponent {
     return (
       <div className={Style.container}>
         <div className={Style.button}>Retour</div>
-        <div className={Style.button}>Créer un compte</div>
+        <div className={Style.button} onClick={this.props.onRegister}>
+          Créer un compte
+        </div>
       </div>
     );
   }

@@ -4,13 +4,13 @@ import Style from "./MainButton.scss";
 export default class MainButton extends PureComponent {
   render() {
     return (
-      <div
+      <button
         className={Style.container}
-        onClick={this.props.onClik}
+        onClick={this.props.onClick}
         style={this.props.style}
       >
         {this.props.text}
-      </div>
+      </button>
     );
   }
 }

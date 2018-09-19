@@ -1,11 +1,14 @@
 import { connect } from "react-redux";
+import * as actions from "./../../../redux/actions/auth";
 
 const mapState = state => ({
-  page: state.page
+  page: state.auth.page
 });
 
-const mapDispatch = () => ({
-  onSubmitSignin: () => false
+const mapDispatch = dispatch => ({
+  onSubmitSignin: ({ email, password }) =>
+    dispatch(actions.fetchAuthenticate({ email, password })),
+  onRegisterTab: () => dispatch(actions.changePageToRegister())
 });
 
 export default connect(mapState, mapDispatch);

@@ -16,6 +16,12 @@ export default function(state = initialState, action) {
         user: action.payload.user
       };
     },
+    [constants.changePage]() {
+      return {
+        ...state,
+        page: action.payload.page
+      };
+    },
     [constants.logout]() {
       return { ...initialState };
     },

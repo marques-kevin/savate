@@ -37,7 +37,7 @@ Login.propTypes = {
   onSigninTab: PropTypes.func,
   onSubmitRegister: PropTypes.func,
   onSubmitSignin: PropTypes.func,
-  page: PropTypes.oneOf(["signin", "register"])
+  page: PropTypes.oneOf(["signin", "register", "forgot"])
 };
 
 Login.defaultProps = {
