@@ -1,6 +1,7 @@
 import React, { PureComponent } from "react";
 import Style from "./Login.scss";
 import PropTypes from "prop-types";
+import Connect from "./containers/Login.container";
 import Footer from "./components/Footer/Footer";
 import Signin from "./components/Signin/Signin";
 import Forgot from "./components/Forgot/Forgot";
@@ -48,5 +49,5 @@ Login.defaultProps = {
   page: "signin"
 };
 
-export default Login;
+export default Connect(Login);
 export const Component = Login;

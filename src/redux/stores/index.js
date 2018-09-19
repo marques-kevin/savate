@@ -1,7 +1,7 @@
 import { createStore, compose, applyMiddleware } from "redux";
 import rootReducer from "../reducers";
 import thunk from "redux-thunk";
-import Amplitude, { reduxMiddleware } from "./../utils/amplitude";
+import Amplitude, { reduxMiddleware } from "./../../utils/amplitude";
 
 const enhancer = compose(
   applyMiddleware(reduxMiddleware(Amplitude), thunk),

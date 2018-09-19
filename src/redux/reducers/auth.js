@@ -1,14 +1,24 @@
 import * as constants from "./../constants/auth";
 
 const initialState = {
-  search: "",
-  books: [],
-  page: 1,
-  fetching: false
+  user: {},
+  isConnected: false,
+  fetching: false,
+  page: "signin"
 };
 
 export default function(state = initialState, action) {
   const actions = {
+    [constants.authenticate]() {
+      return {
+        ...state,
+        isConnected: true,
+        user: action.payload.user
+      };
+    },
+    [constants.logout]() {
+      return { ...initialState };
+    },
     [constants.fetching]() {
       return {
         ...state,
@@ -17,8 +27,6 @@ export default function(state = initialState, action) {
     },
 
     [constants.fetchEnd]() {
-      if (action.search !== state.search) return state;
-
       return {
         ...state,
         fetching: false
