@@ -3,32 +3,29 @@
 :local(.container) {
 }
 
-:local(.choiceContainer){
-  padding: 30px 0 60px 0;
-  border: 1px solid $BORDER_COLOR_GRAY;
+:local(.inputWrapper) {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  z-index: 2;
 }
 
-:local(.roundInfo){
-  margin-top: 30px;
+:local(.input) {
+  border: none;
+  box-shadow: 0 10px 30px rgba(black, 0.1);
+  height: 42px;
+  width: 250px;
+  border-radius: 4px;
   text-align: center;
-  padding-bottom: 15px;
-  
-  h1 {
-    font-size: 14px;
-    font-weight: 600;
-    color: $COLORS_BLACK;
-  }
-
-  h2 {
-    font-size: 10px;
-    font-weight: 600;
-    text-transform: uppercase;
-    color: $COLORS_GRAY;
-    margin-top: 5px;
-  }
+  font-size: 14px;
+  color: $COLORS_BLACK;
 }
 
-:local(.usersWrapper) {
+:local(.input::placeholder){
+  color: #DCDCDC;
+}
+
+:local(.usersWrapper){
   display: flex;
   flex-wrap: wrap;
   margin-top: 25px;
@@ -64,23 +61,4 @@
   color: $COLORS_YELLOW;
   font-size: 12px;
   margin-top: 5px;
-}
-
-:local(.slider){
-  margin-top: 30px;
-}
-
-:local(.history) {
-  margin-top: 50px;
-}
-
-
-
-:local(.sectionTitle) {
-  padding-left: 15px;
-  font-size: 12px;
-  font-weight: 600;
-  color: $COLORS_GRAY;
-  border-bottom: 1px solid $BORDER_COLOR_GRAY;
-  padding-bottom: 5px;
 }

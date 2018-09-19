@@ -1,3 +1,4 @@
+import "reset.css";
 import "./../src/styles/global.scss";
 
 import { storiesOf } from "@storybook/react";

@@ -8,7 +8,7 @@
   align-items: center;
   padding: 0 15px;
   position: relative;
-  border-bottom: 1px #EDEDED solid;
+  border-bottom: 1px $BORDER_COLOR_GRAY solid;
 }
 
 :local(.noBorder){

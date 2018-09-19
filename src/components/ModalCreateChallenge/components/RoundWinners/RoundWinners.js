@@ -17,6 +17,10 @@ export default class RoundWinners extends PureComponent {
     return (
       <div className={Style.container}>
         <Header title="Les vainqueurs de chaque manches ?" noBoxShadow />
+        <div className={Style.roundInfo}>
+          <h1>Manche 3</h1>
+          <h2>ft5</h2>
+        </div>
         <div className={Style.choiceContainer}>
           <div className={Style.resume}>
             <ChallengeResultItem
@@ -25,7 +29,24 @@ export default class RoundWinners extends PureComponent {
               noBorder
             />
           </div>
-          <Slider/>
+          <div className={Style.slider}>
+            <Slider />
+          </div>
+        </div>
+        <div className={Style.history}>
+          <div className={Style.sectionTitle}>Manches précédentes</div>
+          <ChallengeResultItem
+            user={{ ...mockData, ranking: false }}
+            challenger={{ ...mockData, ranking: false }}
+          />
+          <ChallengeResultItem
+            user={{ ...mockData, ranking: false }}
+            challenger={{ ...mockData, ranking: false }}
+          />
+          <ChallengeResultItem
+            user={{ ...mockData, ranking: false }}
+            challenger={{ ...mockData, ranking: false }}
+          />
         </div>
         <Footer onPrev />
       </div>

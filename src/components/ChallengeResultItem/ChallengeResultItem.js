@@ -9,7 +9,7 @@ const User = ({ reversed, ranking, character, username }) => (
     {!reversed && <Thumb character={character} />}
     <div className={reversed ? Style.userInfoReversed : Style.userInfo}>
       <div className={Style.username}>{username}</div>
-      <div className={Style.userRank}>{ranking}</div>
+      {ranking && <div className={Style.userRank}>{ranking}</div>}
     </div>
     {reversed && <Thumb character={character} />}
   </div>
