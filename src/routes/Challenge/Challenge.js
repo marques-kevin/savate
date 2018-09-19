@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import Header from "./../../components/Header/Header";
 import Switch from "./../../components/Switch/Switch";
-import NavBar from "./../../components/NavBar/NavBar";
 import ChallengeResultItem from "./../../components/ChallengeResultItem/ChallengeResultItem";
 import CreateChallengeBtn from "./../../components/CreateChallengeBtn/CreateChallengeBtn";
 import { Database } from "./../../utils/firebase";
@@ -36,7 +35,6 @@ class Challenge extends Component {
           <ChallengeResultItem user={user} challenger={challenger} />
         ))}
         <CreateChallengeBtn />
-        <NavBar />
       </div>
     );
   }
