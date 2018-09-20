@@ -1,0 +1,49 @@
+@import "./../../../../styles/themes/default";
+
+:local(.container) {
+  border-bottom: 1px solid $BORDER_COLOR_GRAY;
+  padding: 10px 15px 0 15px;
+}
+
+:local(.label) {
+  font-size: 12px;
+  color: $COLORS_BLACK;
+  font-weight: 600;
+}
+
+:local(.value) {
+  font-size: 12px;
+  color: $COLORS_GRAY;
+  margin-top: 5px;
+}
+
+:local(.arrow) {
+  margin-left: auto;
+  color: $COLORS_GRAY;
+}
+
+:local(.confirmationBtns) {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+:local(.button) {
+  text-transform: uppercase;
+  color: $COLORS_GRAY;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  padding: 5px 0;
+  cursor: pointer;
+
+  span {
+    font-size: 12px;
+    padding-left: 10px;
+  }
+}
+
+:local(.buttonActive) {
+  composes: button;
+  color: $COLORS_BLACK;
+}

@@ -1,12 +1,14 @@
 import React, { PureComponent } from "react";
 import Style from "./Challenges.scss";
-import Friend from "./../../components/Friend/Friend";
+import Notification from "./../../components/Notification/Notification";
 
 export default class Challenges extends PureComponent {
   render() {
     return (
       <div className={Style.container}>
-        <Friend/>
+        <Notification type="challenge"/>
+        <Notification type="challenge"/>
+        <Notification type="challenge"/>
       </div>
     );
   }

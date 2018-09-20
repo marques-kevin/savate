@@ -1,0 +1,41 @@
+@import "./../../../../styles/themes/default";
+
+:local(.user) {
+  display: flex;
+  padding-bottom: 10px;
+}
+
+:local(.thumb) {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+:local(.userInfo) {
+  display: flex;
+  flex-direction: column;
+  margin-left: 10px;
+  margin-top: 5px;
+}
+
+:local(.username) {
+  color: $COLORS_BLACK;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+:local(.message){
+  color: $COLORS_GRAY;
+  font-size: 12px;
+  line-height: 1.5em;
+  margin-top: 5px;
+}
+
+:local(.date){
+  color: $COLORS_GRAY;
+  font-size: 12px;
+  font-weight: 600;
+  padding-top: 5px;
+  flex-shrink: 0;
+  padding-left: 10px;
+}
