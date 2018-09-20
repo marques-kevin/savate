@@ -5,7 +5,18 @@ import MuiTabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
 
 class Tabs extends PureComponent {
-  state = { value: 0 };
+  constructor(props) {
+    super();
+
+    this.state = { value: this.getValueFromProp(props) };
+  }
+
+  getValueFromProp(props) {
+    if (props.active === "info") return 0;
+    if (props.active === "stats") return 1;
+    if (props.active === "friends") return 2;
+  }
+
   render() {
     const { classes } = this.props;
 
@@ -68,5 +79,9 @@ const styles = theme => ({
     padding: theme.spacing.unit * 3
   }
 });
+
+Tabs.defaultProps = {
+  active: "info"
+};
 
 export default withStyles(styles)(Tabs);

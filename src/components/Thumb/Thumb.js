@@ -21,6 +21,7 @@ import voldo from "./../../assets/characters/voldo.jpg";
 import xianghua from "./../../assets/characters/xianghua.jpg";
 import yoshimitsu from "./../../assets/characters/yoshimitsu.jpg";
 import zasalamel from "./../../assets/characters/zasalamel.jpg";
+import raphael from "./../../assets/characters/raphael.jpg";
 import seongMiNa from "./../../assets/characters/seong-mi-na.jpg";
 
 const characterResolver = n => {
@@ -45,6 +46,7 @@ const characterResolver = n => {
   if (name === "xianghua") return xianghua;
   if (name === "yoshimitsu") return yoshimitsu;
   if (name === "zasalamel") return zasalamel;
+  if (name === "raphael") return raphael;
   if (name === "seong-mi-na") return seongMiNa;
 };
 

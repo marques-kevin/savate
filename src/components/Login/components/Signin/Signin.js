@@ -3,11 +3,11 @@ import Style from "./Signin.scss";
 import TextField from "@material-ui/core/TextField";
 import Button from "./../../../MainButton/MainButton";
 
+
 export default class Signin extends PureComponent {
   onSubmit = e => {
     e.preventDefault();
     const { email, password } = this;
-    console.log("submit");
     this.props.onSubmit({ email, password });
   };
 

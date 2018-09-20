@@ -15,7 +15,10 @@ class Login extends PureComponent {
           <Register onSubmit={this.props.onSubmitRegister} />
         )}
         {this.props.page === "signin" && (
-          <Signin onSubmit={this.props.onSubmitSignin} />
+          <Signin
+            onSubmit={this.props.onSubmitSignin}
+            isFetching={this.props.isFetching}
+          />
         )}
         {this.props.page === "forgot" && (
           <Forgot onSubmit={this.props.onSubmitForgot} />
@@ -37,7 +40,8 @@ Login.propTypes = {
   onSigninTab: PropTypes.func,
   onSubmitRegister: PropTypes.func,
   onSubmitSignin: PropTypes.func,
-  page: PropTypes.oneOf(["signin", "register", "forgot"])
+  page: PropTypes.oneOf(["signin", "register", "forgot"]),
+  isFetching: PropTypes.bool
 };
 
 Login.defaultProps = {
@@ -46,7 +50,8 @@ Login.defaultProps = {
   onSigninTab: () => console.warn("default: onSigninTab"),
   onSubmitRegister: () => console.warn("default: onSubmitRegister"),
   onSubmitSignin: () => console.warn("default: onSubmitSignin"),
-  page: "signin"
+  page: "signin",
+  isFetching: false
 };
 
 export default Connect(Login);
