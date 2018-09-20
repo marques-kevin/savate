@@ -9,12 +9,24 @@ export default class Notification extends PureComponent {
   render() {
     return (
       <div className={Style.container}>
-        <User
-          username="Kayane"
-          character={"Kilik"}
-          text="Vous a envoyé une demande de défi avec une victoire pour Keev de 5 à 2."
-          date="2m"
-        />
+        <div className={Style.user}>
+          <User
+            username="Kayane"
+            character={"Kilik"}
+            text="Vous a envoyé une demande de défi avec une victoire pour Keev de 5 à 2."
+            date={this.props.type === "friend" ? false : "2m"}
+          />
+          {this.props.type === "friend" && (
+            <div className={Style.userBtns}>
+              <div className={Style.userBtn}>
+                <Close />
+              </div>
+              <div className={Style.userBtn}>
+                <Validate />
+              </div>
+            </div>
+          )}
+        </div>
         {this.props.type === "challenge" && (
           <div className={Style.confirmationBtns}>
             <div className={Style.button}>

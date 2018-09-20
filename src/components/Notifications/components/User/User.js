@@ -12,7 +12,7 @@ export default class User extends PureComponent {
           <div className={Style.username}>{username}</div>
           <div className={Style.message}>{text}</div>
         </div>
-        <div className={Style.date}>{date}</div>
+        {date && <div className={Style.date}>{date}</div>}
       </div>
     );
   }

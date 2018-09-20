@@ -18,12 +18,10 @@ class Notifications extends Component {
     return (
       <div className={Style.container}>
         <Header title="Notifications" noBoxShadow />
-        <div style={{ marginTop: "30px" }}>
-          <Tabs
-            active={this.getValueFromTab()}
-            tabs={["Défis", "News", "Demandes d'amis"]}
-          />
-        </div>
+        <Tabs
+          active={this.getValueFromTab()}
+          tabs={["Défis", "News", "Demandes d'amis"]}
+        />
         <div>
           {this.props.tab === "challenges" && <Challenges />}
           {this.props.tab === "news" && <News />}
