@@ -5,6 +5,7 @@ import Header from "./../../components/Header/Header";
 import SkinUser from "./../../components/SkinUser/SkinUser";
 import Info from "./tabs/Info/Info";
 import Stats from "./tabs/Stats/Stats";
+import Friends from "./tabs/Friends/Friends";
 import Tabs from "./../../components/Tabs/Tabs";
 
 class Profile extends Component {
@@ -19,7 +20,7 @@ class Profile extends Component {
         <div>
           {this.props.tab === "info" && <Info />}
           {this.props.tab === "stats" && <Stats />}
-          {this.props.tab === "friends" && <Info />}
+          {this.props.tab === "friends" && <Friends />}
         </div>
       </div>
     );

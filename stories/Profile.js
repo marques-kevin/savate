@@ -13,5 +13,10 @@ export default (storiesOf, addons) => {
     <Body>
       <Profile tab="stats"/>
     </Body>
+  ))
+  .add("La vue amis", () => (
+    <Body>
+      <Profile tab="friends"/>
+    </Body>
   ));
 };
