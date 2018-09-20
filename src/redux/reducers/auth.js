@@ -4,7 +4,8 @@ const initialState = {
   user: {},
   isConnected: false,
   fetching: false,
-  page: "signin"
+  // page: "signin"
+  page: "register"
 };
 
 export default function(state = initialState, action) {

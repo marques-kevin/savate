@@ -33,3 +33,12 @@ export const fetchAuthenticate = ({ email, password }) => dispatcher => {
     return dispatcher(authenticate(user));
   });
 };
+
+export const fetchRegister = ({ email, password }) => dispatcher => {
+  dispatcher(fetching());
+
+  return Models.register(email, password).then(user => {
+    dispatcher(fetchEnd());
+    return dispatcher(authenticate(user));
+  });
+};
