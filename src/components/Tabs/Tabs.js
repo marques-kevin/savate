@@ -8,13 +8,7 @@ class Tabs extends PureComponent {
   constructor(props) {
     super();
 
-    this.state = { value: this.getValueFromProp(props) };
-  }
-
-  getValueFromProp(props) {
-    if (props.active === "info") return 0;
-    if (props.active === "stats") return 1;
-    if (props.active === "friends") return 2;
+    this.state = { value: props.active };
   }
 
   render() {
@@ -28,18 +22,13 @@ class Tabs extends PureComponent {
           value={this.state.value}
           onChange={(e, value) => this.setState({ value })}
         >
-          <Tab
-            label="Informations"
-            classes={{ root: classes.tabRoot, selected: classes.tabSelected }}
-          />
-          <Tab
-            label="Statistiques"
-            classes={{ root: classes.tabRoot, selected: classes.tabSelected }}
-          />
-          <Tab
-            label="Amis"
-            classes={{ root: classes.tabRoot, selected: classes.tabSelected }}
-          />
+          {this.props.tabs.map((label, index) => (
+            <Tab
+              key={index}
+              label={label}
+              classes={{ root: classes.tabRoot, selected: classes.tabSelected }}
+            />
+          ))}
         </MuiTabs>
       </div>
     );
@@ -48,7 +37,9 @@ class Tabs extends PureComponent {
 
 Tabs.propTypes = {};
 
-Tabs.defaultProps = {};
+Tabs.defaultProps = {
+  active: 0
+};
 
 const styles = theme => ({
   root: {
@@ -81,7 +72,8 @@ const styles = theme => ({
 });
 
 Tabs.defaultProps = {
-  active: "info"
+  active: "info",
+  tabs: []
 };
 
 export default withStyles(styles)(Tabs);

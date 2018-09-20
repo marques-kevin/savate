@@ -13,6 +13,7 @@ import ModalCreateChallenge from "./ModalCreateChallenge";
 import ChallengeResultItem from "./ChallengeResultItem";
 import Login from "./Login";
 import Profile from "./Profile";
+import Notifications from "./Notifications";
 
 Welcome(storiesOf, { linkTo, action });
 Header(storiesOf, { linkTo, action });
@@ -22,3 +23,4 @@ ModalCreateChallenge(storiesOf, { linkTo, action });
 Switch(storiesOf, { linkTo, action });
 Login(storiesOf, { linkTo, action });
 Profile(storiesOf, { linkTo, action });
+Notifications(storiesOf, { linkTo, action });
