@@ -35,17 +35,6 @@ export default class Switch extends PureComponent {
           <div className={isCurrent ? Style.indicator : Style.indicatorRight} />
         </div>
       </div>
-      // <Container>
-      //   <Switcher>
-      //     <Value onClick={() => this.onSwitch(0)} current={this.isCurrent(0)}>
-      //       En cours
-      //     </Value>
-      //     <Value onClick={() => this.onSwitch(1)} current={this.isCurrent(1)}>
-      //       Historique
-      //     </Value>
-      //     <Indicator left={this.state.current === 0} />
-      //   </Switcher>
-      // </Container>
     );
   }
 }

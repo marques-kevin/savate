@@ -1,0 +1,21 @@
+@import "./../../styles/themes/default";
+
+:local(.roundInfo) {
+  margin-top: 30px;
+  text-align: center;
+  padding-bottom: 15px;
+
+  h1 {
+    font-size: 14px;
+    font-weight: 600;
+    color: $COLORS_BLACK;
+  }
+
+  h2 {
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: $COLORS_GRAY;
+    margin-top: 5px;
+  }
+}

@@ -1,18 +1,15 @@
 import React, { PureComponent } from "react";
-import Style from "./RoundWinners.scss";
-import Header from "./../../../Header/Header";
-import Footer from "./../Footer/Footer";
+import Style from "./Resume.scss";
 import ResultChoice from "./../../../ResultChoice/ResultChoice";
 import History from "./../../../History/History";
 import RoundInfo from "./../../../RoundInfo/RoundInfo";
 
-export default class RoundWinners extends PureComponent {
+export default class Resume extends PureComponent {
   render() {
     return (
       <div className={Style.container}>
-        <Header title="Les vainqueurs de chaque manches ?" noBoxShadow />
         <RoundInfo />
-        <ResultChoice />
+        <ResultChoice finished={true} winner={"challenger"}/>
         {/* <div className={Style.choiceContainer}>
           <div className={Style.resume}>
             <ChallengeResultItem
@@ -41,10 +38,9 @@ export default class RoundWinners extends PureComponent {
             challenger={{ ...mockData, ranking: false }}
           />
         </div> */}
-        <Footer onPrev />
       </div>
     );
   }
 }
 
-RoundWinners.propTypes = {};
+Resume.propTypes = {};
