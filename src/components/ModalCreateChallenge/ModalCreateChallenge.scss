@@ -1,24 +1,11 @@
 @import "./../../styles/themes/default";
 
 :local(.container) {
-  height: 45px;
-  background-color: $COLORS_BLACK;
-  color: white;
-  border-radius: 45px;
   position: fixed;
-  bottom: 70px;
-  margin: auto;
-  width: 175px;
+  top: 0;
   left: 0;
   right: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-transform: uppercase;
-  font-weight: bold;
-  font-size: 14px;
-  letter-spacing: 1px;
-  box-shadow: 0 2px 4px rgba(black, 0.2);
-  cursor: pointer;
-  user-select: none;
+  bottom: 0;
+  z-index: 10;
+  background-color: white;
 }

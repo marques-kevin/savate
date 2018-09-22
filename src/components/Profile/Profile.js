@@ -9,13 +9,21 @@ import Friends from "./tabs/Friends/Friends";
 import Tabs from "./../../components/Tabs/Tabs";
 
 class Profile extends Component {
+  getTabFromName(tab) {
+    const tabs = ["info", "stats", "friends"];
+    return tabs.findIndex(t => t === tab);
+  }
+
   render() {
     return (
       <div className={Style.container}>
         <Header title="Profil" noBoxShadow />
         <SkinUser />
         <div style={{ marginTop: "30px" }}>
-          <Tabs active={this.props.tab}/>
+          <Tabs
+            active={this.getTabFromName(this.props.tab)}
+            tabs={["Informations", "Statistiques", "Amis"]}
+          />
         </div>
         <div>
           {this.props.tab === "info" && <Info />}

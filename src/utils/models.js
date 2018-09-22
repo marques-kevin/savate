@@ -1,4 +1,4 @@
-import { Firebase } from "./firebase";
+import { Firebase, Database } from "./firebase";
 
 export const authenticate = (email, password) => {
   return Firebase.auth()
@@ -14,5 +14,19 @@ export const register = (email, password) => {
     .createUserWithEmailAndPassword(email, password)
     .then(user => {
       return user;
+    });
+};
+
+export const getChallenges = () => {
+  return Database.collection("challenges")
+    .get()
+    .then(querySnapshot => {
+      const challenges = [];
+
+      querySnapshot.forEach(doc => {
+        challenges.push(doc.data());
+      });
+
+      return challenges;
     });
 };
