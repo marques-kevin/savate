@@ -4,9 +4,10 @@ import Header from "./../../../Header/Header";
 import Footer from "./../Footer/Footer";
 import Input from "./../Input/Input";
 import Thumb from "./../../../Thumb/Thumb";
+import Connect from "./containers/SearchUser.container";
 
-const User = ({ ranking, character, username }) => (
-  <div className={Style.user}>
+const User = ({ ranking, character, username, onClick }) => (
+  <div className={Style.user} onClick={onClick}>
     <Thumb character={character} />
     <div className={Style.userInfo}>
       <div className={Style.username}>{username}</div>
@@ -15,17 +16,25 @@ const User = ({ ranking, character, username }) => (
   </div>
 );
 
-export default class SearchUser extends PureComponent {
+class SearchUser extends PureComponent {
   render() {
     return (
       <div className={Style.container}>
         <Header title="Qui voulez-vous défier ?" noBoxShadow />
-        <Input placeholder="Rechercher" />
+        <Input
+          placeholder="Rechercher"
+          onChange={this.props.onSearchUser}
+          value={this.props.input}
+        />
         <div className={Style.usersWrapper}>
-          <User character="kilik" username="Kayane" ranking="2564" />
-          <User character="kilik" username="Kayane" ranking="2564" />
-          <User character="kilik" username="Kayane" ranking="2564" />
-          <User character="kilik" username="Kayane" ranking="2564" />
+          {this.props.users.map(user => (
+            <User
+              character={user.favoriteCharacter}
+              username={user.username}
+              ranking={user.ranking}
+              onClick={() => this.props.onSelect(user)}
+            />
+          ))}
         </div>
         <Footer />
       </div>
@@ -34,3 +43,11 @@ export default class SearchUser extends PureComponent {
 }
 
 SearchUser.propTypes = {};
+SearchUser.defaultProps = {
+  users: [],
+  onSearchUser: () => console.warn("default: SearchUser.onSearchUser"),
+  onSelect: () => console.warn("default: SearchUser.onSelect")
+};
+
+export default Connect(SearchUser);
+export const Component = SearchUser;

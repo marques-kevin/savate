@@ -4,9 +4,15 @@ import SearchUser from "./../src/components/ModalCreateChallenge/components/Sear
 import SelectRounds from "./../src/components/ModalCreateChallenge/components/SelectRounds/SelectRounds";
 import RoundWinners from "./../src/components/ModalCreateChallenge/components/RoundWinners/RoundWinners";
 import SendChallenge from "./../src/components/ModalCreateChallenge/components/SendChallenge/SendChallenge";
+import Body from "./components/Body";
 
 export default (storiesOf, addons) => {
   storiesOf("ModalCreateChallenge", module)
+    .add("Le modal en entier", () => (
+      <Body>
+        <ModalCreateChallenge isOpen={true} />
+      </Body>
+    ))
     .add("La page SelectRounds", () => <SelectRounds />)
     .add("La page SearchUser", () => <SearchUser />)
     .add("La page RoundWinners", () => <RoundWinners />)

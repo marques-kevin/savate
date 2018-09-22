@@ -6,7 +6,11 @@ export default class Footer extends PureComponent {
   render() {
     return (
       <div className={Style.container}>
-        {this.props.onPrev && <div className={Style.button}>Précédent</div>}
+        {this.props.onPrev && (
+          <div className={Style.button} onClick={this.props.onPrev}>
+            Précédent
+          </div>
+        )}
         <div className={Style.button}>Retour</div>
       </div>
     );

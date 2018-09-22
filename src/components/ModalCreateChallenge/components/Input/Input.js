@@ -10,6 +10,8 @@ export default class Input extends PureComponent {
           style={this.props.style}
           className={Style.input}
           type={this.props.type}
+          value={this.props.value}
+          onChange={e => this.props.onChange(e.target.value)}
         />
       </div>
     );

@@ -2,14 +2,18 @@ import "./../../src/styles/global.scss";
 
 import React from "react";
 import { MuiThemeProvider } from "@material-ui/core/styles";
-
+import createStore from "./../../src/redux/stores";
+import { Provider } from "react-redux";
 import theme from "./../../src/styles/mui";
 
+const store = createStore();
 
 export default ({ children }) => (
   <MuiThemeProvider theme={theme}>
-    <body style={{ height: "100vh", width: "100%", display: "flex" }}>
-      {children}
-    </body>
+    <Provider store={store}>
+      <body style={{ height: "100vh", width: "100%", display: "flex" }}>
+        {children}
+      </body>
+    </Provider>
   </MuiThemeProvider>
 );

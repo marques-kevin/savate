@@ -1,32 +1,49 @@
 import { Firebase, Database } from "./firebase";
+import { filter, pipe, toLower, contains, prop, slice } from "ramda";
+
+export const initializeCache = func => {
+  const cache = {};
+  return func(cache);
+};
+
+export const mapQuerySnapshot = querySnapshot => {
+  const data = [];
+
+  querySnapshot.forEach(doc => data.push(doc.data()));
+
+  return data;
+};
+
+export const getDataFromCache = initializeCache(cache => {
+  return collection => {
+    if (cache.hasOwnProperty(collection))
+      return Promise.resolve(cache[collection]);
+    return Database.collection(collection)
+      .get()
+      .then(doc => {
+        cache[collection] = doc;
+        return doc;
+      });
+  };
+});
 
 export const authenticate = (email, password) => {
-  return Firebase.auth()
-    .signInWithEmailAndPassword(email, password)
-    .then(user => {
-      return user;
-    });
+  return Firebase.auth().signInWithEmailAndPassword(email, password);
 };
 
 export const register = (email, password) => {
-  console.log(email);
-  return Firebase.auth()
-    .createUserWithEmailAndPassword(email, password)
-    .then(user => {
-      return user;
-    });
+  return Firebase.auth().createUserWithEmailAndPassword(email, password);
 };
 
 export const getChallenges = () => {
   return Database.collection("challenges")
     .get()
-    .then(querySnapshot => {
-      const challenges = [];
+    .then(mapQuerySnapshot);
+};
 
-      querySnapshot.forEach(doc => {
-        challenges.push(doc.data());
-      });
-
-      return challenges;
-    });
+export const getUsersByName = name => {
+  return getDataFromCache("users")
+    .then(mapQuerySnapshot)
+    .then(filter(pipe(prop("username"), toLower, contains(name))))
+    .then(slice(0, 10));
 };
