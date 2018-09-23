@@ -10,9 +10,21 @@ export default class RoundWinners extends PureComponent {
     return (
       <div className={Style.container}>
         <Header title="Les vainqueurs de chaque manches ?" noBoxShadow />
-        <RoundInfo />
-        <ResultChoice />
-        <History />
+        <RoundInfo
+          total={this.props.roundTotal}
+          actual={this.props.roundLength}
+        />
+        <ResultChoice
+          onChoice={this.props.onChoice}
+          user={this.props.user}
+          challenger={this.props.challenger}
+          score={[0, 0]}
+        />
+        <History
+          rounds={this.props.rounds}
+          user={this.props.user}
+          challenger={this.props.challenger}
+        />
       </div>
     );
   }

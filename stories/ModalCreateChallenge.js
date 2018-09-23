@@ -6,6 +6,18 @@ import RoundWinners from "./../src/components/ModalCreateChallenge/components/Ro
 import SendChallenge from "./../src/components/ModalCreateChallenge/components/SendChallenge/SendChallenge";
 import Body from "./components/Body";
 
+const user = {
+  username: "Kayane",
+  character: "Talim",
+  ranking: 2104
+};
+
+const rounds = [
+  { user: 1, challenger: 0 },
+  { user: 2, challenger: 0 },
+  { user: 2, challenger: 1 }
+];
+
 export default (storiesOf, addons) => {
   storiesOf("ModalCreateChallenge", module)
     .add("Le modal en entier", () => (
@@ -15,6 +27,14 @@ export default (storiesOf, addons) => {
     ))
     .add("La page SelectRounds", () => <SelectRounds />)
     .add("La page SearchUser", () => <SearchUser />)
-    .add("La page RoundWinners", () => <RoundWinners />)
+    .add("La page RoundWinners", () => (
+      <RoundWinners
+        roundTotal={10}
+        roundLength={15}
+        user={user}
+        challenger={user}
+        rounds={rounds}
+      />
+    ))
     .add("La page SendChallenge", () => <SendChallenge />);
 };

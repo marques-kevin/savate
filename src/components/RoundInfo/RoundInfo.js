@@ -5,8 +5,8 @@ export default class RoundInfo extends PureComponent {
   render() {
     return (
       <div className={Style.roundInfo}>
-        <h1>Manche 3</h1>
-        <h2>ft5</h2>
+        <h1>Manche {this.props.actual}</h1>
+        <h2>ft{this.props.total}</h2>
       </div>
     );
   }

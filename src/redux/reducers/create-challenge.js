@@ -5,7 +5,7 @@ const initialState = {
   present: {
     view: "search",
     challenger: false,
-    rounds: false,
+    rounds: 5,
     results: [],
     userScore: 0,
     challengerScore: 0

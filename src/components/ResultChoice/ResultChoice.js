@@ -3,22 +3,20 @@ import Style from "./ResultChoice.scss";
 import ChallengeResultItem from "./../ChallengeResultItem/ChallengeResultItem";
 import Slider from "./../Slider/Slider";
 
-const mockData = {
-  username: "Kayane",
-  character: "Kilik",
-  ranking: 2308,
-  score: 5
-};
-
 export default class ResultChoice extends PureComponent {
   render() {
+    const [userScore, challengerScore] = this.props.score;
     return (
       <div className={Style.choiceContainer}>
         <div className={Style.resume}>
-          <ChallengeResultItem user={mockData} challenger={mockData} noBorder />
+          <ChallengeResultItem
+            user={{ ...this.props.user, score: userScore }}
+            challenger={{ ...this.props.challenger, score: challengerScore }}
+            noBorder
+          />
         </div>
         <div className={Style.slider}>
-          <Slider finished={true} winner="challenger"/>
+          <Slider />
         </div>
       </div>
     );
