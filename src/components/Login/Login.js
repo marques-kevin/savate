@@ -9,7 +9,7 @@ import Register from "./components/Register/Register";
 
 class Login extends PureComponent {
   render() {
-    return (
+    return !this.props.isOpen ? null : (
       <div className={Style.container}>
         {this.props.page === "register" && (
           <Register onSubmit={this.props.onSubmitRegister} />
@@ -41,7 +41,8 @@ Login.propTypes = {
   onSubmitRegister: PropTypes.func,
   onSubmitSignin: PropTypes.func,
   page: PropTypes.oneOf(["signin", "register", "forgot"]),
-  isFetching: PropTypes.bool
+  isFetching: PropTypes.bool,
+  isOpen: PropTypes.bool
 };
 
 Login.defaultProps = {
@@ -51,7 +52,8 @@ Login.defaultProps = {
   onSubmitRegister: () => console.warn("default: onSubmitRegister"),
   onSubmitSignin: () => console.warn("default: onSubmitSignin"),
   page: "signin",
-  isFetching: false
+  isFetching: false,
+  isOpen: false
 };
 
 export default Connect(Login);

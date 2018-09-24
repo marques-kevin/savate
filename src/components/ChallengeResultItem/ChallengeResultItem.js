@@ -15,10 +15,10 @@ const User = ({ reversed, ranking, character, username }) => (
   </div>
 );
 
-const extractInfo = ({ username, ranking, favoriteCharacter }) => ({
+const extractInfo = ({ username, ranking, character }) => ({
   username,
   ranking,
-  character: favoriteCharacter
+  character
 });
 
 export default class ChallengeResultItem extends PureComponent {

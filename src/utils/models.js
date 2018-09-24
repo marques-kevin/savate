@@ -31,6 +31,16 @@ export const authenticate = (email, password) => {
   return Firebase.auth().signInWithEmailAndPassword(email, password);
 };
 
+export const isAuthenticated = () => {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      const user = Firebase.auth().currentUser;
+      if (user) return resolve(user);
+      return reject("The user is not connected");
+    }, 1000);
+  });
+};
+
 export const register = (email, password) => {
   return Firebase.auth().createUserWithEmailAndPassword(email, password);
 };
