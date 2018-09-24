@@ -31,18 +31,61 @@ export const authenticate = (email, password) => {
   return Firebase.auth().signInWithEmailAndPassword(email, password);
 };
 
+export const extractUserInfo = ({ email, uid }) => ({ email, id: uid });
+
+export const timeout = duration =>
+  new Promise(resolve => setTimeout(() => resolve(), duration));
+
 export const isAuthenticated = () => {
-  return new Promise((resolve, reject) => {
-    setTimeout(() => {
-      const user = Firebase.auth().currentUser;
-      if (user) return resolve(user);
-      return reject("The user is not connected");
-    }, 1000);
+  return timeout(1000).then(() => {
+    const user = Firebase.auth().currentUser;
+    if (user) return createOrUpdateUser(user.uid, extractUserInfo(user));
+    return Promise.reject("The user is not connected");
   });
 };
 
-export const register = (email, password) => {
-  return Firebase.auth().createUserWithEmailAndPassword(email, password);
+const userSchema = data => ({
+  username: "",
+  lastName: "",
+  firstName: "",
+  email: "",
+  character: "",
+  ranking: 500,
+  ...data
+});
+
+export const getUserInfo = id => {
+  return Database.collection("users")
+    .doc(id)
+    .get()
+    .then(ref => {
+      if (ref.exists) return ref.data();
+      return Promise.reject("The user does not exist");
+    });
+};
+
+export const createOrUpdateUser = (id, data) => {
+  return getUserInfo(id)
+    .then(info => {
+      return Database.collection("users")
+        .doc(id)
+        .update(userSchema({ ...info, ...data, id }))
+        .then(() => userSchema({ ...info, ...data, id }));
+    })
+    .catch(e => {
+      return Database.collection("users")
+        .doc(id)
+        .set(userSchema({ ...data, id }))
+        .then(() => userSchema({ ...data, id }));
+    });
+};
+
+export const register = ({ username, email, password }) => {
+  return Firebase.auth()
+    .createUserWithEmailAndPassword(email, password)
+    .then(({ user }) => {
+      return createOrUpdateUser(user.uid, { id: user.uid, username, email });
+    });
 };
 
 export const getChallenges = () => {
@@ -56,4 +99,10 @@ export const getUsersByName = name => {
     .then(mapQuerySnapshot)
     .then(filter(pipe(prop("username"), toLower, contains(name))))
     .then(slice(0, 10));
+};
+
+export const updateUserInfo = (userId, label, value) => {
+  return Database.collection("users")
+    .doc(userId)
+    .update({ [label]: value });
 };

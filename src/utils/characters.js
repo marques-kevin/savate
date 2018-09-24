@@ -1,3 +1,5 @@
+import { forEachObjIndexed } from "ramda";
+
 import kilik from "./../assets/characters/thumb/kilik.png";
 import azwel from "./../assets/characters/thumb/azwel.png";
 import astaroth from "./../assets/characters/thumb/astaroth.png";
@@ -19,27 +21,43 @@ import yoshimitsu from "./../assets/characters/thumb/yoshimitsu.png";
 import zasalamel from "./../assets/characters/thumb/zasalamel.png";
 import seongMiNa from "./../assets/characters/thumb/seong-mi-na.png";
 
+const characters = {
+  astaroth: astaroth,
+  azwel: azwel,
+  cervantes: cervantes,
+  kilik: kilik,
+  geralt: geralt,
+  groh: groh,
+  ivy: ivy,
+  maxi: maxi,
+  mitsurugi: mitsurugi,
+  nightmare: nightmare,
+  "seong-mi-na": seongMiNa,
+  siegfried: siegfried,
+  sophitia: sophitia,
+  taki: taki,
+  talim: talim,
+  tira: tira,
+  voldo: voldo,
+  xianghua: xianghua,
+  yoshimitsu: yoshimitsu,
+  zasalamel: zasalamel
+};
+
 export default (n = "") => {
   const name = n.toLowerCase();
 
-  if (name === "kilik") return kilik;
-  if (name === "azwel") return azwel;
-  if (name === "astaroth") return astaroth;
-  if (name === "cervantes") return cervantes;
-  if (name === "geralt") return geralt;
-  if (name === "groh") return groh;
-  if (name === "ivy") return ivy;
-  if (name === "maxi") return maxi;
-  if (name === "mitsurugi") return mitsurugi;
-  if (name === "nightmare") return nightmare;
-  if (name === "siegfried") return siegfried;
-  if (name === "sophitia") return sophitia;
-  if (name === "taki") return taki;
-  if (name === "talim") return talim;
-  if (name === "tira") return tira;
-  if (name === "voldo") return voldo;
-  if (name === "xianghua") return xianghua;
-  if (name === "yoshimitsu") return yoshimitsu;
-  if (name === "zasalamel") return zasalamel;
-  if (name === "seong-mi-na") return seongMiNa;
+  return characters.hasOwnProperty(name)
+    ? characters[name]
+    : characters.unknown;
 };
+
+export const mapAll = (function() {
+  const array = [];
+
+  forEachObjIndexed((value, key) => array.push({ name: key, url: value }))(
+    characters
+  );
+
+  return array;
+})();

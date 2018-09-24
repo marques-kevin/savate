@@ -8,10 +8,12 @@ export default class SkinUser extends PureComponent {
       <div className={Style.container}>
         <div
           className={Style.thumb}
-          style={{ backgroundImage: `url(${Characters("Kilik")})` }}
+          style={{
+            backgroundImage: `url(${Characters(this.props.character)})`
+          }}
         />
         <div className={Style.grade}>Grand maître</div>
-        <div className={Style.ranking}>2089</div>
+        <div className={Style.ranking}>{this.props.ranking}</div>
       </div>
     );
   }

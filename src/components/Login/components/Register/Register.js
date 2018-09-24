@@ -8,9 +8,9 @@ export default class Register extends PureComponent {
 
   onSubmit = e => {
     e.preventDefault();
-    const { email, password, password2 } = this.state.user;
+    const { email, username, password, password2 } = this.state.user;
     if (password !== password2) return this.setState({ errorPassword: true });
-    this.props.onSubmit({ email, password });
+    this.props.onSubmit({ email, password, username });
   };
 
   onChangePassword2() {
@@ -37,11 +37,20 @@ export default class Register extends PureComponent {
         <form id="form" onSubmit={this.onSubmit}>
           <div className={Style.message}>Veuillez vous créer un compte !</div>
           <TextField
+            id="username"
+            label="Pseudo"
+            type="text"
+            name="username"
+            margin="normal"
+            variant="filled"
+            fullWidth
+            onChange={this.handleChange}
+          />
+          <TextField
             id="email"
             label="Email"
             type="email"
             name="email"
-            autoComplete="email"
             margin="normal"
             variant="filled"
             fullWidth

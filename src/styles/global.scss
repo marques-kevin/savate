@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+@import url("https://fonts.googleapis.com/css?family=Open+Sans");
 
 * {
   box-sizing: border-box;
@@ -10,10 +10,14 @@ body {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
-  background-color: #fff;
+  background-color: #dbdbdb;
   font-family: $ff;
   letter-spacing: 0.5px;
   -webkit-font-smoothing: antialiased;
+  width: 100%;
+  max-width: 500px;
+  position: relative;
+  margin: auto;
 }
 
 a {
@@ -22,7 +26,8 @@ a {
   text-decoration: inherit;
 }
 
-input, input::placeholder {
+input,
+input::placeholder {
   font-family: $ff;
   outline: none;
   font-weight: normal;

@@ -42,10 +42,21 @@ export const fetchAuthenticate = ({ email, password }) => dispatcher => {
   });
 };
 
-export const fetchRegister = ({ email, password }) => dispatcher => {
+export const fetchUpdateInfo = (label, value) => (dispatcher, getState) => {
   dispatcher(fetching());
 
-  return Models.register(email, password).then(user => {
+  const { auth } = getState();
+
+  return Models.updateUserInfo(auth.user.id, label, value).then(() => {
+    dispatcher(fetchEnd());
+    return dispatcher(authenticate({ ...auth.user, [label]: value }));
+  });
+};
+
+export const fetchRegister = ({ email, password, username }) => dispatcher => {
+  dispatcher(fetching());
+
+  return Models.register({ email, password, username }).then(user => {
     dispatcher(fetchEnd());
     return dispatcher(authenticate(user));
   });

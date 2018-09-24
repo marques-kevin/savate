@@ -29,7 +29,7 @@ class SearchUser extends PureComponent {
         <div className={Style.usersWrapper}>
           {this.props.users.map(user => (
             <User
-              character={user.favoriteCharacter}
+              character={user.character}
               username={user.username}
               ranking={user.ranking}
               onClick={() => this.props.onSelect(user)}

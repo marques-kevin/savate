@@ -20,6 +20,11 @@
   margin-top: 5px;
 }
 
+:local(.capitalizeValue) {
+  compose: value;
+  text-transform: capitalize;
+}
+
 :local(.arrow) {
   margin-left: auto;
   color: $COLORS_GRAY;

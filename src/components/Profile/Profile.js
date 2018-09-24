@@ -7,6 +7,7 @@ import Info from "./tabs/Info/Info";
 import Stats from "./tabs/Stats/Stats";
 import Friends from "./tabs/Friends/Friends";
 import Tabs from "./../../components/Tabs/Tabs";
+import Connect from "./containers/Profile.container";
 
 class Profile extends Component {
   getTabFromName(tab) {
@@ -18,7 +19,10 @@ class Profile extends Component {
     return (
       <div className={Style.container}>
         <Header title="Profil" noBoxShadow />
-        <SkinUser />
+        <SkinUser
+          character={this.props.character}
+          ranking={this.props.ranking}
+        />
         <div style={{ marginTop: "30px" }}>
           <Tabs
             active={this.getTabFromName(this.props.tab)}
@@ -43,4 +47,4 @@ Profile.defaultProps = {
   tab: "info"
 };
 
-export default Profile;
+export default Connect(Profile);
