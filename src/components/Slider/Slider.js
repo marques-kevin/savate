@@ -1,5 +1,4 @@
 import React, { PureComponent } from "react";
-// import PropTypes from "prop-types";
 import classNames from "classnames";
 import Style from "./Slider.scss";
 
@@ -12,17 +11,22 @@ export default class Slider extends PureComponent {
   }
 
   initSlider() {
-    const { slider, background } = this;
+    const { slider, background, props } = this;
     const bgBounding = background.getBoundingClientRect();
     const sliderBounding = slider.getBoundingClientRect();
-    const sliderMaxX =
-      bgBounding.width - sliderBounding.width + bgBounding.x - sliderBounding.x;
+    const sliderMaxX = bgBounding.width - sliderBounding.width + bgBounding.x;
+    const sliderMin = bgBounding.x;
+    const newXMax = sliderMaxX - sliderBounding.x - 2;
+    const newXMin = sliderMin - sliderBounding.x + 2;
 
     let x;
 
     const mousemove = e => {
       const newX = e.clientX - x;
-      if (newX + 1 >= sliderMaxX) return false;
+      if (newX + 1 >= sliderMaxX - sliderBounding.x)
+        return updateStyle(slider, newXMax);
+      if (sliderBounding.x + newX <= sliderMin + 1)
+        return updateStyle(slider, newXMin);
       slider.style.transform = `translateX(${newX}px)`;
     };
 
@@ -36,8 +40,9 @@ export default class Slider extends PureComponent {
       window.removeEventListener("mousemove", mousemove);
       window.removeEventListener("mousemove", mouseup);
       const sliderBcr = slider.getBoundingClientRect();
-      if (sliderBcr.x + 10 < sliderMaxX) return updateStyle(slider, 0);
-      return updateStyle(slider, sliderMaxX - 2);
+      if (sliderBcr.x + 10 >= sliderMaxX) props.onChoice("challenger");
+      if (sliderBcr.x - 10 <= sliderMin) props.onChoice("user");
+      return updateStyle(slider, 0);
     };
 
     slider.addEventListener("mousedown", mousedown);
@@ -69,4 +74,6 @@ export default class Slider extends PureComponent {
 
 Slider.propTypes = {};
 
-Slider.defaultProps = {};
+Slider.defaultProps = {
+  onChoice: () => console.warn("defaut: Slider.onChoice")
+};

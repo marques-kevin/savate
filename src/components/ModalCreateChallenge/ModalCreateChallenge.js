@@ -4,7 +4,14 @@ import Connect from "./containers/ModalCreateChallenge.container";
 import SearchUser from "./components/SearchUser/SearchUser";
 import RoundWinners from "./components/RoundWinners/RoundWinners";
 import SelectRounds from "./components/SelectRounds/SelectRounds";
+import SendChallenge from "./components/SendChallenge/SendChallenge";
 import Footer from "./components/Footer/Footer";
+
+const userMock = {
+  username: "Kayane",
+  ranking: 2010,
+  favoriteCharacter: "xianghua"
+};
 
 class ModalCreateChallenge extends PureComponent {
   render() {
@@ -16,7 +23,8 @@ class ModalCreateChallenge extends PureComponent {
         {this.props.view === "rounds" && (
           <SelectRounds onSubmit={this.props.onSelectRounds} />
         )}
-        {this.props.view === "results" && <RoundWinners />}
+        {this.props.view === "results" && <RoundWinners user={userMock} />}
+        {this.props.view === "submit" && <SendChallenge user={userMock} />}
         <Footer
           onPrev={this.props.view === "search" ? false : this.props.onPrev}
         />

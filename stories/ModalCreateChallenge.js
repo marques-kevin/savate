@@ -1,14 +1,14 @@
 import React from "react";
 import ModalCreateChallenge from "./../src/components/ModalCreateChallenge/ModalCreateChallenge";
-import SearchUser from "./../src/components/ModalCreateChallenge/components/SearchUser/SearchUser";
+import { Component as SearchUser } from "./../src/components/ModalCreateChallenge/components/SearchUser/SearchUser";
 import SelectRounds from "./../src/components/ModalCreateChallenge/components/SelectRounds/SelectRounds";
-import RoundWinners from "./../src/components/ModalCreateChallenge/components/RoundWinners/RoundWinners";
-import SendChallenge from "./../src/components/ModalCreateChallenge/components/SendChallenge/SendChallenge";
+import { Component as RoundWinners } from "./../src/components/ModalCreateChallenge/components/RoundWinners/RoundWinners";
+import { Component as SendChallenge } from "./../src/components/ModalCreateChallenge/components/SendChallenge/SendChallenge";
 import Body from "./components/Body";
 
 const user = {
   username: "Kayane",
-  character: "Talim",
+  favoriteCharacter: "Talim",
   ranking: 2104
 };
 
@@ -36,5 +36,12 @@ export default (storiesOf, addons) => {
         rounds={rounds}
       />
     ))
-    .add("La page SendChallenge", () => <SendChallenge />);
+    .add("La page SendChallenge", () => (
+      <SendChallenge
+        challenger="Keev"
+        winner={"Kayane"}
+        results={[5, 1]}
+        rounds={5}
+      />
+    ));
 };

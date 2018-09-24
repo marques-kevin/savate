@@ -1,64 +1,24 @@
 @import "./../../../../styles/themes/default";
 
 :local(.container) {
-}
-
-:local(.inputWrapper) {
-  display: flex;
-  justify-content: center;
-  position: relative;
-  z-index: 2;
-}
-
-:local(.input) {
-  border: none;
-  box-shadow: 0 10px 30px rgba(black, 0.1);
-  height: 42px;
-  width: 250px;
-  border-radius: 4px;
+  width: 100%;
   text-align: center;
-  font-size: 14px;
+  font-size: 16px;
+  font-weight: 600;
   color: $COLORS_BLACK;
 }
 
-:local(.input::placeholder){
-  color: #DCDCDC;
-}
+:local(.message) {
+  margin-top: 70px;
+  p {
+    padding: 5px 0;
+  }
 
-:local(.usersWrapper){
-  display: flex;
-  flex-wrap: wrap;
-  margin-top: 25px;
-}
-
-:local(.user) {
-  display: inline-flex;
-  background-color: $COLORS_BLACK;
-  height: 53px;
-  align-items: center;
-  border-radius: 53px;
-  padding: 0 20px 0 8px;
-  margin-left: 15px;
-  box-shadow: 0 2px 8px rgba(black, 0.4);
-  margin-top: 15px;
-  user-select: none;
-}
-
-:local(.userInfo) {
-  display: flex;
-  flex-direction: column;
-  margin: auto;
-  margin-left: 10px;
-}
-
-:local(.username) {
-  color: white;
-  font-size: 12px;
-  font-weight: 600;
-}
-
-:local(.userRank) {
-  color: $COLORS_YELLOW;
-  font-size: 12px;
-  margin-top: 5px;
+  p span {
+    display: inline-block;
+    color: white;
+    background-color: $COLORS_BLACK;
+    border-radius: 100px;
+    padding: 5px 10px;
+  }
 }

@@ -19,7 +19,7 @@ import yoshimitsu from "./../assets/characters/thumb/yoshimitsu.png";
 import zasalamel from "./../assets/characters/thumb/zasalamel.png";
 import seongMiNa from "./../assets/characters/thumb/seong-mi-na.png";
 
-export default n => {
+export default (n = "") => {
   const name = n.toLowerCase();
 
   if (name === "kilik") return kilik;

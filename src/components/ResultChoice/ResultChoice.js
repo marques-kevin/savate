@@ -16,7 +16,11 @@ export default class ResultChoice extends PureComponent {
           />
         </div>
         <div className={Style.slider}>
-          <Slider />
+          <Slider
+            onChoice={this.props.onChoice}
+            user={this.props.user}
+            challenger={this.props.challenger}
+          />
         </div>
       </div>
     );

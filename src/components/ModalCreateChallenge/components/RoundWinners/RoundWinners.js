@@ -4,8 +4,9 @@ import Header from "./../../../Header/Header";
 import ResultChoice from "./../../../ResultChoice/ResultChoice";
 import History from "./../../../History/History";
 import RoundInfo from "./../../../RoundInfo/RoundInfo";
+import Connect from "./containers/RoundWinners.container";
 
-export default class RoundWinners extends PureComponent {
+class RoundWinners extends PureComponent {
   render() {
     return (
       <div className={Style.container}>
@@ -32,5 +33,9 @@ export default class RoundWinners extends PureComponent {
 
 RoundWinners.propTypes = {};
 RoundWinners.defaultProps = {
-  onPrev: () => console.warn("default: RoundWinners.onPrev")
+  onPrev: () => console.warn("default: RoundWinners.onPrev"),
+  rounds: []
 };
+
+export default Connect(RoundWinners);
+export const Component = RoundWinners;

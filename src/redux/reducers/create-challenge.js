@@ -5,6 +5,7 @@ const initialState = {
   present: {
     view: "search",
     challenger: false,
+    user: false,
     rounds: 5,
     results: [],
     userScore: 0,
@@ -48,9 +49,24 @@ export default function(state = initialState, action) {
     },
 
     [constants.storeResults]() {
+      const userScore =
+        action.payload.result === "user"
+          ? state.present.userScore + 1
+          : state.present.userScore;
+
+      const challengerScore =
+        action.payload.result === "challenger"
+          ? state.present.challengerScore + 1
+          : state.present.challengerScore;
+
+      const round = {
+        user: userScore,
+        challenger: challengerScore
+      };
+
       const isFinish =
-        action.payload.user === state.present.rounds ||
-        action.payload.challenger === state.present.rounds;
+        round.user === state.present.rounds ||
+        round.challenger === state.present.rounds;
 
       return {
         ...state,
@@ -58,7 +74,14 @@ export default function(state = initialState, action) {
         present: {
           ...state.present,
           view: isFinish ? "submit" : state.present.view,
-          rounds: [...action.payload.rounds, action.payload]
+          userScore,
+          challengerScore,
+          winner: isFinish
+            ? round.user > round.challenger
+              ? state.present.user
+              : state.present.challenger
+            : false,
+          results: [...state.present.results, round]
         }
       };
     },

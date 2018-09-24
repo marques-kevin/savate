@@ -20,4 +20,6 @@ export default class Thumb extends PureComponent {
 
 Thumb.propTypes = {};
 
-Thumb.defaultProps = {};
+Thumb.defaultProps = {
+  character: ""
+};
