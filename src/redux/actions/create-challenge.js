@@ -1,5 +1,13 @@
 import * as types from "../constants/create-challenge";
-// import * as Models from "./../../utils/models";
+import * as Models from "./../../utils/models";
+
+export const open = () => ({
+  type: types.open
+});
+
+export const close = () => ({
+  type: types.close
+});
 
 export const undo = () => ({
   type: types.undo
@@ -28,12 +36,30 @@ export const fetchEnd = () => ({
   type: types.fetchEnd
 });
 
-// export const fetchSearchUser = value => dispatcher => {
-//   dispatcher(fetching());
-//   dispatcher(changeValue(value));
+export const fetchSendChallenge = () => (dispatcher, getState) => {
+  dispatcher(fetching());
 
-//   return Models.getUsersByName(value).then(users => {
-//     dispatcher(fetchEnd());
-//     dispatcher(storeUsers(users));
-//   });
-// };
+  const { createChallenge: { present: challenge }, auth } = getState();
+  const schema = {
+    user: {
+      ...auth.user,
+      winner: challenge.winner === "user",
+      score: challenge.userScore
+    },
+    challenger: {
+      ...challenge.challenger,
+      winner: challenge.winner === "challenger",
+      score: challenge.challengerScore
+    },
+    createdAt: new Date(),
+    isFinished: false,
+    isPending: true,
+    firstTo: challenge.rounds,
+    rounds: challenge.results
+  };
+
+  return Models.submitChallenge(schema).then(() => {
+    dispatcher(fetchEnd());
+    dispatcher(close());
+  });
+};

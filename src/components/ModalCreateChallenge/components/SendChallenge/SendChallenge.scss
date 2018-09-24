@@ -6,6 +6,9 @@
   font-size: 16px;
   font-weight: 600;
   color: $COLORS_BLACK;
+  background-color: #fff;
+  position: relative;
+  z-index: 2;
 }
 
 :local(.message) {

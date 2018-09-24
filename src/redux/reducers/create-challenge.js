@@ -16,6 +16,15 @@ const initialState = {
 
 export default function(state = initialState, action) {
   const actions = {
+    [constants.open]() {
+      return {
+        ...state,
+        isOpen: true
+      };
+    },
+    [constants.close]() {
+      return { ...initialState };
+    },
     [constants.undo]() {
       return {
         ...state,
@@ -77,9 +86,7 @@ export default function(state = initialState, action) {
           userScore,
           challengerScore,
           winner: isFinish
-            ? round.user > round.challenger
-              ? state.present.user
-              : state.present.challenger
+            ? round.user > round.challenger ? "user" : "challenger"
             : false,
           results: [...state.present.results, round]
         }

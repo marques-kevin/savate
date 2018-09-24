@@ -106,3 +106,10 @@ export const updateUserInfo = (userId, label, value) => {
     .doc(userId)
     .update({ [label]: value });
 };
+
+export const submitChallenge = schema => {
+  const id = Database.collection("challenges").doc();
+  return id.set({ ...schema }).then(() => {
+    return schema;
+  });
+};

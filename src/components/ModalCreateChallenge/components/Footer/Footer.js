@@ -11,7 +11,9 @@ export default class Footer extends PureComponent {
             Précédent
           </div>
         )}
-        <div className={Style.button}>Retour</div>
+        <div className={Style.button} onClick={this.props.onClose}>
+          Retour
+        </div>
       </div>
     );
   }

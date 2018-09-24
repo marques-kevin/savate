@@ -19,7 +19,7 @@ class RoundWinners extends PureComponent {
           onChoice={this.props.onChoice}
           user={this.props.user}
           challenger={this.props.challenger}
-          score={[0, 0]}
+          score={[this.props.userScore, this.props.challengerScore]}
         />
         <History
           rounds={this.props.rounds}

@@ -8,7 +8,7 @@ import Body from "./components/Body";
 
 const user = {
   username: "Kayane",
-  favoriteCharacter: "Talim",
+  character: "Talim",
   ranking: 2104
 };
 

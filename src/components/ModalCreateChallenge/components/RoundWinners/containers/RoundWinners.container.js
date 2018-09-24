@@ -2,7 +2,7 @@ import { connect } from "react-redux";
 import * as actions from "./../../../../../redux/actions/create-challenge";
 
 const mapState = state => ({
-  // user: state.createChallenge.present.user,
+  user: state.auth.user,
   challenger: state.createChallenge.present.challenger,
   userScore: state.createChallenge.present.userScore,
   challengerScore: state.createChallenge.present.challengerScore,

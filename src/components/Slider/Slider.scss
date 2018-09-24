@@ -59,6 +59,7 @@
   font-size: 12px;
   font-weight: 600;
   box-shadow: 0 2px 4px rgba(black, 0.1);
+  user-select: none;
 }
 
 :local(.indicatorFinished) {

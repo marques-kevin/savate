@@ -11,7 +11,7 @@ export default class Input extends PureComponent {
           className={Style.input}
           type={this.props.type}
           value={this.props.value}
-          onChange={e => this.props.onChange(e.target.value)}
+          onChange={e => this.props.onChange(e.target.value.toLowerCase())}
         />
       </div>
     );

@@ -1,6 +1,7 @@
 import React, { PureComponent } from "react";
 import classNames from "classnames";
 import Style from "./Slider.scss";
+// import Hammer from "hammerjs";
 
 const updateStyle = (element, px) =>
   (element.style.transform = `translateX(${px}px)`);
@@ -8,6 +9,10 @@ const updateStyle = (element, px) =>
 export default class Slider extends PureComponent {
   componentDidMount() {
     this.initSlider();
+  }
+
+  componentWillUnmount() {
+    if (this.removeListeners) this.removeListeners();
   }
 
   initSlider() {
@@ -22,7 +27,8 @@ export default class Slider extends PureComponent {
     let x;
 
     const mousemove = e => {
-      const newX = e.clientX - x;
+      const clientX = e.clientX || e.touches[0].clientX;
+      const newX = clientX - x;
       if (newX + 1 >= sliderMaxX - sliderBounding.x)
         return updateStyle(slider, newXMax);
       if (sliderBounding.x + newX <= sliderMin + 1)
@@ -31,14 +37,16 @@ export default class Slider extends PureComponent {
     };
 
     const mousedown = e => {
-      x = e.clientX;
+      x = e.clientX || e.touches[0].clientX;
       window.addEventListener("mousemove", mousemove);
+      window.addEventListener("touchmove", mousemove);
       window.addEventListener("mouseup", mouseup);
+      window.addEventListener("touchend", mouseup);
     };
 
     const mouseup = () => {
       window.removeEventListener("mousemove", mousemove);
-      window.removeEventListener("mousemove", mouseup);
+      window.removeEventListener("mouseup", mouseup);
       const sliderBcr = slider.getBoundingClientRect();
       if (sliderBcr.x + 10 >= sliderMaxX) props.onChoice("challenger");
       if (sliderBcr.x - 10 <= sliderMin) props.onChoice("user");
@@ -46,6 +54,16 @@ export default class Slider extends PureComponent {
     };
 
     slider.addEventListener("mousedown", mousedown);
+    slider.addEventListener("touchstart", mousedown);
+
+    this.removeListeners = () => {
+      slider.removeEventListener("mousedown", mousedown);
+      window.removeEventListener("mousemove", mousemove);
+      window.removeEventListener("mouseup", mouseup);
+      window.removeEventListener("touchstart", mousedown);
+      window.removeEventListener("touchmove", mousemove);
+      window.removeEventListener("touchend", mouseup);
+    };
   }
 
   render() {

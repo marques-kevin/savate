@@ -28,7 +28,7 @@ class PageChallenges extends PureComponent {
             this.props.onClickCreateChallenge(this.props.isConnected)
           }
         />
-        <ModalCreateChallenge isOpen={this.props.isCreateOpen} />
+        <ModalCreateChallenge />
       </div>
     );
   }
