@@ -1,6 +1,11 @@
 import * as types from "../constants/challenge";
 import * as Models from "./../../utils/models";
 
+export const storeSelectedChallenge = challenge => ({
+  type: types.storeSelectedChallenge,
+  payload: { challenge }
+});
+
 export const storeLiveChallenges = challenges => ({
   type: types.storeLiveChallenges,
   payload: { challenges }
@@ -28,5 +33,14 @@ export const fetchLiveChallenges = () => dispatcher => {
   return Models.getChallenges().then(challenges => {
     dispatcher(fetchEnd());
     dispatcher(storeLiveChallenges(challenges));
+  });
+};
+
+export const fetchChallenge = id => dispatcher => {
+  dispatcher(fetching());
+
+  return Models.getChallenge(id).then(challenge => {
+    dispatcher(fetchEnd());
+    dispatcher(storeSelectedChallenge(challenge));
   });
 };

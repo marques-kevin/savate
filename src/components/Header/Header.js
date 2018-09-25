@@ -7,11 +7,13 @@ import classNames from "classnames";
 export default class Header extends PureComponent {
   render() {
     return (
-      <div className={classNames(Style.container, {
-        [Style.noBoxShadow]: !!this.props.noBoxShadow
-      })}>
-        {this.props.back && (
-          <div className={Style.back}>
+      <div
+        className={classNames(Style.container, {
+          [Style.noBoxShadow]: !!this.props.noBoxShadow
+        })}
+      >
+        {this.props.onBack && (
+          <div className={Style.back} onClick={this.props.onBack}>
             <ArrowBack />
           </div>
         )}

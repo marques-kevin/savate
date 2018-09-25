@@ -5,7 +5,7 @@ import Slider from "./../Slider/Slider";
 
 export default class ResultChoice extends PureComponent {
   render() {
-    const [userScore, challengerScore] = this.props.score;
+    const [userScore, challengerScore] = this.props.score || [0, 0];
     return (
       <div className={Style.choiceContainer}>
         <div className={Style.resume}>
@@ -17,9 +17,11 @@ export default class ResultChoice extends PureComponent {
         </div>
         <div className={Style.slider}>
           <Slider
+            finished={this.props.finished}
             onChoice={this.props.onChoice}
             user={this.props.user}
             challenger={this.props.challenger}
+            winner={this.props.winner}
           />
         </div>
       </div>

@@ -32,7 +32,7 @@ export default class ChallengeResultItem extends PureComponent {
         <div className={Style.left}>
           <User {...extractInfo(this.props.user)} />
         </div>
-        <div className={Style.result}>
+        <div className={Style.result} onClick={this.props.onClickResult}>
           {this.props.user.score} <span>vs</span> {this.props.challenger.score}
         </div>
         <div className={Style.right}>

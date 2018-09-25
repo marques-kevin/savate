@@ -8,7 +8,7 @@ const updateStyle = (element, px) =>
 
 export default class Slider extends PureComponent {
   componentDidMount() {
-    this.initSlider();
+    if (!this.props.finished) this.initSlider();
   }
 
   componentWillUnmount() {
@@ -79,7 +79,9 @@ export default class Slider extends PureComponent {
             ref={slider => (this.slider = slider)}
             className={classNames(Style.indicator, {
               [Style.indicatorChallenger]:
-                this.props.finished && this.props.winner === "challenger"
+                this.props.finished && this.props.winner === "challenger",
+              [Style.indicatorUser]:
+                this.props.finished && this.props.winner === "user"
             })}
           >
             Vainqueur

@@ -1,3 +1,5 @@
+@import "./../../styles/themes/default";
+
 :local(.container) {
   position: fixed;
   bottom: 0;
@@ -6,11 +8,12 @@
   width: 100%;
   max-width: 500px;
   margin: auto;
-  height: 58px;
+  height: $NAVBAR_HEIGHT;
   background-color: #fff;
   display: flex;
   align-items: center;
   justify-content: space-around;
   padding: 0 15px;
   box-shadow: 0 -5px 7px rgba(black, 0.02);
+  z-index: 4;
 }

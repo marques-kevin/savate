@@ -12,11 +12,18 @@ const initialState = {
     isOpen: false,
     build: {}
   },
+  selected: {},
   fetching: false
 };
 
 export default function(state = initialState, action) {
   const actions = {
+    [constants.storeSelectedChallenge]() {
+      const lensContent = lensPath(["selected"]);
+
+      return set(lensContent, action.payload.challenge, state);
+    },
+
     [constants.storeLiveChallenges]() {
       const lensContent = lensPath(["live", "content"]);
 

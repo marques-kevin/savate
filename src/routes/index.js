@@ -7,7 +7,8 @@ import { ConnectedRouter } from "connected-react-router";
 
 import theme from "./../styles/mui";
 import createStore from "./../redux/stores";
-import Challenge from "./../components/PageChallenges/PageChallenges";
+import PageChallenges from "./../components/PageChallenges/PageChallenges";
+import PageChallenge from "./../components/PageChallenge/PageChallenge";
 import Profile from "./../components/Profile/Profile";
 import Body from "./../components/Body/Body";
 import Notifications from "./../components/Notifications/Notifications";
@@ -23,8 +24,9 @@ export default (
         <Body>
           <ConnectedRouter history={store.history}>
             <div className={Style.main}>
-              <Route exact path="/" component={Challenge} />
-              <Route exact path="/challenge" component={Challenge} />
+              <Route exact path="/" component={PageChallenges} />
+              <Route exact path="/challenge" component={PageChallenges} />
+              <Route exact path="/challenge/:id" component={PageChallenge} />
               <Route exact path="/notifications" component={Notifications} />
               <Route exact path="/profile" component={Profile} />
               <Login />

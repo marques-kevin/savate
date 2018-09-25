@@ -4,7 +4,8 @@ import ChallengeResultItem from "./../ChallengeResultItem/ChallengeResultItem";
 
 export default class History extends PureComponent {
   render() {
-    return this.props.rounds.length === 0 ? null : (
+    const rounds = this.props.rounds || [];
+    return this.props.loading || rounds.length === 0 ? null : (
       <div className={Style.history}>
         <div className={Style.sectionTitle}>{this.props.title}</div>
         {this.props.rounds.map(score => (
@@ -24,5 +25,6 @@ export default class History extends PureComponent {
 
 History.propTypes = {};
 History.defaultProps = {
-  title: "Manches précédentes"
+  title: "Manches précédentes",
+  loading: false
 };

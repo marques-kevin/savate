@@ -16,10 +16,11 @@ class PageChallenges extends PureComponent {
       <div>
         <Header title="Défi" />
         <Switch tabs={["Récent", "Historique"]} />
-        {this.props.challenges.map(({ user, challenger }, index) => (
+        {this.props.challenges.map(({ user, challenger, id }) => (
           <ChallengeResultItem
-            key={index}
+            key={id}
             user={user}
+            onClickResult={() => this.props.onClickChallenge(id)}
             challenger={challenger}
           />
         ))}

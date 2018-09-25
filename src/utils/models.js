@@ -100,6 +100,13 @@ export const register = ({ username, email, password }) => {
     });
 };
 
+export const getUsersByName = name => {
+  return getDataFromCache("users")
+    .then(mapQuerySnapshot)
+    .then(filter(pipe(prop("username"), toLower, contains(name))))
+    .then(slice(0, 10));
+};
+
 export const getChallenges = () => {
   return Database.collection("challenges")
     .where("acceptedAt", ">", new Date("1900-01-01"))
@@ -109,11 +116,11 @@ export const getChallenges = () => {
     .then(mapQuerySnapshot);
 };
 
-export const getUsersByName = name => {
-  return getDataFromCache("users")
-    .then(mapQuerySnapshot)
-    .then(filter(pipe(prop("username"), toLower, contains(name))))
-    .then(slice(0, 10));
+export const getChallenge = id => {
+  return Database.collection("challenges")
+    .doc(id)
+    .get()
+    .then(e => e.data());
 };
 
 export const updateUserInfo = (userId, label, value) => {

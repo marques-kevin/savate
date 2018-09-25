@@ -45,5 +45,6 @@ Switch.propTypes = {
 };
 
 Switch.defaultProps = {
-  onSwitch: () => false
+  onSwitch: () => false,
+  tabs: []
 };
