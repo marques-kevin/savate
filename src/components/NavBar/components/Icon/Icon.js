@@ -22,6 +22,7 @@ export default class Icon extends PureComponent {
         className={!this.props.active ? Style.container : Style.containerActive}
         onClick={this.props.onClick}
       >
+        {this.props.snippet && <div className={Style.snippet} />}
         {DisplayIcon(this.props.name.toLowerCase())}
         <div className={Style.name}>{this.props.name}</div>
       </div>

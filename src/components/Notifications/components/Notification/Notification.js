@@ -31,7 +31,7 @@ export default class Notification extends PureComponent {
         </div>
         {this.props.type === "challenge" && (
           <div className={Style.confirmationBtns}>
-            <div className={Style.button}>
+            <div className={Style.button} onClick={this.props.onView}>
               <Search />
               <span>Voir</span>
             </div>

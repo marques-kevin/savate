@@ -16,7 +16,7 @@ const mapState = state => {
 const mapDispatch = (dispatch, props) => ({
   onMount: () =>
     dispatch(actions.challenge.fetchChallenge(props.match.params.id)),
-  onBack: () => dispatch(actions.router.push("/"))
+  onBack: () => dispatch(actions.router.goBack())
 });
 
 export default connect(mapState, mapDispatch);

@@ -1,5 +1,14 @@
 import { Firebase, Database } from "./firebase";
-import { filter, pipe, toLower, contains, prop, slice } from "ramda";
+import {
+  filter,
+  pipe,
+  toLower,
+  contains,
+  prop,
+  slice,
+  flatten,
+  reduce
+} from "ramda";
 
 export const initializeCache = func => {
   const cache = {};
@@ -159,4 +168,52 @@ export const declineChallenge = challengeId => {
     .doc(challengeId)
     .update({ deletedAt: new Date() })
     .then(() => ({ deletedAt: +date }));
+};
+
+export const or = collection => conditions => {
+  const queries = conditions.map(([key, op, data]) => {
+    return Database.collection(collection)
+      .where(key, op, data)
+      .then(mapQuerySnapshot);
+  });
+
+  return Promise.all(queries).then(flatten);
+};
+
+const countWins = reduce((accumulator, challenge) => {
+  if (challenge.user.winner) return accumulator + 1;
+  return accumulator;
+}, 0);
+
+const countRounds = reduce((accumulator, challenge) => {
+  return accumulator + challenge.rounds.length;
+}, 0);
+
+const countRoundsWin = reduce((accumulator, challenge) => {
+  return challenge.user.score + accumulator;
+}, 0);
+
+export const stats = challenges => {
+  const totalChallenge = challenges.length;
+  const totalChallengeWin = countWins(challenges);
+  const totalChallengeLoose = totalChallenge - totalChallengeWin;
+  const totalRounds = countRounds(challenges);
+  const totalRoundsWin = countRoundsWin(challenges);
+  const totalRoundLoose = totalRounds - totalRoundsWin;
+
+  return {
+    totalChallenge,
+    totalChallengeWin,
+    totalChallengeLoose,
+    totalRounds,
+    totalRoundsWin,
+    totalRoundLoose
+  };
+};
+
+export const getStatsFromUser = userId => {
+  return or("challenges")([
+    ["user.id", "==", userId],
+    ["challenger.id", "==", userId]
+  ]).then(stats);
 };

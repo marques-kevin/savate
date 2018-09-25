@@ -6,11 +6,25 @@
   align-items: center;
   cursor: pointer;
   color: $COLORS_GRAY;
+  position: relative;
 }
 
 :local(.containerActive) {
   composes: container;
   color: $COLORS_BLUE;
+}
+
+:local(.snippet) {
+  height: 12px;
+  width: 12px;
+  background-color: #ff6a6a;
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 10px;
+  margin: auto;
+  border-radius: 50%;
+  border: 2px solid white;
 }
 
 :local(.name) {

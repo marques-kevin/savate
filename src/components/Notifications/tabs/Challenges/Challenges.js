@@ -13,6 +13,7 @@ class Challenges extends PureComponent {
             user={user}
             challenger={challenger}
             winner={user.winner ? user : challenger}
+            onView={() => this.props.onView(id)}
             onAccept={() => this.props.onAccept(id)}
             onDecline={() => this.props.onDecline(id)}
           />

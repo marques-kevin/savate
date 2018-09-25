@@ -1,7 +1,5 @@
 import { connect } from "react-redux";
-import * as actions from "./../../../redux/actions/challenge";
-import * as createChallenge from "./../../../redux/actions/create-challenge";
-import * as auth from "./../../../redux/actions/auth";
+import actions from "./../../../redux/actions";
 
 const mapState = state => ({
   challenges: state.challenge.live.content,
@@ -11,10 +9,11 @@ const mapState = state => ({
 });
 
 const mapDispatch = dispatch => ({
-  onMount: () => dispatch(actions.fetchLiveChallenges()),
+  onMount: () => dispatch(actions.challenge.fetchLiveChallenges()),
+  onClickChallenge: id => dispatch(actions.router.push(`/challenge/${id}`)),
   onClickCreateChallenge: isConnected => {
-    if (isConnected) return dispatch(createChallenge.open());
-    return dispatch(auth.open());
+    if (isConnected) return dispatch(actions.createChallenge.open());
+    return dispatch(actions.auth.open());
   }
 });
 

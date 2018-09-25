@@ -6,6 +6,7 @@ const mapState = state => ({
 });
 
 const mapDispatch = dispatch => ({
+  onView: id => dispatch(actions.router.push(`/challenge/${id}`)),
   onAccept: id => dispatch(actions.notification.fetchAcceptChallenge(id)),
   onDecline: id => dispatch(actions.notification.fetchDeclineChallenge(id))
 });

@@ -29,6 +29,7 @@ class NavBar extends PureComponent {
         />
         <Icon
           name="Notifications"
+          snippet={this.props.hasNotifications}
           onClick={() => this.props.onClick("/notifications")}
           active={this.isActive("notifications")}
         />

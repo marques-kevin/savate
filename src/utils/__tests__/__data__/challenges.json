@@ -1,0 +1,254 @@
+[
+  {
+    "acceptedAt": {
+      "seconds": 1537877723,
+      "nanoseconds": 739000000
+    },
+    "challenger": {
+      "character": "talim",
+      "email": "marques.divers@gmail.com",
+      "firstName": "Kevin",
+      "id": "K0wuglzqzAdE8MwSe26S5W2sIyE2",
+      "lastName": "Marques",
+      "ranking": 800,
+      "score": 5,
+      "username": "MarquesK",
+      "winner": true
+    },
+    "createdAt": {
+      "seconds": 1537877690,
+      "nanoseconds": 156000000
+    },
+    "deletedAt": null,
+    "firstTo": 5,
+    "id": "nmLT7MrrXxJHheK7ddWG",
+    "rounds": [
+      {
+        "challenger": 1,
+        "user": 0
+      },
+      {
+        "challenger": 1,
+        "user": 1
+      },
+      {
+        "challenger": 2,
+        "user": 1
+      },
+      {
+        "challenger": 2,
+        "user": 2
+      },
+      {
+        "challenger": 3,
+        "user": 2
+      },
+      {
+        "challenger": 3,
+        "user": 3
+      },
+      {
+        "challenger": 4,
+        "user": 3
+      },
+      {
+        "challenger": 4,
+        "user": 4
+      },
+      {
+        "challenger": 5,
+        "user": 4
+      }
+    ],
+    "user": {
+      "character": "talim",
+      "email": "marques.divers@gmail.com",
+      "firstName": "Kevin",
+      "id": "K0wuglzqzAdE8MwSe26S5W2sIyE2",
+      "lastName": "Marques",
+      "ranking": 800,
+      "score": 4,
+      "username": "MarquesK",
+      "winner": false
+    }
+  },
+  {
+    "acceptedAt": {
+      "seconds": 1537877701,
+      "nanoseconds": 545000000
+    },
+    "challenger": {
+      "character": "talim",
+      "email": "marques.divers@gmail.com",
+      "firstName": "Kevin",
+      "id": "K0wuglzqzAdE8MwSe26S5W2sIyE2",
+      "lastName": "Marques",
+      "ranking": 800,
+      "score": 5,
+      "username": "MarquesK",
+      "winner": true
+    },
+    "createdAt": {
+      "seconds": 1537877658,
+      "nanoseconds": 792000000
+    },
+    "deletedAt": null,
+    "firstTo": 5,
+    "id": "xFxSggkhUnUzrpzVlMMV",
+    "rounds": [
+      {
+        "challenger": 1,
+        "user": 0
+      },
+      {
+        "challenger": 2,
+        "user": 0
+      },
+      {
+        "challenger": 3,
+        "user": 0
+      },
+      {
+        "challenger": 4,
+        "user": 0
+      },
+      {
+        "challenger": 5,
+        "user": 0
+      }
+    ],
+    "user": {
+      "character": "talim",
+      "email": "marques.divers@gmail.com",
+      "firstName": "Kevin",
+      "id": "K0wuglzqzAdE8MwSe26S5W2sIyE2",
+      "lastName": "Marques",
+      "ranking": 800,
+      "score": 0,
+      "username": "MarquesK",
+      "winner": false
+    }
+  },
+  {
+    "acceptedAt": {
+      "seconds": 1537877669,
+      "nanoseconds": 227000000
+    },
+    "challenger": {
+      "character": "talim",
+      "email": "marques.divers@gmail.com",
+      "firstName": "Kevin",
+      "id": "K0wuglzqzAdE8MwSe26S5W2sIyE2",
+      "lastName": "Marques",
+      "ranking": 800,
+      "score": 1,
+      "username": "MarquesK",
+      "winner": false
+    },
+    "createdAt": {
+      "seconds": 1537877130,
+      "nanoseconds": 111000000
+    },
+    "deletedAt": null,
+    "firstTo": 5,
+    "id": "921r3ffqs6wsr4rrFPAM",
+    "rounds": [
+      {
+        "challenger": 0,
+        "user": 1
+      },
+      {
+        "challenger": 0,
+        "user": 2
+      },
+      {
+        "challenger": 1,
+        "user": 2
+      },
+      {
+        "challenger": 1,
+        "user": 3
+      },
+      {
+        "challenger": 1,
+        "user": 4
+      },
+      {
+        "challenger": 1,
+        "user": 5
+      }
+    ],
+    "user": {
+      "character": "talim",
+      "email": "marques.divers@gmail.com",
+      "firstName": "Kevin",
+      "id": "K0wuglzqzAdE8MwSe26S5W2sIyE2",
+      "lastName": "Marques",
+      "ranking": 800,
+      "score": 5,
+      "username": "MarquesK",
+      "winner": true
+    }
+  },
+  {
+    "acceptedAt": {
+      "seconds": 1537874883,
+      "nanoseconds": 852000000
+    },
+    "challenger": {
+      "character": "talim",
+      "email": "marques.divers@gmail.com",
+      "firstName": "Kevin",
+      "id": "K0wuglzqzAdE8MwSe26S5W2sIyE2",
+      "lastName": "Marques",
+      "ranking": 800,
+      "score": 1,
+      "username": "MarquesK",
+      "winner": false
+    },
+    "createdAt": {
+      "seconds": 1537874068,
+      "nanoseconds": 62000000
+    },
+    "deletedAt": null,
+    "firstTo": 5,
+    "id": "i7eCDOH23JiCCLSNCZaC",
+    "rounds": [
+      {
+        "challenger": 0,
+        "user": 1
+      },
+      {
+        "challenger": 0,
+        "user": 2
+      },
+      {
+        "challenger": 1,
+        "user": 2
+      },
+      {
+        "challenger": 1,
+        "user": 3
+      },
+      {
+        "challenger": 1,
+        "user": 4
+      },
+      {
+        "challenger": 1,
+        "user": 5
+      }
+    ],
+    "user": {
+      "character": "talim",
+      "email": "marques.divers@gmail.com",
+      "firstName": "Kevin",
+      "id": "K0wuglzqzAdE8MwSe26S5W2sIyE2",
+      "lastName": "Marques",
+      "ranking": 800,
+      "score": 5,
+      "username": "MarquesK",
+      "winner": true
+    }
+  }
+]
