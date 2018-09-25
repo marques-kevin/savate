@@ -54,6 +54,18 @@ const userSchema = data => ({
   ...data
 });
 
+const challengeSchema = data => ({
+  challenger: {},
+  user: {},
+  acceptedAt: null,
+  deletedAt: null,
+  createdAt: null,
+  firstTo: null,
+  rounds: [],
+  id: null,
+  ...data
+});
+
 export const getUserInfo = id => {
   return Database.collection("users")
     .doc(id)
@@ -90,7 +102,9 @@ export const register = ({ username, email, password }) => {
 
 export const getChallenges = () => {
   return Database.collection("challenges")
-    .orderBy("createdAt", "desc")
+    .where("acceptedAt", ">", new Date("1900-01-01"))
+    .where("deletedAt", "==", null)
+    .orderBy("acceptedAt", "desc")
     .get()
     .then(mapQuerySnapshot);
 };
@@ -110,15 +124,32 @@ export const updateUserInfo = (userId, label, value) => {
 
 export const submitChallenge = schema => {
   const id = Database.collection("challenges").doc();
-  return id.set({ ...schema }).then(() => {
-    return schema;
+  return id.set(challengeSchema({ ...schema, id: id.id })).then(() => {
+    return challengeSchema({ ...schema, id: id.id });
   });
 };
 
 export const getChallengesNotifications = userId => {
   return Database.collection("challenges")
     .where("challenger.id", "==", userId)
-    .where("isPending", "==", true)
+    .where("deletedAt", "==", null)
+    .where("acceptedAt", "==", null)
     .get()
     .then(mapQuerySnapshot);
+};
+
+export const acceptChallenge = challengeId => {
+  const date = new Date();
+  return Database.collection("challenges")
+    .doc(challengeId)
+    .update({ acceptedAt: new Date() })
+    .then(() => ({ acceptedAt: +date }));
+};
+
+export const declineChallenge = challengeId => {
+  const date = new Date();
+  return Database.collection("challenges")
+    .doc(challengeId)
+    .update({ deletedAt: new Date() })
+    .then(() => ({ deletedAt: +date }));
 };

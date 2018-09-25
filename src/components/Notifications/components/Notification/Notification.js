@@ -35,11 +35,11 @@ export default class Notification extends PureComponent {
               <Search />
               <span>Voir</span>
             </div>
-            <div className={Style.buttonActive}>
+            <div className={Style.buttonActive} onClick={this.props.onAccept}>
               <Validate />
               <span>Valider</span>
             </div>
-            <div className={Style.button}>
+            <div className={Style.button} onClick={this.props.onDecline}>
               <Close />
               <span>Refuser</span>
             </div>

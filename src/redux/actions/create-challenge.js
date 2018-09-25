@@ -52,8 +52,6 @@ export const fetchSendChallenge = () => (dispatcher, getState) => {
       score: challenge.challengerScore
     },
     createdAt: new Date(),
-    isFinished: false,
-    isPending: true,
     firstTo: challenge.rounds,
     rounds: challenge.results
   };

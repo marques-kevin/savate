@@ -27,10 +27,10 @@ export default class Switch extends PureComponent {
       <div className={Style.container}>
         <div className={Style.switcher}>
           <Value onClick={() => this.onSwitch(0)} current={isCurrent}>
-            En cours
+            {this.props.tabs[0]}
           </Value>
           <Value onClick={() => this.onSwitch(1)} current={!isCurrent}>
-            Historique
+            {this.props.tabs[1]}
           </Value>
           <div className={isCurrent ? Style.indicator : Style.indicatorRight} />
         </div>

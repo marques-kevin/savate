@@ -16,6 +16,15 @@ export default function(state = initialState, action) {
       };
     },
 
+    [constants.removeChallenge]() {
+      return {
+        ...state,
+        challenges: state.challenges.filter(
+          ({ id }) => id !== action.payload.id
+        )
+      };
+    },
+
     [constants.fetching]() {
       return {
         ...state,

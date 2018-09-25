@@ -7,12 +7,14 @@ class Challenges extends PureComponent {
   render() {
     return (
       <div className={Style.container}>
-        {this.props.challenges.map(({ user, challenger }) => (
+        {this.props.challenges.map(({ user, challenger, id }) => (
           <Notification
             type="challenge"
             user={user}
             challenger={challenger}
             winner={user.winner ? user : challenger}
+            onAccept={() => this.props.onAccept(id)}
+            onDecline={() => this.props.onDecline(id)}
           />
         ))}
       </div>
