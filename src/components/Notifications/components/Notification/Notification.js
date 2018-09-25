@@ -11,9 +11,11 @@ export default class Notification extends PureComponent {
       <div className={Style.container}>
         <div className={Style.user}>
           <User
-            username="Kayane"
-            character={"Kilik"}
-            text="Vous a envoyé une demande de défi avec une victoire pour Keev de 5 à 2."
+            username={this.props.user.username}
+            character={this.props.user.character}
+            text={`Vous a envoyé une demande de défi avec une victoire pour ${
+              this.props.winner.username
+            } de ${this.props.user.score} à ${this.props.challenger.score}.`}
             date={this.props.type === "friend" ? false : "2m"}
           />
           {this.props.type === "friend" && (

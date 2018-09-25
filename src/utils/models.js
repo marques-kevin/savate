@@ -90,6 +90,7 @@ export const register = ({ username, email, password }) => {
 
 export const getChallenges = () => {
   return Database.collection("challenges")
+    .orderBy("createdAt", "desc")
     .get()
     .then(mapQuerySnapshot);
 };
@@ -112,4 +113,12 @@ export const submitChallenge = schema => {
   return id.set({ ...schema }).then(() => {
     return schema;
   });
+};
+
+export const getChallengesNotifications = userId => {
+  return Database.collection("challenges")
+    .where("challenger.id", "==", userId)
+    .where("isPending", "==", true)
+    .get()
+    .then(mapQuerySnapshot);
 };
