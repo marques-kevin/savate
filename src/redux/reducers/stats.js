@@ -1,22 +1,23 @@
 import * as constants from "./../constants/stats";
-import { set, lensPath } from "ramda";
 
 const initialState = {
   user: null,
-  totalFights: 0,
-  totalVictoryFights: 0,
-  totalLooseFights: 0,
+  fetching: false,
+  challenges: [],
   totalChallenge: 0,
-  totalVictoryChallenge: 0,
-  totalLooseChallenge: 0,
-  fetching: false
+  totalChallengeWin: 0,
+  totalChallengeLoose: 0,
+  totalRounds: 0,
+  totalRoundsWin: 0,
+  totalRoundLoose: 0
 };
 
 export default function(state = initialState, action) {
   const actions = {
     [constants.storeStats]() {
       return {
-        ...state
+        ...state,
+        ...action.payload.stats
       };
     },
     [constants.fetching]() {

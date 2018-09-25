@@ -172,36 +172,50 @@ export const declineChallenge = challengeId => {
 
 export const or = collection => conditions => {
   const queries = conditions.map(([key, op, data]) => {
-    return Database.collection(collection)
+    return collection
       .where(key, op, data)
+      .get()
       .then(mapQuerySnapshot);
   });
 
   return Promise.all(queries).then(flatten);
 };
 
-const countWins = reduce((accumulator, challenge) => {
-  if (challenge.user.winner) return accumulator + 1;
-  return accumulator;
-}, 0);
+const findUser = userId => challenge => {
+  const select =
+    challenge.user.id === userId ? challenge.user : challenge.challenger;
+
+  return {
+    winner: select.winner,
+    score: select.score
+  };
+};
+
+const countWins = userId =>
+  reduce((accumulator, challenge) => {
+    if (findUser(userId)(challenge).winner) return accumulator + 1;
+    return accumulator;
+  }, 0);
 
 const countRounds = reduce((accumulator, challenge) => {
   return accumulator + challenge.rounds.length;
 }, 0);
 
-const countRoundsWin = reduce((accumulator, challenge) => {
-  return challenge.user.score + accumulator;
-}, 0);
+const countRoundsWin = userId =>
+  reduce((accumulator, challenge) => {
+    return findUser(userId)(challenge).score + accumulator;
+  }, 0);
 
-export const stats = challenges => {
+export const stats = userId => challenges => {
   const totalChallenge = challenges.length;
-  const totalChallengeWin = countWins(challenges);
+  const totalChallengeWin = countWins(userId)(challenges);
   const totalChallengeLoose = totalChallenge - totalChallengeWin;
   const totalRounds = countRounds(challenges);
-  const totalRoundsWin = countRoundsWin(challenges);
+  const totalRoundsWin = countRoundsWin(userId)(challenges);
   const totalRoundLoose = totalRounds - totalRoundsWin;
 
   return {
+    challenges,
     totalChallenge,
     totalChallengeWin,
     totalChallengeLoose,
@@ -212,8 +226,12 @@ export const stats = challenges => {
 };
 
 export const getStatsFromUser = userId => {
-  return or("challenges")([
+  const collection = Database.collection("challenges")
+    .where("acceptedAt", ">", new Date("1900-01-01"))
+    .where("deletedAt", "==", null);
+
+  return or(collection)([
     ["user.id", "==", userId],
     ["challenger.id", "==", userId]
-  ]).then(stats);
+  ]).then(stats(userId));
 };

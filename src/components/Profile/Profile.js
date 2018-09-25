@@ -10,9 +10,13 @@ import Tabs from "./../../components/Tabs/Tabs";
 import Connect from "./containers/Profile.container";
 
 class Profile extends Component {
+  state = {
+    tab: "info",
+    tabs: ["info", "stats", "friends"]
+  };
+
   getTabFromName(tab) {
-    const tabs = ["info", "stats", "friends"];
-    return tabs.findIndex(t => t === tab);
+    return this.state.tabs.findIndex(t => t === tab);
   }
 
   render() {
@@ -25,14 +29,15 @@ class Profile extends Component {
         />
         <div style={{ marginTop: "30px" }}>
           <Tabs
-            active={this.getTabFromName(this.props.tab)}
+            active={this.getTabFromName(this.state.tab)}
+            onChange={e => this.setState({ tab: this.state.tabs[e] })}
             tabs={["Informations", "Statistiques", "Amis"]}
           />
         </div>
         <div>
-          {this.props.tab === "info" && <Info />}
-          {this.props.tab === "stats" && <Stats />}
-          {this.props.tab === "friends" && <Friends />}
+          {this.state.tab === "info" && <Info />}
+          {this.state.tab === "stats" && <Stats userId={this.props.userId} />}
+          {this.state.tab === "friends" && <Friends />}
         </div>
       </div>
     );

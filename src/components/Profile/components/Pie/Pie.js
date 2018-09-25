@@ -15,7 +15,7 @@ export default class PieComponent extends PureComponent {
     const total = this.getTotal();
     const victories = this.getVictories();
     const percentage = victories / total * 100;
-    return this.calculatePercentage(percentage);
+    return this.calculatePercentage(percentage) || 0;
   }
 
   calculatePercentage(percentage) {
@@ -29,18 +29,17 @@ export default class PieComponent extends PureComponent {
   }
 
   getVictories() {
-    if (this.state.mode === "fights") return this.props.totalVictoryFights;
-    if (this.state.mode === "challenges")
-      return this.props.totalVictoryChallenge;
+    if (this.state.mode === "fights") return this.props.totalRoundsWin;
+    if (this.state.mode === "challenges") return this.props.totalChallengeWin;
   }
 
   getLooses() {
-    if (this.state.mode === "fights") return this.props.totalLooseFights;
-    if (this.state.mode === "challenges") return this.props.totalLooseChallenge;
+    if (this.state.mode === "fights") return this.props.totalRoundLoose;
+    if (this.state.mode === "challenges") return this.props.totalChallengeLoose;
   }
 
   getTotal() {
-    if (this.state.mode === "fights") return this.props.totalFights;
+    if (this.state.mode === "fights") return this.props.totalRounds;
     if (this.state.mode === "challenges") return this.props.totalChallenge;
   }
 
@@ -79,12 +78,12 @@ export default class PieComponent extends PureComponent {
 }
 
 PieComponent.propTypes = {
-  totalFights: PropTypes.number,
-  totalVictoryFights: PropTypes.number,
-  totalLooseFights: PropTypes.number,
   totalChallenge: PropTypes.number,
-  totalVictoryChallenge: PropTypes.number,
-  totalLooseChallenge: PropTypes.number
+  totalChallengeWin: PropTypes.number,
+  totalChallengeLoose: PropTypes.number,
+  totalRounds: PropTypes.number,
+  totalRoundsWin: PropTypes.number,
+  totalRoundLoose: PropTypes.number
 };
 
 PieComponent.defaultProps = {};

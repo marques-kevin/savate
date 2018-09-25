@@ -8,8 +8,9 @@ export default class History extends PureComponent {
     return this.props.loading || rounds.length === 0 ? null : (
       <div className={Style.history}>
         <div className={Style.sectionTitle}>{this.props.title}</div>
-        {this.props.rounds.map(score => (
+        {this.props.rounds.map((score, key) => (
           <ChallengeResultItem
+            key={key}
             user={{ ...this.props.user, ranking: false, score: score.user }}
             challenger={{
               ...this.props.challenger,

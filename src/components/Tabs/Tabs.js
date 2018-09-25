@@ -11,6 +11,11 @@ class Tabs extends PureComponent {
     this.state = { value: props.active };
   }
 
+  handleChange = (e, value) => {
+    this.setState({ value });
+    this.props.onChange(value);
+  };
+
   render() {
     const { classes } = this.props;
 
@@ -20,7 +25,7 @@ class Tabs extends PureComponent {
           fullWidth
           classes={{ root: classes.tabsRoot, indicator: classes.tabsIndicator }}
           value={this.state.value}
-          onChange={(e, value) => this.setState({ value })}
+          onChange={this.handleChange}
         >
           {this.props.tabs.map((label, index) => (
             <Tab

@@ -1,9 +1,9 @@
 import * as types from "../constants/stats";
 import * as Models from "./../../utils/models";
 
-export const storeStats = challenge => ({
+export const storeStats = stats => ({
   type: types.storeStats,
-  payload: { challenge }
+  payload: { stats }
 });
 
 export const fetching = () => ({
@@ -14,20 +14,11 @@ export const fetchEnd = () => ({
   type: types.fetchEnd
 });
 
-export const fetchLiveChallenges = userId => dispatcher => {
+export const fetchStats = userId => dispatcher => {
   dispatcher(fetching());
 
   return Models.getStatsFromUser(userId).then(stats => {
     dispatcher(fetchEnd());
     dispatcher(storeStats(stats));
-  });
-};
-
-export const fetchChallenge = id => dispatcher => {
-  dispatcher(fetching());
-
-  return Models.getChallenge(id).then(challenge => {
-    dispatcher(fetchEnd());
-    dispatcher(storeSelectedChallenge(challenge));
   });
 };

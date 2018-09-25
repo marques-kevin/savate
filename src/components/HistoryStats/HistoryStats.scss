@@ -1,0 +1,14 @@
+@import "./../../styles/themes/default";
+
+:local(.history) {
+  margin-top: 50px;
+}
+
+:local(.sectionTitle) {
+  padding-left: 15px;
+  font-size: 12px;
+  font-weight: 600;
+  color: $COLORS_GRAY;
+  border-bottom: 1px solid $BORDER_COLOR_GRAY;
+  padding-bottom: 5px;
+}

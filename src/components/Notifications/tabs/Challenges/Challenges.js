@@ -9,6 +9,7 @@ class Challenges extends PureComponent {
       <div className={Style.container}>
         {this.props.challenges.map(({ user, challenger, id }) => (
           <Notification
+            key={id}
             type="challenge"
             user={user}
             challenger={challenger}
