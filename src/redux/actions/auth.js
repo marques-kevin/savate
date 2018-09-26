@@ -20,6 +20,7 @@ export const changePage = page => ({
 });
 
 export const changePageToRegister = () => changePage("register");
+export const changePageToSignin = () => changePage("signin");
 
 export const logout = () => ({
   type: types.logout
@@ -53,10 +54,10 @@ export const fetchUpdateInfo = (label, value) => (dispatcher, getState) => {
   });
 };
 
-export const fetchRegister = ({ email, password, username }) => dispatcher => {
+export const fetchRegister = info => dispatcher => {
   dispatcher(fetching());
 
-  return Models.register({ email, password, username }).then(user => {
+  return Models.register(info).then(user => {
     dispatcher(fetchEnd());
     return dispatcher(authenticate(user));
   });

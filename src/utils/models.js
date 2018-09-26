@@ -103,11 +103,16 @@ export const createOrUpdateUser = (id, data) => {
     });
 };
 
-export const register = ({ username, email, password }) => {
+export const register = ({ username, email, password, character }) => {
   return Firebase.auth()
     .createUserWithEmailAndPassword(email, password)
     .then(({ user }) => {
-      return createOrUpdateUser(user.uid, { id: user.uid, username, email });
+      return createOrUpdateUser(user.uid, {
+        id: user.uid,
+        username,
+        email,
+        character
+      });
     });
 };
 

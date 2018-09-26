@@ -5,13 +5,13 @@ import Characters from "./../../utils/characters";
 
 export default class Thumb extends PureComponent {
   render() {
+    const { size } = this.props;
     return (
       <div
         className={Style.container}
         style={{
           backgroundImage: `url(${Characters(this.props.character)})`,
-          height: null,
-          width: null
+          ...(size ? { height: size, width: size } : {})
         }}
       />
     );

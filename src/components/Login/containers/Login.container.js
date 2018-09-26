@@ -10,9 +10,9 @@ const mapState = state => ({
 const mapDispatch = dispatch => ({
   onSubmitSignin: ({ email, password }) =>
     dispatch(actions.fetchAuthenticate({ email, password })),
-  onSubmitRegister: ({ email, password, username }) =>
-    dispatch(actions.fetchRegister({ email, password, username })),
+  onSubmitRegister: info => dispatch(actions.fetchRegister(info)),
   onRegisterTab: () => dispatch(actions.changePageToRegister()),
+  onSigninTab: () => dispatch(actions.changePageToSignin()),
   onCancel: () => dispatch(actions.close())
 });
 

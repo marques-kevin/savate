@@ -2,15 +2,27 @@ import React, { PureComponent } from "react";
 import Style from "./Register.scss";
 import TextField from "@material-ui/core/TextField";
 import Button from "./../../../MainButton/MainButton";
+import DialogSelectCharacter from "./../../../DialogSelectCharacter/DialogSelectCharacter";
+import Thumb from "./../../../Thumb/Thumb";
 
 export default class Register extends PureComponent {
-  state = { errorPassword: false, user: {} };
+  state = {
+    errorPassword: false,
+    errorCharacter: false,
+    errorEmail: false,
+    errorUsername: false,
+    user: {},
+    dialog: false
+  };
 
   onSubmit = e => {
     e.preventDefault();
-    const { email, username, password, password2 } = this.state.user;
+    const { email, username, password, password2, character } = this.state.user;
     if (password !== password2) return this.setState({ errorPassword: true });
-    this.props.onSubmit({ email, password, username });
+    if (!character) return this.setState({ errorCharacter: true });
+    if (!email) return this.setState({ errorEmail: true });
+    if (!username) return this.setState({ errorUsername: true });
+    this.props.onSubmit({ email, password, username, character });
   };
 
   onChangePassword2() {
@@ -31,11 +43,33 @@ export default class Register extends PureComponent {
     );
   };
 
+  onSelectCharacter = character => {
+    this.setState(({ user }) => ({
+      user: { ...user, character },
+      dialog: false
+    }));
+  };
+
   render() {
     return (
       <div className={Style.content}>
         <form id="form" onSubmit={this.onSubmit}>
-          <div className={Style.message}>Veuillez vous créer un compte !</div>
+          <div
+            className={Style.thumb}
+            onClick={() => this.setState({ dialog: true })}
+          >
+            <Thumb character={this.state.user.character} size={70} />
+            {this.state.user.character && (
+              <div className={Style.thumbCharacter}>
+                {this.state.user.character}
+              </div>
+            )}
+            {!this.state.user.character && (
+              <div className={Style.thumbPlaceholder}>
+                Sélectionnez votre personnage préféré
+              </div>
+            )}
+          </div>
           <TextField
             id="username"
             label="Pseudo"
@@ -44,6 +78,10 @@ export default class Register extends PureComponent {
             margin="normal"
             variant="filled"
             fullWidth
+            error={this.state.errorUsername}
+            helperText={
+              this.state.errorUsername ? "Le pseudo doit être rempli" : " "
+            }
             onChange={this.handleChange}
           />
           <TextField
@@ -53,6 +91,10 @@ export default class Register extends PureComponent {
             name="email"
             margin="normal"
             variant="filled"
+            error={this.state.errorEmail}
+            helperText={
+              this.state.errorEmail ? "L'email doit être bien rempli" : " "
+            }
             fullWidth
             onChange={this.handleChange}
           />
@@ -83,6 +125,14 @@ export default class Register extends PureComponent {
             onChange={this.handleChange}
           />
           <Button text="Valider" style={{ marginTop: "50px" }} type="submit" />
+          <DialogSelectCharacter
+            open={this.state.dialog}
+            onClose={() => this.setState({ dialog: false })}
+            onSelect={this.onSelectCharacter}
+            label="Personnage préféré"
+            text="En changeant de personnage, votre image de profil va également être modifié."
+            title="Sélectionner votre personnage préféré"
+          />
         </form>
       </div>
     );
