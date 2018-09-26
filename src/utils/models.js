@@ -118,6 +118,10 @@ export const getUsersByName = name => {
     .then(slice(0, 10));
 };
 
+export const getAllUsers = () => {
+  return getDataFromCache("users").then(mapQuerySnapshot);
+};
+
 export const getChallenges = () => {
   return Database.collection("challenges")
     .where("acceptedAt", ">", new Date("1900-01-01"))

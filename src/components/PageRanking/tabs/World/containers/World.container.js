@@ -6,7 +6,7 @@ const mapState = state => ({
 });
 
 const mapDispatch = dispatch => ({
-  onMount: () => dispatch(actions.ranking.fetchRanking())
+  onMount: () => dispatch(actions.ranking.fetchWorld())
 });
 
 export default connect(mapState, mapDispatch);

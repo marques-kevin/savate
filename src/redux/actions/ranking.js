@@ -17,7 +17,7 @@ export const fetchEnd = () => ({
 export const fetchWorld = () => dispatcher => {
   dispatcher(fetching());
 
-  return Models.getUsers().then(users => {
+  return Models.getAllUsers().then(users => {
     dispatcher(fetchEnd());
     dispatcher(storeWorld(users));
   });

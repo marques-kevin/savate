@@ -5,6 +5,7 @@ import searchUser from "./search-user";
 import createChallenge from "./create-challenge";
 import notification from "./notification";
 import stats from "./stats";
+import ranking from "./ranking";
 
 const reducers = combineReducers({
   auth,
@@ -12,7 +13,8 @@ const reducers = combineReducers({
   searchUser,
   createChallenge,
   notification,
-  stats
+  stats,
+  ranking
 });
 
 export default reducers;

@@ -1,27 +1,17 @@
-import * as constants from "./../constants/notification";
+import * as constants from "./../constants/ranking";
+import { sort } from "ramda";
 
 const initialState = {
-  news: [],
-  friends: [],
-  challenges: [],
-  dontRead: 0
+  world: [],
+  fetching: false
 };
 
 export default function(state = initialState, action) {
   const actions = {
-    [constants.storeChallenges]() {
+    [constants.storeWorld]() {
       return {
         ...state,
-        challenges: action.payload.challenges
-      };
-    },
-
-    [constants.removeChallenge]() {
-      return {
-        ...state,
-        challenges: state.challenges.filter(
-          ({ id }) => id !== action.payload.id
-        )
+        world: sort((a, b) => b.ranking - a.ranking)(action.payload.users)
       };
     },
 

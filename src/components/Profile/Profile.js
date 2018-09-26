@@ -24,6 +24,7 @@ class Profile extends Component {
       <div className={Style.container}>
         <Header title="Profil" noBoxShadow />
         <SkinUser
+          username={this.props.username}
           character={this.props.character}
           ranking={this.props.ranking}
         />
