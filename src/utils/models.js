@@ -1,4 +1,5 @@
 import { Firebase, Database } from "./firebase";
+import moment from "moment";
 import {
   filter,
   pipe,
@@ -7,7 +8,8 @@ import {
   prop,
   slice,
   flatten,
-  reduce
+  reduce,
+  uniqBy
 } from "ramda";
 
 export const initializeCache = func => {
@@ -125,6 +127,21 @@ export const getChallenges = () => {
     .then(mapQuerySnapshot);
 };
 
+export const getHistoryChallenges = () => {
+  return Database.collection("challenges")
+    .where(
+      "acceptedAt",
+      ">",
+      moment()
+        .subtract(1, "day")
+        .format()
+    )
+    .where("deletedAt", "==", null)
+    .orderBy("acceptedAt", "desc")
+    .get()
+    .then(mapQuerySnapshot);
+};
+
 export const getChallenge = id => {
   return Database.collection("challenges")
     .doc(id)
@@ -170,12 +187,9 @@ export const declineChallenge = challengeId => {
     .then(() => ({ deletedAt: +date }));
 };
 
-export const or = collection => conditions => {
-  const queries = conditions.map(([key, op, data]) => {
-    return collection
-      .where(key, op, data)
-      .get()
-      .then(mapQuerySnapshot);
+export const or = collections => {
+  const queries = collections.map(collection => {
+    return collection.get().then(mapQuerySnapshot);
   });
 
   return Promise.all(queries).then(flatten);
@@ -230,8 +244,23 @@ export const getStatsFromUser = userId => {
     .where("acceptedAt", ">", new Date("1900-01-01"))
     .where("deletedAt", "==", null);
 
-  return or(collection)([
-    ["user.id", "==", userId],
-    ["challenger.id", "==", userId]
+  return or([
+    collection.where("user.id", "==", userId),
+    collection.where("challenger.id", "==", userId)
   ]).then(stats(userId));
+};
+
+export const getStatsFromVersus = (userId, challengerId) => {
+  const collection = Database.collection("challenges")
+    .where("acceptedAt", ">", new Date("1900-01-01"))
+    .where("deletedAt", "==", null);
+
+  return or([
+    collection
+      .where("user.id", "==", userId)
+      .where("challenger.id", "==", challengerId),
+    collection
+      .where("user.id", "==", userId)
+      .where("challenger.id", "==", challengerId)
+  ]).then(pipe(uniqBy(prop("id")), stats(userId)));
 };

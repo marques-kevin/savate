@@ -8,6 +8,10 @@ import Switch from "./../../components/Switch/Switch";
 import Connect from "./containers/PageChallenge.container";
 
 class PageChallenge extends Component {
+  state = {
+    tab: 0
+  };
+
   componentDidMount() {
     this.props.onMount();
   }
@@ -20,10 +24,13 @@ class PageChallenge extends Component {
           noBoxShadow
           onBack={this.props.onBack}
         />
-        <Switch tabs={["Résultats", "Statistiques"]} />
+        <Switch
+          tabs={["Résultats", "Statistiques"]}
+          onSwitch={tab => this.setState({ tab })}
+        />
         <div>
-          {this.props.tab === "resume" && <Resume />}
-          {this.props.tab === "history" && <Stats />}
+          {this.state.tab === 0 && <Resume />}
+          {this.state.tab === 1 && <Stats />}
         </div>
       </div>
     );

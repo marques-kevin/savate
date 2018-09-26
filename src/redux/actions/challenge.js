@@ -11,6 +11,11 @@ export const storeLiveChallenges = challenges => ({
   payload: { challenges }
 });
 
+export const storeHistoryChallenges = challenges => ({
+  type: types.storeHistoryChallenges,
+  payload: { challenges }
+});
+
 export const openCreateChallenge = () => ({
   type: types.openCreateChallenge
 });
@@ -33,6 +38,15 @@ export const fetchLiveChallenges = () => dispatcher => {
   return Models.getChallenges().then(challenges => {
     dispatcher(fetchEnd());
     dispatcher(storeLiveChallenges(challenges));
+  });
+};
+
+export const fetchHistoryChallenge = () => dispatcher => {
+  dispatcher(fetching());
+
+  return Models.getHistoryChallenges().then(challenges => {
+    dispatcher(fetchEnd());
+    dispatcher(storeHistoryChallenges(challenges));
   });
 };
 

@@ -1,29 +1,28 @@
 import React, { PureComponent } from "react";
 import Header from "./../Header/Header";
 import Switch from "./../Switch/Switch";
-import ChallengeResultItem from "./../ChallengeResultItem/ChallengeResultItem";
+import Live from "./tabs/Live/Live";
+import History from "./tabs/History/History";
 import CreateChallengeBtn from "./../CreateChallengeBtn/CreateChallengeBtn";
 import ModalCreateChallenge from "./../ModalCreateChallenge/ModalCreateChallenge";
 import Connect from "./containers/PageChallenges.container";
 
 class PageChallenges extends PureComponent {
-  componentDidMount() {
-    this.props.onMount();
-  }
+  state = {
+    tab: 0
+  };
 
   render() {
     return (
       <div>
         <Header title="Défi" />
-        <Switch tabs={["Récent", "Historique"]} />
-        {this.props.challenges.map(({ user, challenger, id }) => (
-          <ChallengeResultItem
-            key={id}
-            user={user}
-            onClickResult={() => this.props.onClickChallenge(id)}
-            challenger={challenger}
-          />
-        ))}
+        <Switch
+          tabs={["Récent", "Historique"]}
+          onSwitch={tab => this.setState({ tab })}
+        />
+        {this.state.tab === 0 && <Live />}
+        {this.state.tab === 1 && <History />}
+
         <CreateChallengeBtn
           onClick={() =>
             this.props.onClickCreateChallenge(this.props.isConnected)

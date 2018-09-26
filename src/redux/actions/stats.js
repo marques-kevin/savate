@@ -22,3 +22,12 @@ export const fetchStats = userId => dispatcher => {
     dispatcher(storeStats(stats));
   });
 };
+
+export const fetchStatsVs = (userId, challengerId) => dispatcher => {
+  dispatcher(fetching());
+
+  return Models.getStatsFromVersus(userId, challengerId).then(stats => {
+    dispatcher(fetchEnd());
+    dispatcher(storeStats(stats));
+  });
+};

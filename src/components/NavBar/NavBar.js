@@ -17,11 +17,11 @@ class NavBar extends PureComponent {
           onClick={() => this.props.onClick("/ranking")}
           active={this.isActive("ranking")}
         />
-        <Icon
+        {/* <Icon
           name="Framedata"
           onClick={() => this.props.onClick("/framedata")}
           active={this.isActive("framedata")}
-        />
+        /> */}
         <Icon
           name="Defi"
           onClick={() => this.props.onClick("/challenge")}

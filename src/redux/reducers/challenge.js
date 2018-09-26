@@ -30,6 +30,12 @@ export default function(state = initialState, action) {
       return set(lensContent, action.payload.challenges, state);
     },
 
+    [constants.storeHistoryChallenges]() {
+      const lensContent = lensPath(["history", "content"]);
+
+      return set(lensContent, action.payload.challenges, state);
+    },
+
     [constants.openCreateChallenge]() {
       const lensContent = lensPath(["create", "isOpen"]);
 

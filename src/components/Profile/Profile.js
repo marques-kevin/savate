@@ -5,7 +5,7 @@ import Header from "./../../components/Header/Header";
 import SkinUser from "./../../components/SkinUser/SkinUser";
 import Info from "./tabs/Info/Info";
 import Stats from "./tabs/Stats/Stats";
-import Friends from "./tabs/Friends/Friends";
+// import Friends from "./tabs/Friends/Friends";
 import Tabs from "./../../components/Tabs/Tabs";
 import Connect from "./containers/Profile.container";
 
@@ -31,13 +31,13 @@ class Profile extends Component {
           <Tabs
             active={this.getTabFromName(this.state.tab)}
             onChange={e => this.setState({ tab: this.state.tabs[e] })}
-            tabs={["Informations", "Statistiques", "Amis"]}
+            tabs={["Informations", "Statistiques"]}
           />
         </div>
         <div>
           {this.state.tab === "info" && <Info />}
           {this.state.tab === "stats" && <Stats userId={this.props.userId} />}
-          {this.state.tab === "friends" && <Friends />}
+          {/* {this.state.tab === "friends" && <Friends />} */}
         </div>
       </div>
     );
