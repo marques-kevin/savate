@@ -1,4 +1,4 @@
-import calculateRank from "./../utils";
+import calculateRank from "./../ranking";
 
 describe("Utils", () => {
   it("calculateRank normal ", () => {
