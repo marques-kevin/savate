@@ -11,6 +11,7 @@ export default class History extends PureComponent {
         {this.props.rounds.map((score, key) => (
           <ChallengeResultItem
             key={key}
+            onClickUser={id => this.props.onClickUser(id)}
             user={{ ...this.props.user, ranking: false, score: score.user }}
             challenger={{
               ...this.props.challenger,

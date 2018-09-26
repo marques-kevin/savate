@@ -13,10 +13,11 @@ const mapState = ({ stats, challenge }) => ({
   totalRoundLoose: stats.totalRoundLoose
 });
 
-const mapDispatch = (dispatch, props) => ({
+const mapDispatch = dispatch => ({
   onMount: (userId, challengerId) =>
     dispatch(actions.stats.fetchStatsVs(userId, challengerId)),
-  onClickResult: id => dispatch(actions.router.push(`/challenge/${id}`))
+  onClickResult: id => dispatch(actions.router.push(`/challenge/${id}`)),
+  onClickUser: id => dispatch(actions.router.push(`/profile/${id}`))
 });
 
 export default connect(mapState, mapDispatch);

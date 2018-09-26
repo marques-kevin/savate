@@ -16,7 +16,8 @@ const mapState = state => {
 };
 
 const mapDispatch = (dispatch, props) => ({
-  onMount: () => dispatch(actions.challenge.fetchChallenge(props.id))
+  onMount: () => dispatch(actions.challenge.fetchChallenge(props.id)),
+  onClickUser: id => dispatch(actions.router.push(`/profile/${id}`))
 });
 
 export default connect(mapState, mapDispatch);

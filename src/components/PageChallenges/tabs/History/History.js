@@ -13,6 +13,7 @@ class History extends PureComponent {
         key={id}
         user={user}
         onClickResult={() => this.props.onClickChallenge(id)}
+        onClickUser={id => this.props.onClickUser(id)}
         challenger={challenger}
       />
     ));
@@ -21,6 +22,7 @@ class History extends PureComponent {
 
 History.defaultProps = {
   challenges: [],
+  onClickUser: () => console.warn("default: History.onClickUser"),
   onMount: () => console.warn("default: History.onMount")
 };
 

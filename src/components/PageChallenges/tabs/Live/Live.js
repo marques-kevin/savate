@@ -13,6 +13,7 @@ class Live extends PureComponent {
         key={id}
         user={user}
         onClickResult={() => this.props.onClickChallenge(id)}
+        onClickUser={id => this.props.onClickUser(id)}
         challenger={challenger}
       />
     ));
@@ -21,7 +22,9 @@ class Live extends PureComponent {
 
 Live.defaultProps = {
   challenges: [],
-  onMount: () => console.warn("default: Live.onMount")
+  onMount: () => console.warn("default: Live.onMount"),
+  onClickUser: () => console.warn("default: Live.onClickUser"),
+  onClickChallenge: () => console.warn("default: Live.onClickChallenge")
 };
 
 export default Connect(Live);

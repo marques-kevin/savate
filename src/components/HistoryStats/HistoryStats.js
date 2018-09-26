@@ -14,6 +14,7 @@ export default class HistoryStats extends PureComponent {
             user={{ ...user, ranking: false }}
             challenger={{ ...challenger, ranking: false }}
             onClickResult={() => this.props.onClickResult(id)}
+            onClickUser={this.props.onClickUser}
           />
         ))}
       </div>

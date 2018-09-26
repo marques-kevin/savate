@@ -4,8 +4,8 @@ import classNames from "classnames";
 import Style from "./ChallengeResultItem.scss";
 import Thumb from "./../Thumb/Thumb";
 
-const User = ({ reversed, ranking, character, username }) => (
-  <div className={Style.user}>
+const User = ({ reversed, ranking, character, username, onClick }) => (
+  <div className={Style.user} onClick={onClick}>
     {!reversed && <Thumb character={character} />}
     <div className={reversed ? Style.userInfoReversed : Style.userInfo}>
       <div className={Style.username}>{username}</div>
@@ -30,13 +30,20 @@ export default class ChallengeResultItem extends PureComponent {
         })}
       >
         <div className={Style.left}>
-          <User {...extractInfo(this.props.user)} />
+          <User
+            {...extractInfo(this.props.user)}
+            onClick={() => this.props.onClickUser(this.props.user.id)}
+          />
         </div>
         <div className={Style.result} onClick={this.props.onClickResult}>
           {this.props.user.score} <span>vs</span> {this.props.challenger.score}
         </div>
         <div className={Style.right}>
-          <User reversed {...extractInfo(this.props.challenger)} />
+          <User
+            reversed
+            {...extractInfo(this.props.challenger)}
+            onClick={() => this.props.onClickUser(this.props.challenger.id)}
+          />
         </div>
       </div>
     );
@@ -45,4 +52,6 @@ export default class ChallengeResultItem extends PureComponent {
 
 ChallengeResultItem.propTypes = {};
 
-ChallengeResultItem.defaultProps = {};
+ChallengeResultItem.defaultProps = {
+  onClickUser: () => console.warn("default: ChallengeResultItem.onClickUser")
+};

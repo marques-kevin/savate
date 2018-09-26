@@ -21,12 +21,14 @@ class Resume extends PureComponent {
           score={this.props.score}
           finished={true}
           winner={this.props.winner}
+          onClickUser={id => this.props.onClickUser(id)}
         />
         <History
           user={this.props.challenge.user}
           challenger={this.props.challenge.challenger}
           loading={this.props.loading}
           rounds={this.props.challenge.rounds}
+          onClickUser={id => this.props.onClickUser(id)}
         />
       </div>
     );

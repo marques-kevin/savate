@@ -13,6 +13,7 @@ export default class ResultChoice extends PureComponent {
             user={{ ...this.props.user, score: userScore }}
             challenger={{ ...this.props.challenger, score: challengerScore }}
             noBorder
+            onClickUser={this.props.onClickUser}
           />
         </div>
         <div className={Style.slider}>

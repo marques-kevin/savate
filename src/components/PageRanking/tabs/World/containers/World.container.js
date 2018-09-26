@@ -6,7 +6,8 @@ const mapState = state => ({
 });
 
 const mapDispatch = dispatch => ({
-  onMount: () => dispatch(actions.ranking.fetchWorld())
+  onMount: () => dispatch(actions.ranking.fetchWorld()),
+  onClickUser: id => dispatch(actions.router.push(`/profile/${id}`))
 });
 
 export default connect(mapState, mapDispatch);

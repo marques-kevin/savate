@@ -26,6 +26,7 @@ class Stats extends PureComponent {
           title="Historique des défis"
           challenges={this.props.challenges}
           onClickResult={this.props.onClickResult}
+          onClickUser={this.props.onClickUser}
         />
       </div>
     );
@@ -33,6 +34,8 @@ class Stats extends PureComponent {
 }
 
 Stats.propTypes = {};
-Stats.defaultProps = {};
+Stats.defaultProps = {
+  onClickUser: () => console.warn("default: Stats.onClickUser")
+};
 
 export default Connect(Stats);

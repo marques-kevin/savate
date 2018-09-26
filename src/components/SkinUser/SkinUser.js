@@ -11,6 +11,7 @@ export default class SkinUser extends PureComponent {
           style={{
             backgroundImage: `url(${Characters(this.props.character)})`
           }}
+          onClick={this.props.onClick}
         />
         <div className={Style.grade}>{this.props.username}</div>
         <div className={Style.ranking}>{this.props.ranking}</div>
@@ -20,3 +21,6 @@ export default class SkinUser extends PureComponent {
 }
 
 SkinUser.propTypes = {};
+SkinUser.defaultProps = {
+  onClick: () => console.warn("default: SkinUser.onClick")
+};

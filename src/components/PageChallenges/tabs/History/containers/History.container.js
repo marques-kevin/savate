@@ -7,7 +7,8 @@ const mapState = state => ({
 
 const mapDispatch = dispatch => ({
   onMount: () => dispatch(actions.challenge.fetchHistoryChallenge()),
-  onClickChallenge: id => dispatch(actions.router.push(`/challenge/${id}`))
+  onClickChallenge: id => dispatch(actions.router.push(`/challenge/${id}`)),
+  onClickUser: id => dispatch(actions.router.push(`/profile/${id}`))
 });
 
 export default connect(mapState, mapDispatch);

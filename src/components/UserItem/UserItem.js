@@ -5,9 +5,9 @@ import Thumb from "./../Thumb/Thumb";
 
 export default class UserItem extends PureComponent {
   render() {
-    const { reversed, character, username, ranking } = this.props;
+    const { reversed, character, username, ranking, onClick } = this.props;
     return (
-      <div className={Style.user}>
+      <div className={Style.user} onClick={onClick}>
         {!reversed && <Thumb character={character} />}
         <div className={reversed ? Style.userInfoReversed : Style.userInfo}>
           <div className={Style.username}>{username}</div>
@@ -21,4 +21,6 @@ export default class UserItem extends PureComponent {
 
 UserItem.propTypes = {};
 
-UserItem.defaultProps = {};
+UserItem.defaultProps = {
+  onClick: () => console.warn("default: UserItem.onClick")
+};

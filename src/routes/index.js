@@ -10,6 +10,7 @@ import createStore from "./../redux/stores";
 import PageChallenges from "./../components/PageChallenges/PageChallenges";
 import PageChallenge from "./../components/PageChallenge/PageChallenge";
 import PageRanking from "./../components/PageRanking/PageRanking";
+import PageUser from "./../components/PageUser/PageUser";
 import Profile from "./../components/Profile/Profile";
 import Body from "./../components/Body/Body";
 import Notifications from "./../components/Notifications/Notifications";
@@ -30,6 +31,7 @@ export default (
               <Route exact path="/challenge/:id" component={PageChallenge} />
               <Route exact path="/notifications" component={Notifications} />
               <Route exact path="/profile" component={Profile} />
+              <Route exact path="/profile/:id" component={PageUser} />
               <Route exact path="/ranking" component={PageRanking} />
               <Login />
               <NavBar />

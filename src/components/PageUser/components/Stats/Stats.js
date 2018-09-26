@@ -1,12 +1,12 @@
 import React, { PureComponent } from "react";
 import Style from "./Stats.scss";
-import Pie from "./../../../Pie/Pie";
+import Pie from "./../../components/Pie/Pie";
 import HistoryStats from "./../../../../components/HistoryStats/HistoryStats";
 import Connect from "./containers/Stats.container";
 
 class Stats extends PureComponent {
   componentDidMount() {
-    this.props.onMount(this.props.user.id, this.props.challenger.id);
+    this.props.onMount();
   }
 
   render() {

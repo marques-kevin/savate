@@ -16,6 +16,7 @@ class World extends PureComponent {
           username={first.username}
           ranking={first.ranking}
           character={first.character}
+          onClick={() => this.props.onClickUser(first.id)}
         />
         {all.map((user, index) => (
           <UserItem
@@ -24,6 +25,7 @@ class World extends PureComponent {
             ranking={user.ranking}
             character={user.character}
             position={index + 2}
+            onClick={() => this.props.onClickUser(user.id)}
           />
         ))}
       </div>
@@ -33,7 +35,8 @@ class World extends PureComponent {
 
 World.defaultProps = {
   users: [],
-  onMount: () => console.warn("default: World.onMount")
+  onMount: () => console.warn("default: World.onMount"),
+  onClickUser: () => console.warn("default: World.onClickUser")
 };
 
 export default Connect(World);
