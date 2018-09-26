@@ -1,0 +1,25 @@
+@import "./../../../../styles/themes/default";
+
+:local(.container) {
+  display: flex;
+  background-color: white;
+  width: 100%;
+  padding: 20px 15px;
+  align-items: center;
+  border-bottom: 1px $BORDER_COLOR_GRAY solid;
+}
+
+:local(.rank) {
+  font-size: 13px;
+  font-weight: 600;
+  color: $COLORS_GRAY;
+  width: 30px;
+  flex-shrink: 0;
+}
+
+:local(.skin) {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-left: -30px;
+}

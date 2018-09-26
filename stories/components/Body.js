@@ -8,10 +8,14 @@ import theme from "./../../src/styles/mui";
 
 const store = createStore();
 
-export default ({ children }) => (
+export default ({ children, noStyle }) => (
   <MuiThemeProvider theme={theme}>
     <Provider store={store}>
-      <body style={{ height: "100vh", width: "100%", display: "flex" }}>
+      <body
+        style={
+          noStyle ? {} : { height: "100vh", width: "100%", display: "flex" }
+        }
+      >
         {children}
       </body>
     </Provider>

@@ -12,7 +12,7 @@ export default class SkinUser extends PureComponent {
             backgroundImage: `url(${Characters(this.props.character)})`
           }}
         />
-        <div className={Style.grade}>Grand maître</div>
+        <div className={Style.grade}>{this.props.username}</div>
         <div className={Style.ranking}>{this.props.ranking}</div>
       </div>
     );

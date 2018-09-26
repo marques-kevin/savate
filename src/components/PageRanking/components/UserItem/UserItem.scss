@@ -1,0 +1,17 @@
+@import "./../../../../styles/themes/default";
+
+:local(.container) {
+  width: 100%;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  padding: 7px 10px;
+  border-bottom: 1px $BORDER_COLOR_GRAY solid;
+}
+
+:local(.rank) {
+  font-size: 13px;
+  font-weight: 600;
+  color: $COLORS_GRAY;
+  width: 30px;
+}

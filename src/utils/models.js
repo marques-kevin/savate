@@ -128,14 +128,12 @@ export const getChallenges = () => {
 };
 
 export const getHistoryChallenges = () => {
+  const day = moment()
+    .subtract(1, "day")
+    .format();
+
   return Database.collection("challenges")
-    .where(
-      "acceptedAt",
-      ">",
-      moment()
-        .subtract(1, "day")
-        .format()
-    )
+    .where("acceptedAt", "<=", new Date(day))
     .where("deletedAt", "==", null)
     .orderBy("acceptedAt", "desc")
     .get()
@@ -262,5 +260,8 @@ export const getStatsFromVersus = (userId, challengerId) => {
     collection
       .where("user.id", "==", userId)
       .where("challenger.id", "==", challengerId)
-  ]).then(pipe(uniqBy(prop("id")), stats(userId)));
+  ]).then(challenges => {
+    const uniq = uniqBy(e => e.id)(challenges);
+    return stats(userId)(uniq);
+  });
 };

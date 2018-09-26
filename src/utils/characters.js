@@ -20,6 +20,7 @@ import xianghua from "./../assets/characters/thumb/xianghua.png";
 import yoshimitsu from "./../assets/characters/thumb/yoshimitsu.png";
 import zasalamel from "./../assets/characters/thumb/zasalamel.png";
 import seongMiNa from "./../assets/characters/thumb/seong-mi-na.png";
+import unknown from "./../assets/characters/thumb/unknown.png";
 
 const characters = {
   astaroth: astaroth,
@@ -41,7 +42,8 @@ const characters = {
   voldo: voldo,
   xianghua: xianghua,
   yoshimitsu: yoshimitsu,
-  zasalamel: zasalamel
+  zasalamel: zasalamel,
+  unknown
 };
 
 export default (n = "") => {
