@@ -36,18 +36,23 @@ export const fetchEnd = () => ({
 });
 
 const formatError = code => {
-  if (code === "auth/invalid-email")
-    return "L'email ne respecte pas le bon format";
-  if (code === "auth/user-not-found") return "L'utilisateur n'existe pas";
-  if (code === "auth/invalid-password")
-    return "Le mot de passe ne respecte pas le bon format";
-  if (code === "auth/wrong-password") return "Le mot de passe est invalide";
-  return "Une erreur est survenue";
+  const messages = {
+    "auth/invalid-email": "L'email ne respecte pas le bon format",
+    "auth/user-not-found": "L'utilisateur n'existe pas",
+    "auth/invalid-password": "Le mot de passe ne respecte pas le bon format",
+    "auth/user-exist": "Le nom d'utilisateur existe déjà",
+    "auth/wrong-password": "Le mot de passe est invalide",
+    "auth/email-already-in-use": "L'email est déjà utilisé",
+    default: "Une erreur est survenue"
+  };
+  return messages[code] || messages.default;
 };
 
-const catcher = dispatcher => ({ code }) => {
+const catcher = dispatcher => error => {
   dispatcher(fetchEnd());
-  dispatcher(snack.open({ message: formatError(code) }));
+  dispatcher(snack.open({ message: formatError(error.code) }));
+  console.log(error);
+  return Promise.reject(error);
 };
 
 export const fetchAuthenticate = ({ email, password }) => dispatcher => {
@@ -78,10 +83,12 @@ export const fetchUpdateInfo = (label, value) => (dispatcher, getState) => {
 export const fetchRegister = info => dispatcher => {
   dispatcher(fetching());
 
-  return Models.register(info).then(user => {
-    dispatcher(fetchEnd());
-    return dispatcher(authenticate(user));
-  });
+  return Models.register(info)
+    .then(user => {
+      dispatcher(fetchEnd());
+      return dispatcher(authenticate(user));
+    })
+    .catch(catcher(dispatcher));
 };
 
 export const fetchIsAuthenticated = () => dispatcher => {
@@ -92,7 +99,7 @@ export const fetchIsAuthenticated = () => dispatcher => {
       dispatcher(fetchEnd());
       return dispatcher(authenticate(user));
     })
-    .catch(() => {
+    .finally(() => {
       dispatcher(fetchEnd());
     });
 };

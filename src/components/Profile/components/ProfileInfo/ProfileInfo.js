@@ -108,6 +108,7 @@ export default class ProfileInfo extends PureComponent {
           </DialogContent>
           <DialogActions>
             <Button onClick={this.handleClose}>Annuler</Button>
+            <Button onClick={this.onSubmit}>Valider</Button>
           </DialogActions>
         </Dialog>
       </div>

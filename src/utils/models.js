@@ -44,13 +44,18 @@ export const authenticate = (email, password) => {
     .then(isAuthenticated);
 };
 
-export const extractUserInfo = ({ email, uid }) => ({ email, id: uid });
+export const extractUserInfo = ({ uid }) => ({ id: uid });
 
 export const isAuthenticated = () => {
   return new Promise((resolve, reject) => {
     Firebase.auth().onAuthStateChanged(function(user) {
       if (user)
-        return resolve(createOrUpdateUser(user.uid, extractUserInfo(user)));
+        return resolve(
+          createOrUpdateUser(user.uid, extractUserInfo(user)).then(u => ({
+            ...u,
+            email: user.email
+          }))
+        );
       return reject("The user is not connected");
     });
   });
@@ -60,7 +65,6 @@ const userSchema = data => ({
   username: "",
   lastName: "",
   firstName: "",
-  email: "",
   character: "",
   ranking: 500,
   ...data
@@ -105,16 +109,20 @@ export const createOrUpdateUser = (id, data) => {
 };
 
 export const register = ({ username, email, password, character }) => {
-  return Firebase.auth()
-    .createUserWithEmailAndPassword(email, password)
-    .then(({ user }) => {
-      return createOrUpdateUser(user.uid, {
-        id: user.uid,
-        username,
-        email,
-        character
-      });
-    });
+  return checkUserAlreadyExist(username).then(user => {
+    if (user) return Promise.reject({ code: "auth/user-exist" });
+
+    return Firebase.auth()
+      .createUserWithEmailAndPassword(email, password)
+      .then(({ user }) => {
+        return createOrUpdateUser(user.uid, {
+          id: user.uid,
+          username,
+          character
+        });
+      })
+      .then(user => ({ ...user, email }));
+  });
 };
 
 export const getUsersByName = name => {
@@ -122,6 +130,13 @@ export const getUsersByName = name => {
     .then(mapQuerySnapshot)
     .then(filter(pipe(prop("username"), toLower, contains(name))))
     .then(slice(0, 10));
+};
+
+export const checkUserAlreadyExist = value => {
+  return Database.collection("users")
+    .where("username", "==", value)
+    .get()
+    .then(e => !e.empty);
 };
 
 export const getAllUsers = () => {
