@@ -59,7 +59,7 @@ export const fetchAuthenticate = ({ email, password }) => dispatcher => {
   return Models.authenticate(email, password)
     .then(user => {
       dispatcher(fetchEnd());
-      dispatcher(authenticate(user));
+      return dispatcher(authenticate(user));
     })
     .catch(catcher(dispatcher));
 };

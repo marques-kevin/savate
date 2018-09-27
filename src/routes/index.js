@@ -34,7 +34,7 @@ export default (
               <Route exact path="/profile" component={Profile} />
               <Route exact path="/profile/:id" component={PageUser} />
               <Route exact path="/ranking" component={PageRanking} />
-              <Login />
+              <Route exact path="/login" component={Login} />
               <NavBar />
               <Snack />
             </div>

@@ -39,19 +39,20 @@ export const getDataFromCache = initializeCache(cache => {
 });
 
 export const authenticate = (email, password) => {
-  return Firebase.auth().signInWithEmailAndPassword(email, password);
+  return Firebase.auth()
+    .signInWithEmailAndPassword(email, password)
+    .then(isAuthenticated);
 };
 
 export const extractUserInfo = ({ email, uid }) => ({ email, id: uid });
 
-export const timeout = duration =>
-  new Promise(resolve => setTimeout(() => resolve(), duration));
-
 export const isAuthenticated = () => {
-  return timeout(1000).then(() => {
-    const user = Firebase.auth().currentUser;
-    if (user) return createOrUpdateUser(user.uid, extractUserInfo(user));
-    return Promise.reject("The user is not connected");
+  return new Promise((resolve, reject) => {
+    Firebase.auth().onAuthStateChanged(function(user) {
+      if (user)
+        return resolve(createOrUpdateUser(user.uid, extractUserInfo(user)));
+      return reject("The user is not connected");
+    });
   });
 };
 

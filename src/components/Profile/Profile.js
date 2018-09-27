@@ -32,13 +32,23 @@ class Profile extends Component {
           <Tabs
             active={this.getTabFromName(this.state.tab)}
             onChange={e => this.setState({ tab: this.state.tabs[e] })}
-            tabs={["Informations", "Statistiques"]}
+            tabs={["Informations", "Statistiques", "Amis"]}
           />
         </div>
         <div>
           {this.state.tab === "info" && <Info />}
           {this.state.tab === "stats" && <Stats userId={this.props.userId} />}
-          {/* {this.state.tab === "friends" && <Friends />} */}
+          {this.state.tab === "friends" && (
+            <div
+              style={{
+                padding: "40px 15px",
+                color: "gray",
+                textAlign: "center"
+              }}
+            >
+              Cette fonctionnalité arrivera prochainement...
+            </div>
+          )}
         </div>
       </div>
     );

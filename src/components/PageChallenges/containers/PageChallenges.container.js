@@ -9,7 +9,7 @@ const mapState = state => ({
 const mapDispatch = dispatch => ({
   onClickCreateChallenge: isConnected => {
     if (isConnected) return dispatch(actions.createChallenge.open());
-    return dispatch(actions.auth.open());
+    return dispatch(actions.router.push("/login"));
   }
 });
 

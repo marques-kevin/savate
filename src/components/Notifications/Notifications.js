@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import PropTypes from "prop-types";
 import Style from "./Notifications.scss";
 import Header from "./../../components/Header/Header";
 import Challenges from "./tabs/Challenges/Challenges";
@@ -8,33 +7,51 @@ import Challenges from "./tabs/Challenges/Challenges";
 import Tabs from "./../../components/Tabs/Tabs";
 
 class Notifications extends Component {
-  getValueFromTab() {
-    if (this.props.tab === "challenges") return 0;
-    if (this.props.tab === "news") return 1;
-    if (this.props.tab === "friends") return 2;
-  }
+  state = {
+    tab: 0
+  };
 
   render() {
     return (
       <div className={Style.container}>
         <Header title="Notifications" noBoxShadow />
-        <Tabs active={this.getValueFromTab()} tabs={["Défis"]} />
+        <Tabs
+          active={this.state.tab}
+          tabs={["Défis", "News", "Demandes d'amis"]}
+          onChange={tab => this.setState({ tab })}
+        />
         <div>
-          {this.props.tab === "challenges" && <Challenges />}
-          {/* {this.props.tab === "news" && <News />} */}
-          {/* {this.props.tab === "friends" && <Friends />} */}
+          {this.state.tab === 0 && <Challenges />}
+          {this.state.tab === 1 && (
+            <div
+              style={{
+                padding: "40px 15px",
+                color: "gray",
+                textAlign: "center"
+              }}
+            >
+              Cette fonctionnalité arrivera prochainement...
+            </div>
+          )}
+          {this.state.tab === 2 && (
+            <div
+              style={{
+                padding: "40px 15px",
+                color: "gray",
+                textAlign: "center"
+              }}
+            >
+              Cette fonctionnalité arrivera prochainement...
+            </div>
+          )}
         </div>
       </div>
     );
   }
 }
 
-Notifications.propTypes = {
-  tab: PropTypes.string
-};
+Notifications.propTypes = {};
 
-Notifications.defaultProps = {
-  tab: "challenges"
-};
+Notifications.defaultProps = {};
 
 export default Notifications;

@@ -43,7 +43,8 @@ class Tabs extends PureComponent {
 Tabs.propTypes = {};
 
 Tabs.defaultProps = {
-  active: 0
+  active: 0,
+  onChange: () => console.warn("default: Tabs.onChange")
 };
 
 const styles = theme => ({

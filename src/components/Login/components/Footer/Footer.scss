@@ -3,13 +3,21 @@
 :local(.container) {
   display: flex;
   justify-content: space-around;
-  position: absolute;
+  position: fixed;
   bottom: 0;
   left: 0;
   right: 0;
+  height: $NAVBAR_HEIGHT;
+  align-items: center;
+  width: 100%;
+  z-index: 100;
+  max-width: $MAX_WIDTH;
+  background-color: white;
+  margin: auto;
+  box-shadow: $BOX_SHADOW_INVERSED;
 }
 
-:local(.button){
+:local(.button) {
   cursor: pointer;
   color: $COLORS_BLACK;
   padding: 15px 20px;

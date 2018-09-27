@@ -42,6 +42,7 @@ class Info extends PureComponent {
           type="email"
           readOnly
         />
+        <div onClick={this.props.onLogout}>Se déconnecter</div>
       </div>
     );
   }

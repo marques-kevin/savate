@@ -80,7 +80,7 @@ export default class Register extends PureComponent {
             fullWidth
             error={this.state.errorUsername}
             helperText={
-              this.state.errorUsername ? "Le pseudo doit être rempli" : " "
+              this.state.errorUsername ? "Le pseudo doit être rempli" : null
             }
             onChange={this.handleChange}
           />
@@ -93,7 +93,7 @@ export default class Register extends PureComponent {
             variant="filled"
             error={this.state.errorEmail}
             helperText={
-              this.state.errorEmail ? "L'email doit être bien rempli" : " "
+              this.state.errorEmail ? "L'email doit être bien rempli" : null
             }
             fullWidth
             onChange={this.handleChange}
@@ -113,7 +113,7 @@ export default class Register extends PureComponent {
             helperText={
               this.state.errorPassword
                 ? "Le mot de passe ne correspond pas à l'autre mot de passe"
-                : " "
+                : null
             }
             id="password-verification"
             label="Vérifier le mot de passe"
@@ -125,6 +125,7 @@ export default class Register extends PureComponent {
             onChange={this.handleChange}
           />
           <Button text="Valider" style={{ marginTop: "50px" }} type="submit" />
+          <div style={{ width: "100%", height: "100px" }} />
           <DialogSelectCharacter
             open={this.state.dialog}
             onClose={() => this.setState({ dialog: false })}
