@@ -2,6 +2,7 @@ import React, { PureComponent } from "react";
 import Style from "./Login.scss";
 import PropTypes from "prop-types";
 import Connect from "./containers/Login.container";
+import FullPageLoader from "./../FullPageLoader/FullPageLoader";
 import Footer from "./components/Footer/Footer";
 import Signin from "./components/Signin/Signin";
 import Forgot from "./components/Forgot/Forgot";
@@ -29,6 +30,7 @@ class Login extends PureComponent {
           onSignin={this.props.onSigninTab}
           page={this.props.page}
         />
+        <FullPageLoader loading={this.props.fetching} />
       </div>
     );
   }

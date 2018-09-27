@@ -17,8 +17,8 @@ export default class SearchUser extends PureComponent {
       <div className={Style.container}>
         <Header title="Combien de manches ?" noBoxShadow />
         <Input
+          label="Le nombre de manches"
           placeholder="5"
-          style={{ width: "50px" }}
           value={this.state.value}
           onChange={value => this.setState({ value })}
           type="number"

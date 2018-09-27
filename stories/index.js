@@ -15,7 +15,8 @@ import { linkTo } from "@storybook/addon-links";
 // import Profile from "./Profile";
 // import Notifications from "./Notifications";
 // import PageChallenge from "./PageChallenge";
-import PageRanking from "./PageRanking";
+// import PageRanking from "./PageRanking";
+import FullPageLoader from "./FullPageLoader";
 
 // Welcome(storiesOf, { linkTo, action });
 // Header(storiesOf, { linkTo, action });
@@ -27,4 +28,5 @@ import PageRanking from "./PageRanking";
 // Profile(storiesOf, { linkTo, action });
 // PageChallenge(storiesOf, { linkTo, action });
 // Notifications(storiesOf, { linkTo, action });
-PageRanking(storiesOf, { linkTo, action });
+// PageRanking(storiesOf, { linkTo, action });
+FullPageLoader(storiesOf, { linkTo, action });

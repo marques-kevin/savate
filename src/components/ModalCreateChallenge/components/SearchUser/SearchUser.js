@@ -22,8 +22,8 @@ class SearchUser extends PureComponent {
       <div className={Style.container}>
         <Header title="Qui voulez-vous défier ?" noBoxShadow />
         <Input
-          placeholder="Rechercher"
           onChange={this.props.onSearchUser}
+          label={"Rechercher un joueur"}
           value={this.props.input}
         />
         <div className={Style.usersWrapper}>

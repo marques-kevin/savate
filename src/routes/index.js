@@ -8,6 +8,7 @@ import { ConnectedRouter } from "connected-react-router";
 import theme from "./../styles/mui";
 import createStore from "./../redux/stores";
 import PageChallenges from "./../components/PageChallenges/PageChallenges";
+import Snack from "./../components/Snack/Snack";
 import PageChallenge from "./../components/PageChallenge/PageChallenge";
 import PageRanking from "./../components/PageRanking/PageRanking";
 import PageUser from "./../components/PageUser/PageUser";
@@ -35,6 +36,7 @@ export default (
               <Route exact path="/ranking" component={PageRanking} />
               <Login />
               <NavBar />
+              <Snack />
             </div>
           </ConnectedRouter>
         </Body>

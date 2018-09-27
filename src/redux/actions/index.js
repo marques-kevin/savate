@@ -6,6 +6,7 @@ import * as notification from "./notification";
 import * as stats from "./stats";
 import * as ranking from "./ranking";
 import * as profile from "./profile";
+import * as snack from "./snack";
 import * as router from "connected-react-router";
 
 /* istanbul ignore next */
@@ -18,5 +19,6 @@ export default {
   router,
   stats,
   profile,
+  snack,
   ranking
 };

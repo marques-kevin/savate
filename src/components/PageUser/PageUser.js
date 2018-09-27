@@ -24,7 +24,7 @@ class PageUser extends PureComponent {
         </div>
         <div className={Style.buttons}>
           <div className={Style.button}>Défier</div>
-          <div className={Style.button}>Demander en amis</div>
+          {/* <div className={Style.button}>Demander en amis</div> */}
         </div>
         <div>
           <Stats userId={this.props.userId} />

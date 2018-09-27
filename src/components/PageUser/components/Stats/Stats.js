@@ -1,6 +1,6 @@
 import React, { PureComponent } from "react";
 import Style from "./Stats.scss";
-import Pie from "./../../components/Pie/Pie";
+import Pie from "./../../../../components/Pie/Pie";
 import HistoryStats from "./../../../../components/HistoryStats/HistoryStats";
 import Connect from "./containers/Stats.container";
 

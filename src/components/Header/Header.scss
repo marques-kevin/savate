@@ -9,9 +9,10 @@
   align-items: center;
   padding: 0 15px;
   box-shadow: $BOX_SHADOW;
+  z-index: 3;
 }
 
-:local(.noBoxShadow){
+:local(.noBoxShadow) {
   box-shadow: none;
 }
 

@@ -15,7 +15,7 @@ class PageChallenges extends PureComponent {
   render() {
     return (
       <div>
-        <Header title="Défi" />
+        <Header title="Défi" noBoxShadow />
         <Switch
           tabs={["Récent", "Historique"]}
           onSwitch={tab => this.setState({ tab })}
