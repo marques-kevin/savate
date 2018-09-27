@@ -1,4 +1,5 @@
 import * as constants from "./../constants/snack";
+import * as listener from "./../constants/listener";
 
 const initialState = {
   open: false,
@@ -18,6 +19,15 @@ export default function(state = initialState, action) {
 
     [constants.close]() {
       return { ...initialState };
+    },
+
+    [listener.emitChallenge]() {
+      const user = action.payload.challenge.user;
+      return {
+        ...state,
+        open: true,
+        message: `${user.username} vous a défier !`
+      };
     },
 
     default() {

@@ -1,4 +1,5 @@
 import * as constants from "./../constants/notification";
+import * as listener from "./../constants/listener";
 
 const initialState = {
   news: [],
@@ -22,6 +23,13 @@ export default function(state = initialState, action) {
         challenges: state.challenges.filter(
           ({ id }) => id !== action.payload.id
         )
+      };
+    },
+
+    [listener.emitChallenge]() {
+      return {
+        ...state,
+        challenges: [action.payload.challenge, ...state.challenges]
       };
     },
 

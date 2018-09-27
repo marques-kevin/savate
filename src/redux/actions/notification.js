@@ -7,7 +7,7 @@ export const storeChallenges = challenges => ({
 });
 
 export const removeChallenge = id => ({
-  type: types.storeChallenges,
+  type: types.removeChallenge,
   payload: { id }
 });
 

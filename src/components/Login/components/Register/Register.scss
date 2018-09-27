@@ -5,7 +5,7 @@
   margin-right: auto;
   width: 100%;
   max-width: 500px;
-  padding: $NAVBAR_HEIGHT 25px 0px 25px;
+  padding: 25px 25px 0px 25px;
   background-color: white;
 }
 
@@ -15,12 +15,26 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  cursor: pointer;
+  padding: 20px;
+  border-radius: 5px;
+  &:hover {
+    background-color: rgba(black, 0.05);
+  }
 }
 
 :local(.thumbPlaceholder) {
   font-size: 14px;
   font-weight: 600;
   color: $COLORS_GRAY;
+  text-align: center;
+  padding: 15px 0px;
+}
+
+:local(.thumbPlaceholderError) {
+  font-size: 14px;
+  font-weight: 600;
+  color: $COLORS_RED;
   text-align: center;
   padding: 15px 0px;
 }

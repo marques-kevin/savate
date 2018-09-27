@@ -5,9 +5,10 @@ const mapState = state => ({});
 
 const mapDispatch = dispatch => ({
   onMount: () => {
-    dispatch(actions.auth.fetchIsAuthenticated()).then(() =>
-      dispatch(actions.notification.fetchGetChallenges())
-    );
+    dispatch(actions.auth.fetchIsAuthenticated()).then(() => {
+      dispatch(actions.notification.fetchGetChallenges());
+      dispatch(actions.listener.subscribeToChallenges());
+    });
   }
 });
 

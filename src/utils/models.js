@@ -125,10 +125,10 @@ export const register = ({ username, email, password, character }) => {
   });
 };
 
-export const getUsersByName = name => {
+export const getUsersByName = (name = "") => {
   return getDataFromCache("users")
     .then(mapQuerySnapshot)
-    .then(filter(pipe(prop("username"), toLower, contains(name))))
+    .then(filter(pipe(prop("username"), toLower, contains(toLower(name)))))
     .then(slice(0, 10));
 };
 
@@ -141,6 +141,17 @@ export const checkUserAlreadyExist = value => {
 
 export const getAllUsers = () => {
   return getDataFromCache("users").then(mapQuerySnapshot);
+};
+
+export const listenForChallenges = (userId, callback) => {
+  return Database.collection("challenges")
+    .where("challenger.id", "==", userId)
+    .where("acceptedAt", "==", null)
+    .where("deletedAt", "==", null)
+    .where("createdAt", ">", new Date())
+    .onSnapshot(snapshot => {
+      snapshot.docChanges().forEach(e => callback(e.doc.data()));
+    });
 };
 
 export const getChallenges = () => {

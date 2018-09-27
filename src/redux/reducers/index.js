@@ -8,6 +8,7 @@ import stats from "./stats";
 import ranking from "./ranking";
 import profile from "./profile";
 import snack from "./snack";
+import listener from "./listener";
 
 const reducers = combineReducers({
   auth,
@@ -18,6 +19,7 @@ const reducers = combineReducers({
   stats,
   snack,
   profile,
+  listener,
   ranking
 });
 

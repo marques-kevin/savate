@@ -64,11 +64,18 @@ export default class Register extends PureComponent {
                 {this.state.user.character}
               </div>
             )}
-            {!this.state.user.character && (
-              <div className={Style.thumbPlaceholder}>
-                Sélectionnez votre personnage préféré
-              </div>
-            )}
+            {!this.state.user.character &&
+              !this.state.errorCharacter && (
+                <div className={Style.thumbPlaceholder}>
+                  Sélectionnez votre personnage préféré
+                </div>
+              )}
+            {!this.state.user.character &&
+              this.state.errorCharacter && (
+                <div className={Style.thumbPlaceholderError}>
+                  Vous devez sélectionner votre personnage préféré
+                </div>
+              )}
           </div>
           <TextField
             id="username"
