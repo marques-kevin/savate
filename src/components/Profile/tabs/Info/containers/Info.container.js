@@ -11,7 +11,7 @@ const mapState = ({ auth }) => ({
 
 const mapDispatch = dispatch => ({
   onUpdate: (label, value) => dispatch(actions.fetchUpdateInfo(label, value)),
-  onLogout: () => dispatch(actions.logout())
+  onLogout: () => dispatch(actions.fetchLogout())
 });
 
 export default connect(mapState, mapDispatch);

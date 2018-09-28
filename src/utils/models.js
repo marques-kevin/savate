@@ -44,6 +44,10 @@ export const authenticate = (email, password) => {
     .then(isAuthenticated);
 };
 
+export const logout = () => {
+  return Firebase.auth().signOut();
+};
+
 export const extractUserInfo = ({ uid }) => ({ id: uid });
 
 export const isAuthenticated = () => {

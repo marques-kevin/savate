@@ -103,3 +103,12 @@ export const fetchIsAuthenticated = () => dispatcher => {
       dispatcher(fetchEnd());
     });
 };
+
+export const fetchLogout = () => dispatcher => {
+  dispatcher(fetching());
+
+  return Models.logout().then(() => {
+    dispatcher(fetchEnd());
+    return dispatcher(logout());
+  });
+};
