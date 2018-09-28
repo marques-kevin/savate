@@ -8,6 +8,18 @@ import Challenges from "./tabs/Challenges/Challenges";
 import Tabs from "./../../components/Tabs/Tabs";
 import Connect from "./containers/Notifications.container";
 
+const Message = ({ text }) => (
+  <div
+    style={{
+      padding: "40px 15px",
+      color: "gray",
+      textAlign: "center"
+    }}
+  >
+    {text}
+  </div>
+);
+
 class Notifications extends Component {
   state = {
     tab: 0
@@ -27,26 +39,10 @@ class Notifications extends Component {
         <div>
           {this.state.tab === 0 && <Challenges />}
           {this.state.tab === 1 && (
-            <div
-              style={{
-                padding: "40px 15px",
-                color: "gray",
-                textAlign: "center"
-              }}
-            >
-              Cette fonctionnalité arrivera prochainement...
-            </div>
+            <Message text="Cette fonctionnalité arrivera prochainement..." />
           )}
           {this.state.tab === 2 && (
-            <div
-              style={{
-                padding: "40px 15px",
-                color: "gray",
-                textAlign: "center"
-              }}
-            >
-              Cette fonctionnalité arrivera prochainement...
-            </div>
+            <Message text="Cette fonctionnalité arrivera prochainement..." />
           )}
         </div>
       </div>

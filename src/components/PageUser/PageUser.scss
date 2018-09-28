@@ -3,10 +3,13 @@
 :local(.container) {
   width: 100%;
   padding-bottom: $NAVBAR_HEIGHT;
+  background-color: white;
 }
 
 :local(.skin) {
   margin-top: 0px;
+  padding: 0 0 20px 0;
+  box-shadow: $BOX_SHADOW;
 }
 
 :local(.buttons) {

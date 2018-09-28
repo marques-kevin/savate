@@ -26,4 +26,8 @@ class Fixed extends PureComponent {
   }
 }
 
+Fixed.defaultProps = {
+  onHeight: () => console.warn("default: Fixed.onHeight")
+};
+
 export default Fixed;

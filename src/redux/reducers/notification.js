@@ -1,5 +1,6 @@
 import * as constants from "./../constants/notification";
 import * as listener from "./../constants/listener";
+import { uniqBy, prop } from "ramda";
 
 const initialState = {
   news: [],
@@ -29,7 +30,10 @@ export default function(state = initialState, action) {
     [listener.emitChallenge]() {
       return {
         ...state,
-        challenges: [action.payload.challenge, ...state.challenges]
+        challenges: uniqBy(prop("id"))([
+          action.payload.challenge,
+          ...state.challenges
+        ])
       };
     },
 
