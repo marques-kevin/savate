@@ -1,5 +1,7 @@
 import React, { PureComponent } from "react";
 import Header from "./../Header/Header";
+import Fixed from "./../Fixed/Fixed";
+import Padding from "./../Padding/Padding";
 import Switch from "./../Switch/Switch";
 import Live from "./tabs/Live/Live";
 import History from "./tabs/History/History";
@@ -9,19 +11,26 @@ import Connect from "./containers/PageChallenges.container";
 
 class PageChallenges extends PureComponent {
   state = {
-    tab: 0
+    tab: 0,
+    height: 0
   };
 
   render() {
     return (
       <div>
-        <Header title="Défi" noBoxShadow />
-        <Switch
-          tabs={["Récent", "Historique"]}
-          onSwitch={tab => this.setState({ tab })}
-        />
+        <Fixed top onHeight={height => this.setState({ height })}>
+          <Header title="Défi" noBoxShadow />
+          <Switch
+            tabs={["Récent", "Historique"]}
+            onSwitch={tab => this.setState({ tab })}
+          />
+        </Fixed>
+        <Padding height={this.state.height} />
+
         {this.state.tab === 0 && <Live />}
         {this.state.tab === 1 && <History />}
+
+        <Padding height={130} />
 
         <CreateChallengeBtn
           onClick={() =>

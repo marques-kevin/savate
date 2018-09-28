@@ -3,3 +3,16 @@
 :local(.container) {
   width: 100%;
 }
+
+:local(.logout) {
+  width: 100%;
+  border-bottom: 1px $BORDER_COLOR_GRAY solid;
+  padding: 20px 15px;
+  font-size: 12px;
+  font-weight: 600;
+  color: $COLORS_GRAY;
+  cursor: pointer;
+  &:hover {
+    background-color: rgba(black, 0.05);
+  }
+}

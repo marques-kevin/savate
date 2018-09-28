@@ -8,7 +8,7 @@ if (!argv.stage)
   throw new Error("You have to provide a --stage [ beta | dev | production ]");
 
 const getUrl = stage => {
-  if (stage === "production") return `books.jsjitsu.com`;
+  if (stage === "production") return `www.savate.me`;
   throw new Error(
     `The stage "${stage}" is not a valid stage -> [ production ]`
   );
@@ -17,7 +17,7 @@ const getUrl = stage => {
 const execWithoutCompression = stage => () =>
   new Promise((resolve, reject) => {
     const url = getUrl(stage);
-    const command = `aws s3 sync ./build s3://${url} --acl public-read --region=eu-west-1 --exclude '*.js' --exclude '*.html' --exclude '*.css'`;
+    const command = `aws s3 sync ./build s3://${url} --acl public-read --region=eu-west-3 --exclude '*.js' --exclude '*.html' --exclude '*.css'`;
     return exec(command, (error, stdout, stderr) => {
       if (error) return reject(error);
       return resolve();
@@ -27,7 +27,7 @@ const execWithoutCompression = stage => () =>
 const execWithCompression = stage => () =>
   new Promise((resolve, reject) => {
     const url = getUrl(stage);
-    const command = `aws s3 sync ./build s3://${url} --acl public-read --region=eu-west-1 --exclude '*' --include '*.js' --include '*.css' --exclude '*-worker.js' --content-encoding=gzip`;
+    const command = `aws s3 sync ./build s3://${url} --acl public-read --region=eu-west-3 --exclude '*' --include '*.js' --include '*.css' --exclude '*-worker.js' --content-encoding=gzip`;
     return exec(command, (error, stdout, stderr) => {
       if (error) return reject(error);
       return resolve();
@@ -37,7 +37,7 @@ const execWithCompression = stage => () =>
 const execWithCompressionHtml = stage => () =>
   new Promise((resolve, reject) => {
     const url = getUrl(stage);
-    const command = `aws s3 sync ./build s3://${url} --acl public-read --region=eu-west-1 --exclude '*' --include '*.html' --content-encoding=gzip --cache-control max-age=0`;
+    const command = `aws s3 sync ./build s3://${url} --acl public-read --region=eu-west-3 --exclude '*' --include '*.html' --content-encoding=gzip --cache-control max-age=0`;
     return exec(command, (error, stdout, stderr) => {
       if (error) return reject(error);
       return resolve();
@@ -47,7 +47,7 @@ const execWithCompressionHtml = stage => () =>
 const execWithCompressionSW = stage => () =>
   new Promise((resolve, reject) => {
     const url = getUrl(stage);
-    const command = `aws s3 sync ./build s3://${url} --acl public-read --region=eu-west-1 --exclude '*' --include '*-worker.js' --content-encoding=gzip --cache-control max-age=0`;
+    const command = `aws s3 sync ./build s3://${url} --acl public-read --region=eu-west-3 --exclude '*' --include '*-worker.js' --content-encoding=gzip --cache-control max-age=0`;
     return exec(command, (error, stdout, stderr) => {
       if (error) return reject(error);
       return resolve();
@@ -98,5 +98,5 @@ const run = stage => {
     .then(log("Static html deployed"));
 };
 
-if(process.env.CI) return runWithoutConfirm();
+if (process.env.CI) return runWithoutConfirm();
 return runWithConfirm();

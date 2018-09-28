@@ -1,6 +1,8 @@
 import React, { PureComponent } from "react";
 import Header from "./../Header/Header";
 import Switch from "./../Switch/Switch";
+import Fixed from "./../Fixed/Fixed";
+import Padding from "./../Padding/Padding";
 import World from "./tabs/World/World";
 import Connect from "./containers/PageRanking.container";
 
@@ -12,11 +14,14 @@ class PageRanking extends PureComponent {
   render() {
     return (
       <div>
-        <Header title="Classement" noBoxShadow />
-        <Switch
-          tabs={["Défis", "Tournois"]}
-          onSwitch={tab => this.setState({ tab })}
-        />
+        <Fixed top onHeight={height => this.setState({ height })}>
+          <Header title="Classement" noBoxShadow />
+          <Switch
+            tabs={["Défis", "Tournois"]}
+            onSwitch={tab => this.setState({ tab })}
+          />
+        </Fixed>
+        <Padding height={this.state.height} />
         {this.state.tab === 0 && <World />}
         {this.state.tab === 1 && (
           <div
@@ -25,6 +30,7 @@ class PageRanking extends PureComponent {
             Cette fonctionnalité arrivera prochainement...
           </div>
         )}
+        <Padding height={58} />
       </div>
     );
   }
