@@ -2,7 +2,8 @@ import * as types from "../constants/snack";
 
 export const open = ({ message, type = "default" }) => ({
   type: types.open,
-  payload: { message, type }
+  payload: { message, type },
+  amplitude: { message, type }
 });
 
 export const close = () => ({

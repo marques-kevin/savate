@@ -1,5 +1,6 @@
 export const open = "REDUX_AUTH_OPEN";
 export const close = "REDUX_AUTH_CLOSE";
+export const forgot = "REDUX_AUTH_FORGOT";
 export const authenticate = "REDUX_AUTH_AUTHENTICATE";
 export const logout = "REDUX_AUTH_LOGOUT";
 export const changePage = "REDUX_AUTH_CHANGE_PAGE";

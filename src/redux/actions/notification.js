@@ -11,6 +11,16 @@ export const removeChallenge = id => ({
   payload: { id }
 });
 
+export const acceptChallenge = id => ({
+  type: types.acceptChallenge,
+  payload: { id }
+});
+
+export const declineChallenge = id => ({
+  type: types.declineChallenge,
+  payload: { id }
+});
+
 export const fetching = () => ({
   type: types.fetching
 });
@@ -32,6 +42,7 @@ export const fetchGetChallenges = () => (dispatcher, getState) => {
 
 export const fetchAcceptChallenge = id => dispatcher => {
   dispatcher(fetching());
+  dispatcher(acceptChallenge());
 
   return Models.acceptChallenge(id).then(() => {
     dispatcher(fetchEnd());
@@ -41,6 +52,7 @@ export const fetchAcceptChallenge = id => dispatcher => {
 
 export const fetchDeclineChallenge = id => dispatcher => {
   dispatcher(fetching());
+  dispatcher(declineChallenge());
 
   return Models.declineChallenge(id).then(() => {
     dispatcher(fetchEnd());

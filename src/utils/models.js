@@ -9,7 +9,9 @@ import {
   slice,
   flatten,
   reduce,
-  uniqBy
+  reject,
+  uniqBy,
+  propEq
 } from "ramda";
 
 export const initializeCache = func => {
@@ -133,9 +135,10 @@ export const register = ({ username, email, password, character }) => {
   });
 };
 
-export const getUsersByName = (name = "") => {
+export const getUsersByName = (userId, name = "") => {
   return getDataFromCache("users")
     .then(mapQuerySnapshot)
+    .then(reject(propEq("id", userId)))
     .then(filter(pipe(prop("username"), toLower, contains(toLower(name)))))
     .then(slice(0, 10));
 };

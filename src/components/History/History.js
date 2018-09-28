@@ -28,5 +28,6 @@ export default class History extends PureComponent {
 History.propTypes = {};
 History.defaultProps = {
   title: "Manches précédentes",
-  loading: false
+  loading: false,
+  onClickUser: () => console.warn("default: History.onClickUser")
 };

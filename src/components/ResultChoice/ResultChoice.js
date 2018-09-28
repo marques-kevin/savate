@@ -31,3 +31,6 @@ export default class ResultChoice extends PureComponent {
 }
 
 ResultChoice.propTypes = {};
+ResultChoice.defaultProps = {
+  onClickUser: () => console.warn("default: ResultChoice.onClickUser")
+};

@@ -1,6 +1,7 @@
 import * as types from "../constants/auth";
 import * as Models from "./../../utils/models";
 import * as snack from "./snack";
+import * as Session from "./../../utils/sessionstack";
 
 export const open = () => ({
   type: types.open
@@ -12,12 +13,19 @@ export const close = () => ({
 
 export const authenticate = user => ({
   type: types.authenticate,
-  payload: { user }
+  payload: { user },
+  amplitude: { user }
+});
+
+export const forgot = email => ({
+  type: types.forgot,
+  amplitude: { email }
 });
 
 export const changePage = page => ({
   type: types.changePage,
-  payload: { page }
+  payload: { page },
+  amplitude: { page }
 });
 
 export const changePageToRegister = () => changePage("register");
@@ -25,7 +33,8 @@ export const changePageToSignin = () => changePage("signin");
 export const changePageToForgot = () => changePage("forgot");
 
 export const logout = () => ({
-  type: types.logout
+  type: types.logout,
+  amplitude: {}
 });
 
 export const fetching = () => ({
@@ -64,6 +73,7 @@ export const fetchAuthenticate = ({ email, password }) => dispatcher => {
   return Models.authenticate(email, password)
     .then(user => {
       dispatcher(fetchEnd());
+      Session.authenticate(user);
       return dispatcher(authenticate(user));
     })
     .catch(catcher(dispatcher));

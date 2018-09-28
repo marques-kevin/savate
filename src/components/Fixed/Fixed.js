@@ -3,9 +3,12 @@ import Style from "./Fixed.scss";
 import classNames from "classnames";
 
 class Fixed extends PureComponent {
+  getHeight() {
+    return this.container.offsetHeight;
+  }
+
   componentDidMount() {
-    console.log(this.container.getBoundingClientRect().height);
-    this.props.onHeight(this.container.getBoundingClientRect().height);
+    this.props.onHeight(this.getHeight());
   }
 
   render() {

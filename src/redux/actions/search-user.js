@@ -19,11 +19,13 @@ export const fetchEnd = () => ({
   type: types.fetchEnd
 });
 
-export const fetchSearchUser = value => dispatcher => {
+export const fetchSearchUser = value => (dispatcher, getState) => {
   dispatcher(fetching());
   dispatcher(changeValue(value));
 
-  return Models.getUsersByName(value).then(users => {
+  const { auth } = getState();
+
+  return Models.getUsersByName(auth.user.id, value).then(users => {
     dispatcher(fetchEnd());
     dispatcher(storeUsers(users));
   });

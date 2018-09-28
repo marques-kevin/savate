@@ -1,6 +1,6 @@
 import Amplitude from "amplitude-js/amplitude";
 
-const key = "6443f7b011cd5aa3e90fcc6bc40c5c31";
+const key = "2b7244506a6dd92f25cd4d12c74b933b";
 
 const getInstance = () => {
   let instance = Amplitude.getInstance();
