@@ -46,7 +46,12 @@ export default class ProfileInfo extends PureComponent {
   render() {
     return (
       <div>
-        <div className={Style.container} onClick={this.handleClickOpen}>
+        <div
+          className={classNames(Style.container, {
+            [Style.readOnly]: this.props.readOnly
+          })}
+          onClick={this.handleClickOpen}
+        >
           <div className={Style.info}>
             <div className={Style.label}>{this.props.label}</div>
             <div

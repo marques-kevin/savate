@@ -1,10 +1,12 @@
 import React, { Component } from "react";
 import Style from "./Notifications.scss";
 import Header from "./../../components/Header/Header";
+import NeedLogin from "./../../components/NeedLogin/NeedLogin";
 import Challenges from "./tabs/Challenges/Challenges";
 // import News from "./tabs/News/News";
 // import Friends from "./tabs/Friends/Friends";
 import Tabs from "./../../components/Tabs/Tabs";
+import Connect from "./containers/Notifications.container";
 
 class Notifications extends Component {
   state = {
@@ -12,7 +14,9 @@ class Notifications extends Component {
   };
 
   render() {
-    return (
+    return !this.props.authenticated ? (
+      <NeedLogin title="Notifications" />
+    ) : (
       <div className={Style.container}>
         <Header title="Notifications" noBoxShadow />
         <Tabs
@@ -54,4 +58,4 @@ Notifications.propTypes = {};
 
 Notifications.defaultProps = {};
 
-export default Notifications;
+export default Connect(Notifications);

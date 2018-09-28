@@ -22,6 +22,7 @@ export const changePage = page => ({
 
 export const changePageToRegister = () => changePage("register");
 export const changePageToSignin = () => changePage("signin");
+export const changePageToForgot = () => changePage("forgot");
 
 export const logout = () => ({
   type: types.logout
@@ -51,7 +52,6 @@ const formatError = code => {
 const catcher = dispatcher => error => {
   dispatcher(fetchEnd());
   dispatcher(snack.open({ message: formatError(error.code) }));
-  console.log(error);
   return Promise.reject(error);
 };
 
@@ -87,6 +87,16 @@ export const fetchRegister = info => dispatcher => {
     .then(user => {
       dispatcher(fetchEnd());
       return dispatcher(authenticate(user));
+    })
+    .catch(catcher(dispatcher));
+};
+
+export const fetchForgot = email => dispatcher => {
+  dispatcher(fetching());
+
+  return Models.forgotPassword(email)
+    .then(() => {
+      return dispatcher(fetchEnd());
     })
     .catch(catcher(dispatcher));
 };

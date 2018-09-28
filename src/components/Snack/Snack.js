@@ -5,14 +5,6 @@ import CloseIcon from "@material-ui/icons/Close";
 import Connect from "./containers/Snack.container";
 
 class Snack extends React.PureComponent {
-  handleClose = (event, reason) => {
-    if (reason === "clickaway") {
-      return;
-    }
-
-    this.props.onClose();
-  };
-
   render() {
     return (
       <Snackbar
@@ -22,7 +14,6 @@ class Snack extends React.PureComponent {
         }}
         open={this.props.isOpen}
         autoHideDuration={3000}
-        onClose={this.handleClose}
         ContentProps={{
           "aria-describedby": "message-id"
         }}
@@ -32,7 +23,7 @@ class Snack extends React.PureComponent {
             key="close"
             aria-label="Close"
             color="inherit"
-            onClick={this.handleClose}
+            onClick={this.props.onClose}
           >
             <CloseIcon />
           </IconButton>

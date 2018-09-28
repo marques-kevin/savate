@@ -3,7 +3,6 @@ import Style from "./Signin.scss";
 import TextField from "@material-ui/core/TextField";
 import Button from "./../../../MainButton/MainButton";
 
-
 export default class Signin extends PureComponent {
   onSubmit = e => {
     e.preventDefault();
@@ -39,7 +38,9 @@ export default class Signin extends PureComponent {
             fullWidth
             onChange={({ target }) => (this.password = target.value)}
           />
-          <div className={Style.forget}>Mot de passe oublié ?</div>
+          <div className={Style.forget} onClick={this.props.onClickForgot}>
+            Mot de passe oublié ?
+          </div>
           <Button
             text="Se connecter"
             style={{ marginTop: "50px" }}

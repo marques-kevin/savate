@@ -34,6 +34,7 @@ class Login extends PureComponent {
             <Signin
               onSubmit={this.props.onSubmitSignin}
               isFetching={this.props.isFetching}
+              onClickForgot={this.props.onForgotTab}
             />
           )}
           {this.props.page === "forgot" && (

@@ -22,19 +22,20 @@ class Info extends PureComponent {
           onUpdate={value => this.props.onUpdate("firstName", value)}
         />
         <ProfileInfo
-          label="Pseudo"
-          value={this.props.username}
-          type="text"
-          title="Modifier votre pseudo"
-          onUpdate={value => this.props.onUpdate("username", value)}
-        />
-        <ProfileInfo
           label="Personnage préféré"
           value={this.props.character}
           type="character"
           text="En changeant de personnage, votre image de profil va également être modifié."
           title="Modifier votre personnage préféré"
           onUpdate={value => this.props.onUpdate("character", value)}
+        />
+        <ProfileInfo
+          label="Pseudo"
+          value={this.props.username}
+          type="text"
+          title="Modifier votre pseudo"
+          readOnly
+          onUpdate={value => this.props.onUpdate("username", value)}
         />
         <ProfileInfo
           label="Email"

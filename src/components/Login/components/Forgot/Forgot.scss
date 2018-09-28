@@ -1,20 +1,16 @@
 @import "./../../../../styles/themes/default";
 
 :local(.content) {
-  margin: auto;
+  margin-left: auto;
+  margin-right: auto;
   width: 100%;
-  max-width: 400px;
+  max-width: 500px;
+  padding: $NAVBAR_HEIGHT 25px 0px 25px;
+  background-color: white;
+  min-height: 100vh;
 }
 
 :local(.message) {
   font-size: 12px;
   color: $COLORS_GRAY;
-}
-
-:local(.forget) {
-  font-size: 12px;
-  color: $COLORS_BLUE;
-  text-align: right;
-  padding: 10px 0;
-  cursor: pointer;
 }

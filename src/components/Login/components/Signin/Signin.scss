@@ -5,9 +5,9 @@
   margin-right: auto;
   width: 100%;
   max-width: 500px;
-  margin-top: 50px;
   padding: $NAVBAR_HEIGHT 25px 0px 25px;
   background-color: white;
+  min-height: 100vh;
 }
 
 :local(.message) {

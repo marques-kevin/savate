@@ -13,6 +13,14 @@
   }
 }
 
+:local(.readOnly) {
+  &:hover {
+    background: inherit;
+  }
+
+  cursor: not-allowed;
+}
+
 :local(.label) {
   font-size: 12px;
   color: $COLORS_BLACK;

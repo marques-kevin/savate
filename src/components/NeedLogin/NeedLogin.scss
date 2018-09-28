@@ -3,5 +3,24 @@
 :local(.container) {
   width: 100%;
   padding-bottom: $NAVBAR_HEIGHT;
-  background-color: white;
+  padding-top: 100px;
+}
+
+:local(.message) {
+  color: $COLORS_BLACK;
+  font-size: 16px;
+  text-align: center;
+  padding: 0 15px;
+  margin-top: 50px;
+}
+
+:local(.icon) {
+  display: flex;
+  justify-content: center;
+  font-size: 25px;
+  color: $COLORS_GRAY;
+}
+
+:local(.button) {
+  margin-top: 40px;
 }

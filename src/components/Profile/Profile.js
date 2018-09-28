@@ -10,13 +10,6 @@ import Stats from "./tabs/Stats/Stats";
 import Tabs from "./../../components/Tabs/Tabs";
 import Connect from "./containers/Profile.container";
 
-const NoAuthenticated = () => (
-  <div className={Style.container}>
-    <Header title="Profil" noBoxShadow />
-    <NeedLogin />
-  </div>
-);
-
 class Profile extends Component {
   state = {
     tab: "info",
@@ -29,7 +22,7 @@ class Profile extends Component {
 
   render() {
     return !this.props.authenticated ? (
-      <NoAuthenticated />
+      <NeedLogin title="Profil" />
     ) : (
       <div className={Style.container}>
         <Header title="Profil" noBoxShadow />

@@ -13,7 +13,7 @@ export default class Footer extends PureComponent {
             Créer un compte
           </div>
         )}
-        {this.props.page === "register" && (
+        {(this.props.page === "register" || this.props.page === "forgot") && (
           <div className={Style.button} onClick={this.props.onSignin}>
             Se connecter
           </div>

@@ -48,6 +48,10 @@ export const logout = () => {
   return Firebase.auth().signOut();
 };
 
+export const forgotPassword = email => {
+  return Firebase.auth().sendPasswordResetEmail(email);
+};
+
 export const extractUserInfo = ({ uid }) => ({ id: uid });
 
 export const isAuthenticated = () => {
