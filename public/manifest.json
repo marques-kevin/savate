@@ -24,7 +24,7 @@
     }
   ],
   "start_url": "/?source=pwa",
-  "display": "fullscreen",
-  "theme_color": "#000000",
-  "background_color": "#FFEA00"
+  "display": "standalone",
+  "theme_color": "#252530",
+  "background_color": "#fafafa"
 }
