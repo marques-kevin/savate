@@ -25,8 +25,7 @@ export default (process.env.NODE_ENV === "production"
   : getFakeInstance());
 
 export const reduxMiddleware = instance => store => next => action => {
-  const { meta, type } = action;
-  if (meta && meta.amplitude && instance.logEvent)
-    instance.logEvent(type, meta.amplitude);
+  const { amplitude, type } = action;
+  if (amplitude && instance.logEvent) instance.logEvent(type, amplitude);
   return next(action);
 };
