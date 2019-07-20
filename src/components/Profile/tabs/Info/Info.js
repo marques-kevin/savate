@@ -12,6 +12,7 @@ class Info extends PureComponent {
           value={this.props.lastName}
           type="text"
           title="Modifier votre nom de famille"
+          readOnly
           onUpdate={value => this.props.onUpdate("lastName", value)}
         />
         <ProfileInfo
@@ -19,15 +20,8 @@ class Info extends PureComponent {
           value={this.props.firstName}
           type="text"
           title="Modifier votre prénom"
+          readOnly
           onUpdate={value => this.props.onUpdate("firstName", value)}
-        />
-        <ProfileInfo
-          label="Personnage préféré"
-          value={this.props.character}
-          type="character"
-          text="En changeant de personnage, votre image de profil va également être modifié."
-          title="Modifier votre personnage préféré"
-          onUpdate={value => this.props.onUpdate("character", value)}
         />
         <ProfileInfo
           label="Pseudo"

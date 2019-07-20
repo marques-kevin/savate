@@ -4,7 +4,7 @@ export const authenticate = user => {
   if (SessionStack) {
     SessionStack.identify({
       userId: user.id, // Replace the USER-ID with the user id from your app
-      displayName: user.username // Not require
+      displayName: user.displayName // Not require
     });
   }
 };

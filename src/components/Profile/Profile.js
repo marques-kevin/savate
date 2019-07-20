@@ -29,7 +29,7 @@ class Profile extends Component {
 
         <SkinUser
           username={this.props.username}
-          character={this.props.character}
+          picture={this.props.picture}
           ranking={this.props.ranking}
         />
 

@@ -40,7 +40,29 @@ export const getDataFromCache = initializeCache(cache => {
   };
 });
 
-export const authenticate = (email, password) => {
+export const authenticateWithGoogle = (email, password) => {
+  const provider = new Firebase.auth.GoogleAuthProvider();
+  return Firebase.auth()
+    .signInWithPopup(provider)
+    .then(function(result) {
+      return {
+        ...result.additionalUserInfo.profile,
+        ...result.user
+      };
+    })
+    .then(user =>
+      createOrUpdateUser(user.uid, {
+        id: user.uid,
+        email: user.email,
+        username: user.name,
+        lastName: user.family_name,
+        firstName: user.given_name,
+        picture: user.picture
+      })
+    );
+};
+
+export const authenticateWithPassword = (email, password) => {
   return Firebase.auth()
     .signInWithEmailAndPassword(email, password)
     .then(isAuthenticated);
@@ -59,13 +81,7 @@ export const extractUserInfo = ({ uid }) => ({ id: uid });
 export const isAuthenticated = () => {
   return new Promise((resolve, reject) => {
     Firebase.auth().onAuthStateChanged(function(user) {
-      if (user)
-        return resolve(
-          createOrUpdateUser(user.uid, extractUserInfo(user)).then(u => ({
-            ...u,
-            email: user.email
-          }))
-        );
+      if (user) return resolve(getUserInfo(user.uid));
       return reject("The user is not connected");
     });
   });
@@ -75,7 +91,7 @@ const userSchema = data => ({
   username: "",
   lastName: "",
   firstName: "",
-  character: "",
+  picture: "",
   ranking: 500,
   ...data
 });
@@ -105,16 +121,18 @@ export const getUserInfo = id => {
 export const createOrUpdateUser = (id, data) => {
   return getUserInfo(id)
     .then(info => {
+      const updateSchema = userSchema({ ...info, ...data, id });
       return Database.collection("users")
         .doc(id)
-        .update(userSchema({ ...info, ...data, id }))
-        .then(() => userSchema({ ...info, ...data, id }));
+        .update(updateSchema)
+        .then(() => updateSchema);
     })
     .catch(e => {
+      const insertSchema = userSchema({ ...data, id });
       return Database.collection("users")
         .doc(id)
-        .set(userSchema({ ...data, id }))
-        .then(() => userSchema({ ...data, id }));
+        .set(insertSchema)
+        .then(() => insertSchema);
     });
 };
 

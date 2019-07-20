@@ -67,10 +67,7 @@ const catcher = dispatcher => error => {
 export const fetchAuthenticate = ({ email, password }) => dispatcher => {
   dispatcher(fetching());
 
-  if (!email) return catcher(dispatcher)({ code: "auth/invalid-email" });
-  if (!password) return catcher(dispatcher)({ code: "auth/invalid-password" });
-
-  return Models.authenticate(email, password)
+  return Models.authenticateWithGoogle()
     .then(user => {
       dispatcher(fetchEnd());
       Session.authenticate(user);

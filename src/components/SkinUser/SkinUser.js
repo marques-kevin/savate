@@ -1,6 +1,5 @@
 import React, { PureComponent } from "react";
 import Style from "./SkinUser.scss";
-import Characters from "./../../utils/characters";
 
 export default class SkinUser extends PureComponent {
   render() {
@@ -9,7 +8,7 @@ export default class SkinUser extends PureComponent {
         <div
           className={Style.thumb}
           style={{
-            backgroundImage: `url(${Characters(this.props.character)})`
+            backgroundImage: `url(${this.props.picture})`
           }}
           onClick={this.props.onClick}
         />
