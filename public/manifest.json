@@ -1,6 +1,6 @@
 {
-  "short_name": "Savate",
-  "name": "Savate",
+  "short_name": "Doctrine Ping Pong",
+  "name": "Ping Pong",
   "icons": [
     {
       "src": "/manifest/16x16.png",
@@ -45,6 +45,6 @@
   ],
   "start_url": "/?source=pwa",
   "display": "standalone",
-  "theme_color": "#252530",
+  "theme_color": "#58B976",
   "background_color": "#fafafa"
 }
