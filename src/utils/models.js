@@ -40,6 +40,10 @@ export const getDataFromCache = initializeCache(cache => {
   };
 });
 
+export const isUserFromDoctrine = email => {
+  return email.includes("@doctrine.");
+};
+
 export const authenticateWithGoogle = (email, password) => {
   const provider = new Firebase.auth.GoogleAuthProvider();
   return Firebase.auth()
@@ -49,6 +53,10 @@ export const authenticateWithGoogle = (email, password) => {
         ...result.additionalUserInfo.profile,
         ...result.user
       };
+    })
+    .then(user => {
+      if (isUserFromDoctrine(user.email)) return user;
+      return Promise.reject({ code: "auth/not-doctrine" });
     })
     .then(user =>
       createOrUpdateUser(user.uid, {

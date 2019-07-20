@@ -5,15 +5,15 @@ import Thumb from "./../Thumb/Thumb";
 
 export default class UserItem extends PureComponent {
   render() {
-    const { reversed, character, username, ranking, onClick } = this.props;
+    const { reversed, picture, username, ranking, onClick } = this.props;
     return (
       <div className={Style.user} onClick={onClick}>
-        {!reversed && <Thumb character={character} />}
+        {!reversed && <Thumb picture={picture} />}
         <div className={reversed ? Style.userInfoReversed : Style.userInfo}>
           <div className={Style.username}>{username}</div>
           {ranking && <div className={Style.userRank}>{ranking}</div>}
         </div>
-        {reversed && <Thumb character={character} />}
+        {reversed && <Thumb picture={picture} />}
       </div>
     );
   }

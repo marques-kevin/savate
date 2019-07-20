@@ -15,7 +15,7 @@ class World extends PureComponent {
         <FirstUser
           username={first.username}
           ranking={first.ranking}
-          character={first.character}
+          picture={first.picture}
           onClick={() => this.props.onClickUser(first.id)}
         />
         {all.map((user, index) => (
@@ -23,7 +23,7 @@ class World extends PureComponent {
             key={user.id}
             username={user.username}
             ranking={user.ranking}
-            character={user.character}
+            picture={user.picture}
             position={index + 2}
             onClick={() => this.props.onClickUser(user.id)}
           />

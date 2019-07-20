@@ -4,21 +4,21 @@ import classNames from "classnames";
 import Style from "./ChallengeResultItem.scss";
 import Thumb from "./../Thumb/Thumb";
 
-const User = ({ reversed, ranking, character, username, onClick }) => (
+const User = ({ reversed, ranking, picture, username, onClick }) => (
   <div className={Style.user} onClick={onClick}>
-    {!reversed && <Thumb character={character} />}
+    {!reversed && <Thumb picture={picture} />}
     <div className={reversed ? Style.userInfoReversed : Style.userInfo}>
       <div className={Style.username}>{username}</div>
       {ranking && <div className={Style.userRank}>{ranking}</div>}
     </div>
-    {reversed && <Thumb character={character} />}
+    {reversed && <Thumb character={picture} />}
   </div>
 );
 
-const extractInfo = ({ username, ranking, character }) => ({
+const extractInfo = ({ username, ranking, picture }) => ({
   username,
   ranking,
-  character
+  picture
 });
 
 export default class ChallengeResultItem extends PureComponent {

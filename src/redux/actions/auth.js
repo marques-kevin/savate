@@ -53,6 +53,7 @@ const formatError = code => {
     "auth/user-exist": "Le nom d'utilisateur existe déjà",
     "auth/wrong-password": "Le mot de passe est invalide",
     "auth/email-already-in-use": "L'email est déjà utilisé",
+    "auth/not-doctrine": "Seulement les adresse email Doctrine sont autorisées",
     default: "Une erreur est survenue"
   };
   return messages[code] || messages.default;

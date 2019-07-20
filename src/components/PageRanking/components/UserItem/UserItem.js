@@ -9,7 +9,7 @@ class UserItem extends PureComponent {
         <div className={Style.rank}>{this.props.position}</div>
         <User
           onClick={this.props.onClick}
-          character={this.props.character}
+          picture={this.props.picture}
           username={this.props.username}
           ranking={this.props.ranking}
         />

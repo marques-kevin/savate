@@ -5,40 +5,18 @@ import Connect from "./containers/Login.container";
 import FullPageLoader from "./../FullPageLoader/FullPageLoader";
 import Footer from "./components/Footer/Footer";
 import Signin from "./components/Signin/Signin";
-import Forgot from "./components/Forgot/Forgot";
-import Register from "./components/Register/Register";
-// import { disableBodyScroll, clearAllBodyScrollLocks } from "body-scroll-lock";
 
 class Login extends PureComponent {
-  lockBody() {
-    // disableBodyScroll(this.element);
-  }
-
-  unlockBody() {
-    // clearAllBodyScrollLocks();
-  }
-
-  // componentWillReceiveProps(props) {
-  //   if (this.props.isOpen === props.isOpen) return false;
-  //   if (props.isOpen) this.lockBody();
-  //   if (!props.isOpen) this.unlockBody();
-  // }
   render() {
     return (
       <div className={Style.container} ref={ref => (this.element = ref)}>
         <div className={Style.content}>
-          {this.props.page === "register" && (
-            <Register onSubmit={this.props.onSubmitRegister} />
-          )}
           {this.props.page === "signin" && (
             <Signin
               onSubmit={this.props.onSubmitSignin}
               isFetching={this.props.isFetching}
               onClickForgot={this.props.onForgotTab}
             />
-          )}
-          {this.props.page === "forgot" && (
-            <Forgot onSubmit={this.props.onSubmitForgot} />
           )}
         </div>
 

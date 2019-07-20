@@ -1,16 +1,14 @@
 import React, { PureComponent } from "react";
-// import PropTypes from "prop-types";
 import Style from "./Thumb.scss";
-import Characters from "./../../utils/characters";
 
 export default class Thumb extends PureComponent {
   render() {
-    const { size } = this.props;
+    const { picture, size } = this.props;
     return (
       <div
         className={Style.container}
         style={{
-          backgroundImage: `url(${Characters(this.props.character)})`,
+          backgroundImage: `url(${picture})`,
           ...(size ? { height: size, width: size } : {})
         }}
       />
@@ -21,5 +19,5 @@ export default class Thumb extends PureComponent {
 Thumb.propTypes = {};
 
 Thumb.defaultProps = {
-  character: ""
+  picture: ""
 };

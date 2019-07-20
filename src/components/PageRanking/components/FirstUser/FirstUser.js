@@ -4,7 +4,7 @@ import SkinUser from "./../../../SkinUser/SkinUser";
 
 class FirstUser extends PureComponent {
   render() {
-    const { character, username, ranking, onClick } = this.props;
+    const { picture, username, ranking, onClick } = this.props;
 
     return (
       <div className={Style.container}>
@@ -12,7 +12,7 @@ class FirstUser extends PureComponent {
         <div className={Style.skin}>
           <SkinUser
             onClick={onClick}
-            character={character}
+            picture={picture}
             username={username}
             ranking={ranking}
           />
