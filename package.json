@@ -48,7 +48,7 @@
     "ramda-adjunct": "^2.2.0",
     "raven-js": "^3.22.1",
     "react": "^16.5.1",
-    "react-dev-utils": "^4.2.1",
+    "react-dev-utils": "^11.0.4",
     "react-dom": "^16.5.1",
     "react-intl": "^2.4.0",
     "react-intl-redux": "^0.7.0",
